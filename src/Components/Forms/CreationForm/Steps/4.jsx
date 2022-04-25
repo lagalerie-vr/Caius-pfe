@@ -1,6 +1,10 @@
 import { useStepperContext } from "../../../../contexts/StepperContext";
 
+
+
 export default function Form() {
+
+
     const { userData, setUserData } = useStepperContext();
 
     const handleChange = (e) => {
@@ -17,6 +21,7 @@ export default function Form() {
                     id="siege"
                     name="siege"
                     required
+                    value={userData["siege"] || ""}
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                     onChange={handleChange}>
                     <option></option>
@@ -35,6 +40,7 @@ export default function Form() {
                     id="recherche"
                     name="recherche"
                     required
+                    value={userData["recherche"] || ""}
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                     onChange={handleChange}>
                     <option></option>

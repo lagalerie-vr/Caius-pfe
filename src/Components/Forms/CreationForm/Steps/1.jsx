@@ -44,8 +44,9 @@ export default function Form() {
                 <div className="my-2 flex rounded border border-gray-200 bg-white p-1">
                     <select
                         required
-                        id="location"
-                        name="location"
+                        value={userData["domaine"] || ""}
+                        id="domaine"
+                        name="domaine"
                         className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                         onChange={handleChange}
                     >

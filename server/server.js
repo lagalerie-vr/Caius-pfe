@@ -5,6 +5,7 @@ const cors = require('cors')
 
 const userRoutes = require("./routes/userRoutes")
 const videoRoutes = require("./routes/videoRoutes")
+const creationRoutes = require("./routes/creationRoutes")
 const eventRoutes = require("./routes/eventRoutes")
 
 
@@ -20,6 +21,7 @@ app.use(bodyParser.json())
 app.use('/users', userRoutes)
 app.use('/events', eventRoutes)
 app.use('/videos', videoRoutes)
+app.use('/creations', creationRoutes)
 
 
 

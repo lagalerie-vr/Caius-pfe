@@ -20,6 +20,7 @@ export default function Form() {
                         id="typeGerant"
                         name="typeGerant"
                         required
+                        value={userData["typeGerant"] || ""}
                         className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                         onChange={handleChange}>
                         <option></option>
@@ -39,8 +40,8 @@ export default function Form() {
                             <div className="my-2 flex rounded border border-gray-200 bg-white p-1">
                                 <input
                                     onChange={handleChange}
-                                    value={userData["NomGerant"] || ""}
-                                    name="NomGerant"
+                                    value={userData["nomGerant"] || ""}
+                                    name="nomGerant"
                                     required
                                     placeholder="Foulen ben foulen"
                                     className="w-full appearance-none p-1 px-2 text-gray-800 outline-none"
@@ -56,8 +57,8 @@ export default function Form() {
                             <div className="my-2 flex rounded border border-gray-200 bg-white p-1">
                                 <input
                                     onChange={handleChange}
-                                    value={userData["RS"] || ""}
-                                    name="RS"
+                                    value={userData["rs"] || ""}
+                                    name="rs"
                                     required
                                     className="w-full appearance-none p-1 px-2 text-gray-800 outline-none"
                                 />
@@ -69,8 +70,8 @@ export default function Form() {
                             <div className="my-2 flex rounded border border-gray-200 bg-white p-1">
                                 <input
                                     onChange={handleChange}
-                                    value={userData["Forme"] || ""}
-                                    name="Forme"
+                                    value={userData["forme"] || ""}
+                                    name="forme"
                                     required
                                     className="w-full appearance-none p-1 px-2 text-gray-800 outline-none"
                                 />
