@@ -25,8 +25,6 @@ app.use('/videos', videoRoutes)
 app.use('/creations', creationRoutes)
 app.use('/domiciliation', domiciliationRoutes)
 
-
-
 mongoose.connect(process.env.DB_CONNECTION, (err, done) => {
     if (err) {
         console.log(err)

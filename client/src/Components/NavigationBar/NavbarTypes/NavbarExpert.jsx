@@ -19,12 +19,19 @@ function NavbarExpert() {
     ]
 
     const userNavigation = [
+
+        { name: 'Contract', href: '/Contract' },
+        { name: 'Facture', href: '/Facture' },
         { name: 'Settings', href: '#' },
-        { name: 'Sign out', href: '#' },
     ]
 
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ')
+    }
+
+    function handleLogout() {
+        localStorage.removeItem("token");
+        window.location.reload();
     }
 
 
@@ -33,7 +40,7 @@ function NavbarExpert() {
             <Disclosure as="header" className="bg-indigo-800">
                 {({ open }) => (
                     <>
-                        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:divide-y lg:divide-indigo-700 lg:px-8">
+                        <div className=" max-w-7xl mx-auto px-2 sm:px-4 lg:divide-y lg:divide-indigo-700 lg:px-8">
                             <div className="relative h-16 flex justify-between">
                                 <div className="relative z-10 px-2 flex lg:px-0">
                                     <div className="flex-shrink-0 flex items-center">
@@ -74,7 +81,7 @@ function NavbarExpert() {
                                         )}
                                     </Disclosure.Button>
                                 </div>
-                                <div className="hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center">
+                                <div className="hidden lg:relative  lg:ml-4 lg:flex lg:items-center">
 
                                     {/* Profile dropdown */}
                                     <Menu as="div" className="flex-shrink-0 relative ml-4">
@@ -109,6 +116,14 @@ function NavbarExpert() {
                                                         )}
                                                     </Menu.Item>
                                                 ))}
+
+                                                <button
+                                                    onClick={handleLogout}
+                                                    className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-indigo-700 text-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none">
+                                                    Deconnecte
+                                                </button>
+
+
                                             </Menu.Items>
                                         </Transition>
                                     </Menu>
@@ -169,6 +184,13 @@ function NavbarExpert() {
                                             {item.name}
                                         </Disclosure.Button>
                                     ))}
+
+                                    <button
+                                        onClick={handleLogout}
+                                        className="block rounded-md py-2 px-3 text-base font-medium text-indigo-400 hover:bg-indigo-700 hover:text-white"
+                                    >
+                                        Deconnecte
+                                    </button>
                                 </div>
                             </div>
                         </Disclosure.Panel>
@@ -178,5 +200,6 @@ function NavbarExpert() {
         </>
     )
 }
+
 
 export default NavbarExpert

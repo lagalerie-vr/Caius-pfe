@@ -6,7 +6,7 @@ import NavbarDefault from './NavbarTypes/NavbarDefault'
 import { user } from "../../contexts/AuthProvider"
 
 
-export default function Navbar() {
+export default function Navbar(role) {
     switch (user.role) {
         case "Admin":
             return <NavbarAdmin />;

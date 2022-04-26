@@ -1,9 +1,3 @@
-export const useAuth = () => {
-    return true
-}
-
-
-
 export const user = {
     name: 'mimi lousif',
     email: 'tom@example.com',

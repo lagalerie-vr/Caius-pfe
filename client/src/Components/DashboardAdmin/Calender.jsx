@@ -3,6 +3,7 @@ import Slideover from '../../Layouts/Slideover'
 import AddEvent from '../../Components/Slideover/AddEvent'
 import Get from '../../data/Functions/Get'
 import API from '../../api/api'
+import Modal from '../Modals/Modal'
 
 
 function Calender() {
@@ -13,6 +14,7 @@ function Calender() {
         try {
             API.delete(`/events/${id}`)
             console.log("done")
+            setconfrimed(true)
         } catch (error) {
             console.log(error)
         }
@@ -21,6 +23,8 @@ function Calender() {
     const events = Get("/events")
 
     const [open, setOpen] = useState(false)
+    const [confrimed, setconfrimed] = useState(false);
+
 
     return (
         <div className="lg:flex lg:h-full lg:flex-col">
@@ -29,7 +33,6 @@ function Calender() {
                 </h1>
                 <div className="flex items-center">
                     <div className="hidden md:ml-4 md:flex md:items-center">
-                        <div className="ml-6 h-6 w-px bg-gray-300" />
                         <button
                             type="button"
                             onClick={() => setOpen(true)}
@@ -145,6 +148,12 @@ function Calender() {
                     </div>
                 </div>
             </div>
+
+            {confrimed &&
+                <Modal
+                    open={confrimed}
+                    setOpen={setconfrimed} />}
+
         </div>)
 }
 

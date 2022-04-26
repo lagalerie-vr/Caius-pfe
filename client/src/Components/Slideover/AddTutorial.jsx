@@ -1,5 +1,6 @@
 import API from "../../api/api";
 import { useState } from "react";
+import Modal from "../Modals/Modal";
 
 export default function AddTutorial() {
 
@@ -100,8 +101,10 @@ export default function AddTutorial() {
                 <div className="relative">
                     <div className="relative flex justify-center text-sm">
                         {error && <span className="px-2 bg-white text-red-500" >error</span>}
-                        {confrimed && <span className="px-2 bg-white text-green-500" >Ajouter avec succès</span>}
-                    </div>
+                        {confrimed &&
+                            <Modal
+                                open={confrimed}
+                                setOpen={setconfrimed} />}                    </div>
                 </div>
             </div>
         </div>

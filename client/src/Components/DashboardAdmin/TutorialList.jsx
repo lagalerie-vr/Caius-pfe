@@ -8,13 +8,13 @@ import Get from '../../data/Functions/Get'
 
 import Slideover from '../../Layouts/Slideover'
 import API from '../../api/api'
+import Modal from '../Modals/Modal'
 
 
 function TutorialList() {
 
     // Get DATA
     const tutorials = Get("/videos")
-
     // DELETE DATA
 
     const tutorialDelete = (id, e) => {
@@ -22,12 +22,14 @@ function TutorialList() {
         try {
             API.delete(`/videos/${id}`)
             console.log("done")
+            setconfrimed(true)
         } catch (error) {
             console.log(error)
         }
     }
 
 
+    const [confrimed, setconfrimed] = useState(false);
 
     const [open, setOpen] = useState(false)
     const [openDoc, setOpenDoc] = useState(false)
@@ -192,6 +194,11 @@ function TutorialList() {
                         </div>
                     </div>
                 </div>
+
+                {confrimed &&
+                    <Modal
+                        open={confrimed}
+                        setOpen={setconfrimed} />}
 
 
             </div>

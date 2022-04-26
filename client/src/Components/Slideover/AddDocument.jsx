@@ -1,4 +1,9 @@
+import { useState } from "react"
+import Modal from "../Modals/Modal"
+
 export default function AddDocument() {
+    const [open, setOpen] = useState(false)
+
     return (
         <div>
             <div className="flex-1 flex flex-col justify-between">
@@ -70,11 +75,15 @@ export default function AddDocument() {
             <div className="flex-shrink-0 px-4 py-4 flex justify-end">
                 <button
                     type="submit"
+                    onClick={() => setOpen(true)}
                     className="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                     Ajouter
                 </button>
             </div>
+            <Modal
+                open={open}
+                setOpen={setOpen} />
         </div>
     )
 }

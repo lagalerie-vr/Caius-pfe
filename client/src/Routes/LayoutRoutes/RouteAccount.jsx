@@ -12,7 +12,7 @@ const RouteAccount = () => (
         <Route path="/" element={<PublicRoutes />}>
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="*" element={<Error />} />
+            <Route path="*" element={<Login />} />
         </Route>
     </Routes>
 )

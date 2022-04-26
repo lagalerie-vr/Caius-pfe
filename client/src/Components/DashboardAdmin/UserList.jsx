@@ -5,16 +5,21 @@ import API from '../../api/api'
 
 import Slideover from '../../Layouts/Slideover'
 import EditUser from '../Slideover/EditUser'
+import Modal from '../Modals/Modal'
 
 
 
 function UserList() {
+
+    const [confrimed, setconfrimed] = useState(false);
+
 
     const userDelete = (id, e) => {
         e.preventDefault();
         try {
             API.delete(`/Users/user/${id}`)
             console.log("done")
+            setconfrimed(true)
         } catch (error) {
             console.log(error)
         }
@@ -158,6 +163,11 @@ function UserList() {
 
                                             </tr>
                                         ))}
+
+                                        {confrimed &&
+                                            <Modal
+                                                open={confrimed}
+                                                setOpen={setconfrimed} />}
 
                                         <Slideover
                                             open={openEdit}

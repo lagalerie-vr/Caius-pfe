@@ -1,5 +1,6 @@
 import React, { useState, useReducer } from 'react'
 import API from '../../api/api';
+import Modal from '../Modals/Modal';
 
 function AddUser() {
 
@@ -157,8 +158,10 @@ function AddUser() {
                 <div className="relative">
                     <div className="relative flex justify-center text-sm">
                         {error && <span className="px-2 bg-white text-red-500" >{error}</span>}
-                        {confrimed && <span className="px-2 bg-white text-green-500" >Ajouter avec succès</span>}
-                    </div>
+                        {confrimed &&
+                            <Modal
+                                open={confrimed}
+                                setOpen={setconfrimed} />}                    </div>
                 </div>
             </div>
         </div>

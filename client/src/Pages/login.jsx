@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import logo from '../Assets/logoSmall.png'
 import { useState } from "react";
 import API from '../api/api';
@@ -7,6 +7,7 @@ import API from '../api/api';
 
 
 export default function Example() {
+    const navigate = useNavigate();
 
     const [data, setData] = useState({
         mail: "",
@@ -26,6 +27,9 @@ export default function Example() {
             const { data: res } = await API.post("/users/login", data);
             localStorage.setItem("token", res.data);
             console.log(localStorage.getItem("token"))
+            navigate("/")
+            window.location.reload();
+
         } catch (error) {
             if (
                 error.response &&
@@ -35,6 +39,7 @@ export default function Example() {
                 setError(error.response.data.message);
             }
         }
+
     };
 
     return (

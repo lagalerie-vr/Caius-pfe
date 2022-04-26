@@ -4,9 +4,8 @@ import { useAuth } from "../contexts/AuthProvider"
 
 const PublicRoutes = (props) => {
 
-    const auth = useAuth()
-
-    return auth ? <Navigate to="/" /> : <Outlet />
+    const user = localStorage.getItem("token");
+    return user ? <Navigate to="/" /> : <Outlet />
 }
 
 export default PublicRoutes;

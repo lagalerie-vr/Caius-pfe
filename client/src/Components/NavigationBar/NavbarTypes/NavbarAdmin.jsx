@@ -28,11 +28,15 @@ function NavbarAdmin() {
         { name: 'Contract', href: '/Contract' },
         { name: 'Facture', href: '/Facture' },
         { name: 'Settings', href: '#' },
-        { name: 'Sign out', href: '#' },
     ]
 
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ')
+    }
+
+    function handleLogout() {
+        localStorage.removeItem("token");
+        window.location.reload();
     }
 
 
@@ -117,6 +121,14 @@ function NavbarAdmin() {
                                                         )}
                                                     </Menu.Item>
                                                 ))}
+
+                                                <button
+                                                    onClick={handleLogout}
+                                                    className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-red-700 text-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none">
+                                                    Deconnecte
+                                                </button>
+
+
                                             </Menu.Items>
                                         </Transition>
                                     </Menu>
@@ -177,6 +189,13 @@ function NavbarAdmin() {
                                             {item.name}
                                         </Disclosure.Button>
                                     ))}
+
+                                    <button
+                                        onClick={handleLogout}
+                                        className="block rounded-md py-2 px-3 text-base font-medium text-indigo-400 hover:bg-indigo-700 hover:text-white"
+                                    >
+                                        Deconnecte
+                                    </button>
                                 </div>
                             </div>
                         </Disclosure.Panel>

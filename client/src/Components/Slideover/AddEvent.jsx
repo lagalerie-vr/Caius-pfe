@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import DatePicker from "react-datepicker";
+import Modal from "../Modals/Modal"
+
 import API from '../../api/api';
 
 
@@ -27,6 +29,7 @@ function AddEvent() {
             const { data: res } = await API.post("/events", data);
             console.log(res.message);
             setconfrimed(true);
+
         } catch (error) {
             if (
                 error.response &&
@@ -151,7 +154,10 @@ function AddEvent() {
                 <div className="relative">
                     <div className="relative flex justify-center text-sm">
                         {error && <span className="px-2 bg-white text-red-500" >{error}</span>}
-                        {confrimed && <span className="px-2 bg-white text-green-500" >Ajouter avec succès</span>}
+                        {confrimed &&
+                            <Modal
+                                open={confrimed}
+                                setOpen={setconfrimed} />}
                     </div>
                 </div>
             </div>

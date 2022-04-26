@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import API from '../api/api';
+import Modal from '../Components/Modals/Modal';
 
 export default function Example() {
 
@@ -167,6 +168,7 @@ export default function Example() {
 
                 </div>
             </div>
+
         </>
     )
 }
