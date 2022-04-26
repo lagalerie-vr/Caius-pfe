@@ -64,6 +64,22 @@ const getRole = asyncHandler(async (req, res) => {
     }
 });
 
+
+/* get user by mail */
+const getMail = asyncHandler(async (req, res) => {
+
+    try {
+        await User.find({ mail: req.params.mail })
+            .then(result => {
+                res.send(result)
+            })
+    }
+
+    catch (err) {
+        console.log(err)
+    }
+});
+
 /* delete 1 user */
 const deleteUser = asyncHandler(async (req, res) => {
 
@@ -154,5 +170,5 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
-    getUsers, getUser, patchUser, deleteUser, setUser, getRole, loginUser
+    getUsers, getUser, patchUser, deleteUser, setUser, getRole, loginUser, getMail
 }
