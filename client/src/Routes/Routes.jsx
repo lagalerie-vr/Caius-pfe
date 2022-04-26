@@ -8,11 +8,11 @@ import { user } from "../contexts/AuthProvider"
 export default function Render() {
 
     switch (user.role) {
-        case "admin":
+        case "Admin":
             return <RouteAdmin />;
-        case "expert":
+        case "Expert":
             return <RouteExpert />;
-        case "client":
+        case "Client":
             return <RouteClient />;
         default:
             return <RouteDefault />;

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import logo from '../Assets/logoSmall.png'
-import axios from "axios";
 import { useState } from "react";
+import API from '../api/api';
 
 
 
@@ -23,8 +23,7 @@ export default function Example() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = "http://localhost:5000/users/login";
-            const { data: res } = await axios.post(url, data);
+            const { data: res } = await API.post("/users/login", data);
             localStorage.setItem("token", res.data);
             console.log(localStorage.getItem("token"))
         } catch (error) {

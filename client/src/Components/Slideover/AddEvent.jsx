@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import axios from 'axios';
 import DatePicker from "react-datepicker";
+import API from '../../api/api';
 
 
 function AddEvent() {
@@ -24,8 +24,7 @@ function AddEvent() {
         setError("");
         try {
             data.date = startDate;
-            const url = "http://localhost:5000/events";
-            const { data: res } = await axios.post(url, data);
+            const { data: res } = await API.post("/events", data);
             console.log(res.message);
             setconfrimed(true);
         } catch (error) {
@@ -144,7 +143,7 @@ function AddEvent() {
                         type="submit"
                         className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                        Créer un compte
+                        Ajouter un Event
                     </button>
                 </div>
             </form>

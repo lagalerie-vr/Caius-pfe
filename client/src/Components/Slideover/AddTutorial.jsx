@@ -1,7 +1,8 @@
-import axios from "axios";
+import API from "../../api/api";
 import { useState } from "react";
 
 export default function AddTutorial() {
+
 
     const [data, setData] = useState({
         titre: "",
@@ -9,17 +10,14 @@ export default function AddTutorial() {
         description: "",
     })
 
-    const [error, setError] = useState("");
+    const [error, setError] = useState(false);
     const [confrimed, setconfrimed] = useState(false);
-
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
         try {
-            const url = "http://localhost:5000/videos";
-            const { data: res } = await axios.post(url, data);
+            const { data: res } = await API.post("/videos", data);
             console.log(res.message);
             setconfrimed(true);
         } catch (error) {
@@ -101,7 +99,7 @@ export default function AddTutorial() {
             <div className='py-5'>
                 <div className="relative">
                     <div className="relative flex justify-center text-sm">
-                        {error && <span className="px-2 bg-white text-red-500" >{error}</span>}
+                        {error && <span className="px-2 bg-white text-red-500" >error</span>}
                         {confrimed && <span className="px-2 bg-white text-green-500" >Ajouter avec succès</span>}
                     </div>
                 </div>

@@ -5,7 +5,6 @@ const videoSchema = mongoose.Schema({
     titre: {
         type: String,
         required: true,
-        unique: true,
     },
 
     lien: {

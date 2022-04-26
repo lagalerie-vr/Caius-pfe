@@ -1,11 +1,15 @@
-import people from '../../data/users.json'
 import { useState } from 'react'
 import AddUser from '../../Components/Slideover/AddUser'
+import Get from '../../data/Functions/Get'
 
 import Slideover from '../../Layouts/Slideover'
 import EditUser from '../Slideover/EditUser'
 
+
+
 function UserList() {
+    const people = Get("/Users")
+
     const [open, setOpen] = useState(false)
     const [openEdit, setopenEdit] = useState(false)
 
@@ -59,7 +63,7 @@ function UserList() {
                                                 scope="col"
                                                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                             >
-                                                Pack
+                                                Role
                                             </th>
                                             <th
                                                 scope="col"
@@ -91,26 +95,26 @@ function UserList() {
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     <div className="flex items-center">
                                                         <div className="flex-shrink-0 h-10 w-10">
-                                                            <img className="h-10 w-10 rounded-full" src={person.imageUrl} alt="" />
+                                                            <img className="h-10 w-10 rounded-full" src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="" />
                                                         </div>
                                                         <div className="ml-4">
-                                                            <div className="text-sm font-medium text-gray-900">{person.name}</div>
+                                                            <div className="text-sm font-medium text-gray-900 uppercase">{person.nom}</div>
+                                                            <div className="text-sm text-gray-500">{person.prenom}</div>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
-                                                    <div className="text-sm text-gray-900">{person.name}</div>
-                                                    <div className="text-sm text-gray-500">{person.title}</div>
+                                                    <div className="text-sm text-gray-900">{person.role}</div>
                                                 </td>
 
 
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                    <div className="text-sm font-medium text-gray-900">{person.email}</div>
+                                                    <div className="text-sm font-medium text-gray-900">{person.mail}</div>
                                                 </td>
 
 
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                    <div className="text-sm font-medium text-gray-900">{person.telephone}</div>
+                                                    <div className="text-sm font-medium text-gray-900">{person.numero}</div>
                                                 </td>
 
 

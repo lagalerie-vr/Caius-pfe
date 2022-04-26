@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import axios from 'axios';
+import API from '../../api/api';
 
 function EditUser() {
     const [data, setData] = useState({
@@ -15,8 +15,7 @@ function EditUser() {
         e.preventDefault();
         setError("");
         try {
-            const url = "http://localhost:5000/users/:id";
-            const { data: res } = await axios.patch(url, data);
+            const { data: res } = await API.patch("/users/:id", data);
             console.log(res.message);
             setconfrimed(true);
         } catch (error) {

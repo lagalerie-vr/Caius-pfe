@@ -1,16 +1,35 @@
-import files from '../../data/tutorial.json'
 import { useState } from 'react'
 import Documents from '../../data/doc.json'
 
 import AddTutorial from '../Slideover/AddTutorial'
 import AddDocument from '../Slideover/AddDocument'
 
+import Get from '../../data/Functions/Get'
+
 import Slideover from '../../Layouts/Slideover'
-
-
+import API from '../../api/api'
 
 
 function TutorialList() {
+
+    // Get DATA
+    const tutorials = Get("/videos")
+
+    // DELETE DATA
+
+    const [id, setId] = useState("")
+
+    const DeleteData = async (e) => {
+        e.preventDefault()
+        API.delete(`/videos/${id}`)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
+    }
+
+
+
     const [open, setOpen] = useState(false)
     const [openDoc, setOpenDoc] = useState(false)
 
@@ -47,31 +66,38 @@ function TutorialList() {
                     <div className='py-3'></div>
                 </header>
 
-                <ul role="list" className="grid grid-cols-4 gap-x-4 gap-y-8 sm:grid-cols-4 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-                    {files.map((file) => (
-                        <li key={file.source} className="relative">
-                            <div>
-                                <div className="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                                    <iframe src={file.source} alt="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" />
-                                    <span className="sr-only">View details for {file.title}</span>
+                <div role="list" className="grid grid-cols-4 gap-x-4 gap-y-8 sm:grid-cols-4 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+                    {tutorials.map((file) => (
+                        <div key={file._id}>
+                            <form className="relative" onSubmit={DeleteData}>
+                                <div id='xx'>
+                                    <div className="group block w-full rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
+                                        <iframe src={file.lien} alt="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" />
+                                        <span className="sr-only">View details for {file.title}</span>
+                                    </div>
+                                    <p className="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">{file.titre}</p>
+                                    <p className="block text-sm font-medium text-gray-500 pointer-events-none">{file.description}</p>
                                 </div>
-                                <p className="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">{file.title}</p>
-                                <p className="block text-sm font-medium text-gray-500 pointer-events-none">{file.description}</p>
+
                                 <a href="#"
                                     className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                 >
                                     Modifier
                                 </a>
-                                <button href="#"
+                                <button
                                     className="m-3 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                                    type='submit'
                                 >
                                     Supprimer
                                 </button>
-                            </div>
-                        </li>
+
+                            </form>
+
+                        </div>
+
 
                     ))}
-                </ul>
+                </div>
 
 
                 <div className="flex flex-col py-10">

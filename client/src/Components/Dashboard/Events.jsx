@@ -1,6 +1,9 @@
-import events from '../../data/Events.json'
+import Get from "../../data/Functions/Get"
+
 
 export default function Events() {
+    const events = Get("/events")
+
     return (
         <div>    <div className="flex flex-col">
             <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

@@ -1,6 +1,6 @@
 import { useStepperContext } from "../../../../contexts/StepperContext";
 import { Link } from 'react-router-dom'
-import axios from "axios";
+import API from "../../../../api/api";
 import { useState } from "react";
 
 
@@ -13,8 +13,7 @@ export default function Final() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = "http://localhost:5000/domiciliation";
-            const { userData: res } = await axios.post(url, userData);
+            const { userData: res } = await API.post("/domiciliation", userData);
             console.log(userData);
             setconfrimed(true);
         } catch (error) {

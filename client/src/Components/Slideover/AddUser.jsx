@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import axios from 'axios';
-
+import API from '../../api/api';
 function AddUser() {
     const [data, setData] = useState({
         mail: "",
@@ -15,8 +14,7 @@ function AddUser() {
         e.preventDefault();
         setError("");
         try {
-            const url = "http://localhost:5000/users/register";
-            const { data: res } = await axios.post(url, data);
+            const { data: res } = await API.post("/users/register", data);
             console.log(res.message);
             setconfrimed(true);
         } catch (error) {

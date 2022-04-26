@@ -1,9 +1,11 @@
-import files from '../../data/tutorial.json'
 import Documents from '../../data/doc.json'
+import Get from '../../data/Functions/Get'
 
 
 
 function TutorialList() {
+    const tutorials = Get("/videos")
+
 
     return (
         <div>
@@ -22,17 +24,19 @@ function TutorialList() {
                 </header>
 
                 <ul role="list" className="grid grid-cols-4 gap-x-4 gap-y-8 sm:grid-cols-4 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-                    {files.map((file) => (
-                        <li key={file.source} className="relative">
-                            <div>
-                                <div className="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                                    <iframe src={file.source} alt="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+                    {tutorials.map((file) => (
+                        <div key={file._id}>
+                            <div id='xx'>
+                                <div className="group block w-full rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
+                                    <iframe src={file.lien} alt="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" />
                                     <span className="sr-only">View details for {file.title}</span>
                                 </div>
-                                <p className="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">{file.title}</p>
+                                <p className="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">{file.titre}</p>
                                 <p className="block text-sm font-medium text-gray-500 pointer-events-none">{file.description}</p>
                             </div>
-                        </li>
+
+                        </div>
+
 
                     ))}
                 </ul>

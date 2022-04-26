@@ -8,11 +8,11 @@ import { user } from "../../contexts/AuthProvider"
 
 export default function Navbar() {
     switch (user.role) {
-        case "admin":
+        case "Admin":
             return <NavbarAdmin />;
-        case "expert":
+        case "Expert":
             return <NavbarExpert />;
-        case "client":
+        case "Client":
             return <NavbarClient />;
         default:
             return <NavbarDefault />;

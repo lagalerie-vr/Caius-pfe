@@ -1,8 +1,8 @@
 import logo from '../Assets/logoSmall.png'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import API from '../api/api';
 
 export default function Example() {
 
@@ -25,8 +25,7 @@ export default function Example() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = "http://localhost:5000/users/register";
-            const { data: res } = await axios.post(url, data);
+            const { data: res } = await API.post("/users/register", data);
             navigate("/");
             console.log(res.message);
         } catch (error) {

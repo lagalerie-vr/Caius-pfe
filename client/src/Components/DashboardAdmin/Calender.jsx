@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import Slideover from '../../Layouts/Slideover'
-import events from '../../data/Events.json'
 import AddEvent from '../../Components/Slideover/AddEvent'
+import Get from '../../data/Functions/Get'
+
 
 function Calender() {
+
+    const events = Get("/events")
+
     const [open, setOpen] = useState(false)
 
     return (
@@ -77,6 +81,9 @@ function Calender() {
                                             Prix
                                         </th>
                                         <th scope="col" className="relative px-6 py-3">
+                                            <span className="sr-only">Participant</span>
+                                        </th>
+                                        <th scope="col" className="relative px-6 py-3">
                                             <span className="sr-only">detail</span>
                                         </th>
                                         <th scope="col" className="relative px-6 py-3">
@@ -87,12 +94,19 @@ function Calender() {
                                 <tbody className="bg-white divide-y divide-gray-200">
                                     {events.map((event) => (
                                         <tr key={event.email}>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{event.nom}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-indigo-700">{event.nom}</td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{event.date}</td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{event.type}</td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{event.cat}</td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{event.adr}</td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{event.prix}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-indigo-700">{event.prix}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                <a href="#"
+                                                    className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                >
+                                                    Participant
+                                                </a>
+                                            </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                 <a href="#"
                                                     className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
