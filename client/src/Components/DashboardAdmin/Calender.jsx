@@ -2,9 +2,21 @@ import { useState } from 'react'
 import Slideover from '../../Layouts/Slideover'
 import AddEvent from '../../Components/Slideover/AddEvent'
 import Get from '../../data/Functions/Get'
+import API from '../../api/api'
 
 
 function Calender() {
+
+
+    const eventDelete = (id, e) => {
+        e.preventDefault();
+        try {
+            API.delete(`/events/${id}`)
+            console.log("done")
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const events = Get("/events")
 
@@ -115,11 +127,14 @@ function Calender() {
                                                 </a>
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                <button href="#"
+                                                <button
+                                                    onClick={(e) => eventDelete(event._id, e)}
                                                     className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                                                 >
                                                     Supprimer
                                                 </button>
+
+
                                             </td>
 
                                         </tr>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import AddUser from '../../Components/Slideover/AddUser'
 import Get from '../../data/Functions/Get'
+import API from '../../api/api'
 
 import Slideover from '../../Layouts/Slideover'
 import EditUser from '../Slideover/EditUser'
@@ -8,6 +9,17 @@ import EditUser from '../Slideover/EditUser'
 
 
 function UserList() {
+
+    const userDelete = (id, e) => {
+        e.preventDefault();
+        try {
+            API.delete(`/Users/user/${id}`)
+            console.log("done")
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const people = Get("/Users")
 
     const [open, setOpen] = useState(false)
@@ -134,7 +146,8 @@ function UserList() {
 
 
                                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <button href="#"
+                                                    <button
+                                                        onClick={(e) => userDelete(person._id, e)}
                                                         className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                                                     >
                                                         Supprimer

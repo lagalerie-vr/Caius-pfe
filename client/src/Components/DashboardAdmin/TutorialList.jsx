@@ -17,15 +17,14 @@ function TutorialList() {
 
     // DELETE DATA
 
-    const [id, setId] = useState("")
-
-    const DeleteData = async (e) => {
-        e.preventDefault()
-        API.delete(`/videos/${id}`)
-            .then(res => {
-                console.log(res);
-                console.log(res.data);
-            })
+    const tutorialDelete = (id, e) => {
+        e.preventDefault();
+        try {
+            API.delete(`/videos/${id}`)
+            console.log("done")
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 
@@ -69,7 +68,7 @@ function TutorialList() {
                 <div role="list" className="grid grid-cols-4 gap-x-4 gap-y-8 sm:grid-cols-4 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
                     {tutorials.map((file) => (
                         <div key={file._id}>
-                            <form className="relative" onSubmit={DeleteData}>
+                            <div className="relative">
                                 <div id='xx'>
                                     <div className="group block w-full rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
                                         <iframe src={file.lien} alt="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" />
@@ -86,12 +85,12 @@ function TutorialList() {
                                 </a>
                                 <button
                                     className="m-3 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-                                    type='submit'
+                                    onClick={(e) => tutorialDelete(file._id, e)}
                                 >
                                     Supprimer
                                 </button>
 
-                            </form>
+                            </div>
 
                         </div>
 
@@ -176,7 +175,8 @@ function TutorialList() {
                                                 </td>
 
                                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <a href={Document.href}
+                                                    <a
+
                                                         className="m-3 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                                                     >
                                                         Supprimer

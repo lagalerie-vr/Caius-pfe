@@ -1,6 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useReducer } from 'react'
 import API from '../../api/api';
+
 function AddUser() {
+
+    const [error, setError] = useState("");
+    const [confrimed, setconfrimed] = useState(false);
     const [data, setData] = useState({
         mail: "",
         nom: "",
@@ -28,9 +32,6 @@ function AddUser() {
         }
     };
 
-    const [error, setError] = useState("");
-    const [confrimed, setconfrimed] = useState(false);
-
 
 
     const handleChange = ({ currentTarget: input }) => {
@@ -39,23 +40,7 @@ function AddUser() {
     return (
         <div>
             <form className="space-y-6" onSubmit={handleSubmit} >
-                <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                        Address mail
-                    </label>
-                    <div className="mt-1">
-                        <input
-                            id="mail"
-                            name="mail"
-                            type="email"
-                            autoComplete="email"
-                            required
-                            value={data.mail}
-                            onChange={handleChange}
-                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                        />
-                    </div>
-                </div>
+
                 <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                         Nom                                </label>
@@ -72,26 +57,6 @@ function AddUser() {
                         />
                     </div>
                 </div>
-
-
-                <div className="col-span-6 sm:col-span-3">
-                    <label htmlFor="country" className="block text-sm font-medium text-gray-700">
-                        Role
-                    </label>
-                    <select
-                        id="role"
-                        name="role"
-                        value={data.role}
-                        onChange={handleChange}
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
-                        <option></option>
-                        <option>Client</option>
-                        <option>Expert</option>
-                        <option>Admin</option>
-                    </select>
-                </div>
-
                 <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                         Prenom                                </label>
@@ -110,6 +75,24 @@ function AddUser() {
                 </div>
                 <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                        Address mail
+                    </label>
+                    <div className="mt-1">
+                        <input
+                            id="mail"
+                            name="mail"
+                            type="email"
+                            autoComplete="email"
+                            required
+                            value={data.mail}
+                            onChange={handleChange}
+                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        />
+                    </div>
+                </div>
+
+                <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                         Numéro
                     </label>
                     <div className="mt-1">
@@ -124,6 +107,24 @@ function AddUser() {
                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
                     </div>
+                </div>
+
+                <div className="col-span-6 sm:col-span-3">
+                    <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+                        Role
+                    </label>
+                    <select
+                        id="role"
+                        name="role"
+                        value={data.role}
+                        onChange={handleChange}
+                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    >
+                        <option></option>
+                        <option>Client</option>
+                        <option>Expert</option>
+                        <option>Admin</option>
+                    </select>
                 </div>
 
                 <div>
