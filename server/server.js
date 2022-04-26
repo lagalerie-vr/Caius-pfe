@@ -7,6 +7,7 @@ const userRoutes = require("./routes/userRoutes")
 const videoRoutes = require("./routes/videoRoutes")
 const creationRoutes = require("./routes/creationRoutes")
 const eventRoutes = require("./routes/eventRoutes")
+const domiciliationRoutes = require("./routes/domiciliationRoutes")
 
 
 require('dotenv/config')
@@ -22,6 +23,7 @@ app.use('/users', userRoutes)
 app.use('/events', eventRoutes)
 app.use('/videos', videoRoutes)
 app.use('/creations', creationRoutes)
+app.use('/domiciliation', domiciliationRoutes)
 
 
 

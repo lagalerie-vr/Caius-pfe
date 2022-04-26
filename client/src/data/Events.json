@@ -1,0 +1,18 @@
+[
+    {
+        "nom": "Event 1",
+        "date": "20-02-2022",
+        "type": "Event",
+        "cat": "finance",
+        "adr": "online",
+        "prix": "50"
+    },
+    {
+        "nom": "Event 1",
+        "date": "20-02-2022",
+        "type": "Event",
+        "cat": "finance",
+        "adr": "online",
+        "prix": "50"
+    }
+]

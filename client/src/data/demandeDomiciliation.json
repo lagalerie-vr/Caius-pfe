@@ -1,0 +1,23 @@
+[
+    {
+        "nom": "OOREDOO",
+        "forme": "SARL ou EURL",
+        "abonnement": "Mensuel",
+        "reexpedition": "Chaque mois",
+        "adresse": "MINDUP | MANAR"
+    },
+    {
+        "nom": "ORANGE",
+        "forme": "SARL ou EURL",
+        "abonnement": "Mensuel",
+        "reexpedition": "Chaque mois",
+        "adresse": "MINDUP | MANAR"
+    },
+    {
+        "nom": "TELECOM",
+        "forme": "SARL ou EURL",
+        "abonnement": "Mensuel",
+        "reexpedition": "Chaque mois",
+        "adresse": "MINDUP | MANAR"
+    }
+]
