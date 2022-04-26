@@ -4,7 +4,7 @@
   "description": "cairus",
   "main": "index.js",
   "scripts": {
-    "server": "npm run start nodemon ./server",
+    "server": "npm run start --prefix ./server",
     "client": "npm run start --prefix ./client",
     "cairus": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
