@@ -26,8 +26,8 @@ export default function Example() {
             const { data: res } = await API.post("/users/login", data);
             localStorage.setItem("token", res.data);
             console.log(localStorage.getItem("token"))
+            navigate('/')
             window.location.reload();
-
         } catch (error) {
             if (
                 error.response &&
