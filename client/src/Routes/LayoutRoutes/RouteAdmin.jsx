@@ -8,6 +8,7 @@ import Error from '../../Pages/Error'
 import LayoutDashboardAdmin from "../../Layouts/LayoutDashboard"
 import Facture from '../../Pages/DashboardAdmin/Facture'
 import Contract from '../../Pages/DashboardAdmin/Contract'
+import DemandeList from '../../Pages/DashboardAdmin/Demande'
 
 
 
@@ -29,6 +30,7 @@ const RouteAdmin = () => (
                 <Route path='/Courrier' element={<Courrier />} />
                 <Route path='/invoice' element={<Facture />} />
                 <Route path='/Contract' element={<Contract />} />
+                <Route path='/demande' element={<DemandeList />} />
                 <Route path='/Call' element={<Call />} />
                 <Route path='*' element={<Error />} />
             </Route>
