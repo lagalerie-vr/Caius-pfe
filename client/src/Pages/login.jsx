@@ -8,6 +8,7 @@ import API from '../api/api';
 
 export default function Example() {
     const navigate = useNavigate();
+
     const [data, setData] = useState({
         mail: "",
         password: "",

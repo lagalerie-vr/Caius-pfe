@@ -26,6 +26,14 @@ const domiciliationSchema = mongoose.Schema({
     adresse: {
         type: String,
         required: true,
+    },
+    userID: {
+        type: String,
+        required: true,
+    },
+    state: {
+        type: String,
+        required: true,
     }
 
 },

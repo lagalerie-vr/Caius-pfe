@@ -19,7 +19,7 @@ export default function Render() {
                 return <RouteExpert />;
             case "Client":
                 return <RouteClient />;
-            default:
+            case "default":
                 return <RouteDefault />;
         }
     } else {

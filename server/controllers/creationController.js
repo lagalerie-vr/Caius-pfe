@@ -15,6 +15,8 @@ const Creation = require("../models/creation");
     "forme": "cc",
     "gerant": "cc",
     "nomGerant": "cc"
+    "userID": 
+    "state":
 }
 
 */
@@ -67,7 +69,9 @@ const setCreation = asyncHandler(async (req, res) => {
         rs: req.body.rs,
         forme: req.body.forme,
         gerant: req.body.gerant,
-        nomGerant: req.body.nomGerant
+        nomGerant: req.body.nomGerant,
+        user: req.body.user,
+        state: req.body.state,
     })
 
     try {

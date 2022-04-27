@@ -9,6 +9,8 @@ const Domiciliation = require("../models/domiciliation");
         "abonnement": "Mensuel",
         "reexpedition": "Chaque mois",
         "adresse": "MINDUP | MANAR"
+        "userID": 
+        "state": 
     }
 
 */
@@ -47,7 +49,7 @@ const getDomiciliation = asyncHandler(async (req, res) => {
 
 
 
-/* add 1 Video */
+/* add 1  */
 const setDomiciliation = asyncHandler(async (req, res) => {
 
     let newDomiciliation = new Domiciliation({
@@ -56,6 +58,8 @@ const setDomiciliation = asyncHandler(async (req, res) => {
         abonnement: req.body.abonnement,
         reexpedition: req.body.reexpedition,
         adresse: req.body.adresse,
+        userID: req.body.userID,
+        state: req.body.state,
     })
 
     try {

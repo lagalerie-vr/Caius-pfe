@@ -45,6 +45,14 @@ const creationSchema = mongoose.Schema({
     },
     nomGerant: {
         type: String,
+    },
+    user: {
+        type: String,
+        required: true,
+    },
+    state: {
+        type: String,
+        required: true,
     }
 },
 );
