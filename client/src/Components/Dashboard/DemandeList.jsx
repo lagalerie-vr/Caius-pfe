@@ -1,8 +1,37 @@
-import React from 'react'
-import demandeCreation from '../../data/demandeCreation.json'
-import demandeDomiciliation from '../../data/demandeDomiciliation.json'
+import React, { useState } from 'react'
+import API from '../../api/api';
+import Get from '../../data/Functions/Get'
+import Modal from '../Modals/Modal';
 
 function Demande() {
+
+    const [confrimed, setconfrimed] = useState(false);
+
+
+    const creationDelete = (id, e) => {
+        e.preventDefault();
+        try {
+            API.delete(`/creations/${id}`)
+            console.log("done")
+            setconfrimed(true)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const domicilationDelete = (id, e) => {
+        e.preventDefault();
+        try {
+            API.delete(`/domiciliation/${id}`)
+            console.log("done")
+            setconfrimed(true)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const demandeCreation = Get('/creations')
+    const demandeDomiciliation = Get('/domiciliation')
     return (
         <div>
             <header className="py-10">
@@ -20,26 +49,28 @@ function Demande() {
             <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {demandeCreation.map((demande) => (
                     <div className="max-w-sm bg-white rounded-lg border border-indigo-700 shadow-md bg-indigo-800">
-                        <a href="#">
-                            <img className="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
-                        </a>
                         <div className="p-5">
-                            <a href="#">
+                            <div>
                                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">{demande.nom}</h5>
-                            </a>
+                            </div>
+                            <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mb-3'>En cours de traitement</p>
+
                             <hr className="mb-3" />
                             <p className="mb-3 font-normal text-white">Domaine : {demande.domaine}</p>
                             <hr className="mb-3" />
                             <p className="mb-3 font-normal text-white">{demande.recherche}</p>
                             <hr className="mb-3" />
-                            <a href="#" className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-indigo-700 bg-white rounded-lg hover:bg-blue-800 hover:text-white">
-                                Plus d'inofrmation
-                                <svg className="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+
+                            <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
+                                onClick={(e) => creationDelete(demande._id, e)}
+                            >
+                                Annuler la demande
                             </a>
                         </div>
                     </div>
                 ))
                 }
+
             </ul >
 
             <header className="py-10">
@@ -57,13 +88,11 @@ function Demande() {
             <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {demandeDomiciliation.map((demande) => (
                     <div className="max-w-sm bg-white rounded-lg border border-indigo-700 shadow-md bg-indigo-800">
-                        <a href="#">
-                            <img className="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
-                        </a>
                         <div className="p-5">
-                            <a href="#">
+                            <div>
                                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">{demande.nom}</h5>
-                            </a>
+                            </div>
+                            <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mb-3'>En cours de traitement</p>
                             <hr className="mb-3" />
                             <p className="mb-3 font-normal text-white">Forme : {demande.forme}</p>
                             <hr className="mb-3" />
@@ -71,15 +100,23 @@ function Demande() {
                             <hr className="mb-3" />
                             <p className="mb-3 font-normal text-white">Adresse : {demande.adresse}</p>
                             <hr className="mb-3" />
-                            <a href="#" className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-indigo-700 bg-white rounded-lg hover:bg-blue-800 hover:text-white">
-                                Plus d'inofrmation
-                                <svg className="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                            <p className="mb-3 font-normal text-white">Etat : En cours de traitement</p>
+                            <hr className="mb-3" />
+                            <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
+                                onClick={(e) => domicilationDelete(demande._id, e)}
+                            >
+                                Annuler la demande
                             </a>
                         </div>
                     </div>
                 ))
                 }
             </ul >
+            {confrimed &&
+                <Modal
+                    open={confrimed}
+                    setOpen={setconfrimed} />}
+
         </div >
     )
 }

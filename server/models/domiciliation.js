@@ -26,7 +26,7 @@ const domiciliationSchema = mongoose.Schema({
     adresse: {
         type: String,
         required: true,
-    },
+    }
 
 },
 );
