@@ -9,7 +9,7 @@ import Main from '../../Pages/DashboardClient/Main'
 import LayoutDashboardClient from "../../Layouts/LayoutDashboard"
 
 
-import ProtectedRoutes from "../../Components/ProtectedRoutes"
+import ProtectedRoutes from "../ProtectedRoutes"
 import Call from "../../Pages/JitsiCall/Call"
 import Autre from "../../Pages/Dashboard/Autre"
 import CreationForm from "../../Pages/Forms/CreationForm"

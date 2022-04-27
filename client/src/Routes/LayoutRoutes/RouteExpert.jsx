@@ -5,7 +5,7 @@ import Error from '../../Pages/Error'
 import LayoutDashboardExpert from "../../Layouts/LayoutDashboard"
 import Page from '../../Pages/PageExemple'
 
-import ProtectedRoutes from "../../Components/ProtectedRoutes"
+import ProtectedRoutes from "../ProtectedRoutes"
 import Call from "../../Pages/JitsiCall/Call"
 
 

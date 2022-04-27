@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom"
-import PublicRoutes from "../../Components/PublicRoutes"
-import Error from "../../Pages/Error"
+import PublicRoutes from "../PublicRoutes"
 
 
 import Login from '../../Pages/login'

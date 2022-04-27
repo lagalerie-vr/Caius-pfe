@@ -8,7 +8,7 @@ import Main from '../../Pages/DashboardDefault/Main'
 
 
 import LayoutDashboardDefault from "../../Layouts/LayoutDashboard"
-import ProtectedRoutes from "../../Components/ProtectedRoutes"
+import ProtectedRoutes from "../ProtectedRoutes"
 import CreationForm from "../../Pages/Forms/CreationForm"
 import DomiForm from "../../Pages/Forms/DomiForm"
 import StatusForm from "../../Pages/Forms/StatusForm"

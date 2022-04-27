@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom"
-import RouteAccount from "../Routes/LayoutRoutes/RouteAccount"
+import RouteAccount from "./LayoutRoutes/RouteAccount"
 
 const ProtectedRoutes = (props) => {
 

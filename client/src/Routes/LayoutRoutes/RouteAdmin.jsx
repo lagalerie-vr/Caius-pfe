@@ -12,7 +12,7 @@ import DemandeList from '../../Pages/DashboardAdmin/Demande'
 
 
 
-import ProtectedRoutes from "../../Components/ProtectedRoutes"
+import ProtectedRoutes from "../ProtectedRoutes"
 import Courrier from "../../Pages/DashboardAdmin/Courrier"
 import Call from "../../Pages/JitsiCall/Call"
 
