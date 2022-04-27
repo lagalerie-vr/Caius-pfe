@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import API from '../../api/api';
 
-export default function Get(url) {
+export default function useGet(url) {
 
     const FetchData = async () => {
 

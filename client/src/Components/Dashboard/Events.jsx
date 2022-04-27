@@ -1,8 +1,8 @@
-import Get from "../../data/Functions/Get"
+import useGet from "../../data/Functions/useGet"
 
 
 export default function Events() {
-    const events = Get("/events")
+    const events = useGet("/events")
 
     return (
         <div>    <div className="flex flex-col">

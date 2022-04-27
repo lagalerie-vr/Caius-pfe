@@ -4,11 +4,14 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { SearchIcon } from '@heroicons/react/solid'
 import { Link } from 'react-router-dom'
 import logo from '../../../Assets/logoWW.png'
-import { user } from '../../../contexts/AuthProvider'
+import { useUser } from '../../../contexts/AuthProvider'
 
 
 
 function NavbarClient() {
+
+    const user = useUser()
+    console.log(user)
 
     const navigation = [
         { name: 'Dashboard', href: '/' },

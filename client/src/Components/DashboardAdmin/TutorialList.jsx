@@ -4,7 +4,7 @@ import Documents from '../../data/doc.json'
 import AddTutorial from '../Slideover/AddTutorial'
 import AddDocument from '../Slideover/AddDocument'
 
-import Get from '../../data/Functions/Get'
+import useGet from '../../data/Functions/useGet'
 
 import Slideover from '../../Layouts/Slideover'
 import API from '../../api/api'
@@ -13,8 +13,8 @@ import Modal from '../Modals/Modal'
 
 function TutorialList() {
 
-    // Get DATA
-    const tutorials = Get("/videos")
+    // useGet DATA
+    const tutorials = useGet("/videos")
     // DELETE DATA
 
     const tutorialDelete = (id, e) => {

@@ -2,10 +2,11 @@ import RouteAdmin from "./LayoutRoutes/RouteAdmin"
 import RouteExpert from "./LayoutRoutes/RouteExpert"
 import RouteClient from "./LayoutRoutes/RouteClient"
 import RouteDefault from "./LayoutRoutes/RouteDefault"
-
-import { user } from "../contexts/AuthProvider"
+import { useUser } from "../contexts/AuthProvider"
 
 export default function Render() {
+
+    const user = useUser()
 
     switch (user.role) {
         case "Admin":
@@ -18,5 +19,3 @@ export default function Render() {
             return <RouteDefault />;
     }
 }
-
-

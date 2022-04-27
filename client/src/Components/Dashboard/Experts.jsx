@@ -2,12 +2,12 @@
 import Slideover from '../../Layouts/Slideover'
 import { useState } from 'react'
 import MessageExpert from '../Slideover/MessageExpert'
-import Get from '../../data/Functions/Get'
+import useGet from '../../data/Functions/useGet'
 
 
 function Experts() {
 
-    const experts = Get("/users/role/Expert")
+    const experts = useGet("/users/role/Expert")
 
 
     const [openContacter, setopenContacter] = useState(false)

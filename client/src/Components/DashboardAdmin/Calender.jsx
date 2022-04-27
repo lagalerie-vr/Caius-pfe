@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Slideover from '../../Layouts/Slideover'
 import AddEvent from '../../Components/Slideover/AddEvent'
-import Get from '../../data/Functions/Get'
+import useGet from '../../data/Functions/useGet'
 import API from '../../api/api'
 import Modal from '../Modals/Modal'
 
@@ -20,7 +20,7 @@ function Calender() {
         }
     }
 
-    const events = Get("/events")
+    const events = useGet("/events")
 
     const [open, setOpen] = useState(false)
     const [confrimed, setconfrimed] = useState(false);

@@ -4,11 +4,13 @@ import { SearchIcon } from '@heroicons/react/solid'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom'
 import logo from '../../../Assets/logoWW.png'
-import { user } from '../../../contexts/AuthProvider'
+import { useUser } from '../../../contexts/AuthProvider'
 
 
 
 function NavbarAdmin() {
+
+    const user = useUser()
 
     const navigation = [
         { name: 'Dashboard', href: '/' },
@@ -174,7 +176,7 @@ function NavbarAdmin() {
                                         <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
                                     </div>
                                     <div className="ml-3">
-                                        <div className="text-base font-medium text-white">{user.name}</div>
+                                        <div className="text-base font-medium text-white">{user.mail}</div>
                                         <div className="text-sm font-medium text-indigo-400">{user.email}</div>
                                     </div>
                                 </div>

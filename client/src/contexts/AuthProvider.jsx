@@ -1,8 +1,38 @@
-export const user = {
-    name: 'mimi lousif',
-    email: 'tom@example.com',
-    telephone: '98989898',
-    imageUrl:
-        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    role: ""
+import { useEffect, useState } from "react";
+import API from "../api/api";
+import GetUserId from "../data/Functions/GetUserId";
+
+
+
+export function useUser() {
+
+    const token = localStorage.getItem("token")
+
+    const userData = async (id) => {
+        const data = await API.get(`/users/user/${id}`)
+        return data.data;
+
+    }
+
+    useEffect(() => {
+        async function fetch() {
+            const id = GetUserId(localStorage.getItem("token"))
+            const data = await userData(id)
+            setOutput(data)
+            setUserFound(true)
+        }
+        fetch()
+
+    }, [token])
+
+
+
+    const [userFound, setUserFound] = useState(false);
+    const [output, setOutput] = useState([]);
+
+    if (userFound) {
+        return output
+    } else {
+        return userFound
+    }
 }

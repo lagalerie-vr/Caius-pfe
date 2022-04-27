@@ -4,11 +4,11 @@ import { SearchIcon } from '@heroicons/react/solid'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom'
 import logo from '../../../Assets/logoWW.png'
-import { user } from '../../../contexts/AuthProvider'
-
-
-
+import { useUser } from '../../../contexts/AuthProvider'
 function NavbarExpert() {
+
+    const user = useUser()
+    console.log(user)
 
     const navigation = [
         { name: 'Dashboard', href: '/' },
@@ -119,7 +119,7 @@ function NavbarExpert() {
 
                                                 <button
                                                     onClick={handleLogout}
-                                                    className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-indigo-700 text-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none">
+                                                    className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-red-700 text-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none">
                                                     Deconnecte
                                                 </button>
 
@@ -169,7 +169,7 @@ function NavbarExpert() {
                                         <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
                                     </div>
                                     <div className="ml-3">
-                                        <div className="text-base font-medium text-white">{user.name}</div>
+                                        <div className="text-base font-medium text-white">{user.mail}</div>
                                         <div className="text-sm font-medium text-indigo-400">{user.email}</div>
                                     </div>
                                 </div>

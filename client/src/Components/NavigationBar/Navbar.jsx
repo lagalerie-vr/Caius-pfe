@@ -3,10 +3,11 @@ import NavbarExpert from './NavbarTypes/NavbarExpert';
 import NavbarClient from './NavbarTypes/NavbarClient'
 import NavbarDefault from './NavbarTypes/NavbarDefault'
 
-import { user } from "../../contexts/AuthProvider"
+import { useUser } from '../../contexts/AuthProvider'
 
+export default function Navbar() {
 
-export default function Navbar(role) {
+    const user = useUser()
     switch (user.role) {
         case "Admin":
             return <NavbarAdmin />;
@@ -14,7 +15,7 @@ export default function Navbar(role) {
             return <NavbarExpert />;
         case "Client":
             return <NavbarClient />;
-        default:
+        case "default":
             return <NavbarDefault />;
     }
 }

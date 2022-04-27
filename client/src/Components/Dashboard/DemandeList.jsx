@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import API from '../../api/api';
-import Get from '../../data/Functions/Get'
+import useGet from '../../data/Functions/useGet'
 import Modal from '../Modals/Modal';
 
 function Demande() {
@@ -30,8 +30,8 @@ function Demande() {
         }
     }
 
-    const demandeCreation = Get('/creations')
-    const demandeDomiciliation = Get('/domiciliation')
+    const demandeCreation = useGet('/creations')
+    const demandeDomiciliation = useGet('/domiciliation')
     return (
         <div>
             <header className="py-10">

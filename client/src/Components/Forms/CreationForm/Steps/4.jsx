@@ -11,6 +11,8 @@ export default function Form() {
         const { name, value } = e.target;
         setUserData({ ...userData, [name]: value });
     };
+
+
     return (
         <div className="flex flex-col ">
             <h1 className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">

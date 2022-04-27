@@ -1,10 +1,10 @@
 import Documents from '../../data/doc.json'
-import Get from '../../data/Functions/Get'
+import useGet from '../../data/Functions/useGet'
 
 
 
 function TutorialList() {
-    const tutorials = Get("/videos")
+    const tutorials = useGet("/videos")
 
 
     return (
