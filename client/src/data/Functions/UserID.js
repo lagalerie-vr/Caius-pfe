@@ -6,7 +6,7 @@ function parseJwt(token) {
 }
 
 
-export default function GetUserId(token) {
+export default function UserID(token) {
     const jwtID = parseJwt(token)
     return jwtID._id;
 }

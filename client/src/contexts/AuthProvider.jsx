@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../api/api";
-import GetUserId from "../data/Functions/GetUserId";
+import UserID from "../data/Functions/UserID";
 
 
 
@@ -16,7 +16,7 @@ export function useUser() {
 
     useEffect(() => {
         async function fetch() {
-            const id = GetUserId(localStorage.getItem("token"))
+            const id = UserID(localStorage.getItem("token"))
             const data = await userData(id)
             setOutput(data)
             setUserFound(true)
