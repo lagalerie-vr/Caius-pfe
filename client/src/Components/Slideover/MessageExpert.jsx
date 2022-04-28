@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import API from '../../api/api';
 import Modal from '../Modals/Modal';
+import Progress from '../Progress';
 
 function MessageExpert() {
     const [data, setData] = useState({
@@ -140,6 +141,8 @@ function MessageExpert() {
                         <p className="text-xs text-gray-500">PDF, PNG, JPEG</p>
                     </div>
                 </div>
+                <Progress
+                    percentage="0" />
 
                 <div>
                     <button

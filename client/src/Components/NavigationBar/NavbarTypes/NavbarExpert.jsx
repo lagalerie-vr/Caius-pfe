@@ -87,7 +87,7 @@ function NavbarExpert() {
                                         <div>
                                             <Menu.Button className="bg-indigo-800 rounded-full flex text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-800 focus:ring-white">
                                                 <span className="sr-only">Open user menu</span>
-                                                <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
+                                                <img className="h-8 w-8 rounded-full" src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="" />
                                             </Menu.Button>
                                         </div>
                                         <Transition
@@ -165,7 +165,7 @@ function NavbarExpert() {
                             <div className="border-t border-indigo-700 pt-4 pb-3">
                                 <div className="px-4 flex items-center">
                                     <div className="flex-shrink-0">
-                                        <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
+                                        <img className="h-10 w-10 rounded-full" src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="" />
                                     </div>
                                     <div className="ml-3">
                                         <div className="text-base font-medium text-white">{user.mail}</div>

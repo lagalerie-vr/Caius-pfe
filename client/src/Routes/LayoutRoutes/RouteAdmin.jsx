@@ -10,12 +10,9 @@ import Facture from '../../Pages/DashboardAdmin/Facture'
 import Contract from '../../Pages/DashboardAdmin/Contract'
 import DemandeList from '../../Pages/DashboardAdmin/Demande'
 
-
-
 import ProtectedRoutes from "../ProtectedRoutes"
 import Courrier from "../../Pages/DashboardAdmin/Courrier"
 import Call from "../../Pages/JitsiCall/Call"
-
 
 const RouteAdmin = () => (
 
@@ -28,7 +25,7 @@ const RouteAdmin = () => (
                 <Route path='/Calendar' element={<Calendar />} />
                 <Route path='/Tutorial' element={<Tutorial />} />
                 <Route path='/Courrier' element={<Courrier />} />
-                <Route path='/invoice' element={<Facture />} />
+                <Route path='/facture' element={<Facture />} />
                 <Route path='/Contract' element={<Contract />} />
                 <Route path='/demande' element={<DemandeList />} />
                 <Route path='/Call' element={<Call />} />

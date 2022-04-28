@@ -14,6 +14,27 @@ const Domiciliation = require("../models/domiciliation");
     }
 
 */
+const patchDomiciliation = asyncHandler(async (req, res) => {
+
+    try {
+        await Domiciliation.updateOne({ id: req.params.id }, {
+            $set: {
+                nom: req.body.nom,
+                forme: req.body.forme,
+                abonnement: req.body.abonnement,
+                reexpedition: req.body.reexpedition,
+                adresse: req.body.adresse,
+                user: req.body.user,
+                state: req.body.state,
+            }
+        })
+        res.send('update succes')
+    }
+    catch (err) {
+        console.log(err)
+    }
+
+});
 
 
 /* get all Domiciliation  */
@@ -101,5 +122,5 @@ const deleteDomiciliation = asyncHandler(async (req, res) => {
 
 
 module.exports = {
-    getByUser, getDomiciliations, setDomiciliation, deleteDomiciliation, getDomiciliation
+    getByUser, getDomiciliations, setDomiciliation, deleteDomiciliation, getDomiciliation, patchDomiciliation
 }

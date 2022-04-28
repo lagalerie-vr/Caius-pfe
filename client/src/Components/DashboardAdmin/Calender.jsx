@@ -4,6 +4,7 @@ import AddEvent from '../../Components/Slideover/AddEvent'
 import useGet from '../../data/Functions/useGet'
 import API from '../../api/api'
 import Modal from '../Modals/Modal'
+import EventParticipant from '../../Components/Slideover/EventParticipant'
 
 
 function Calender() {
@@ -23,7 +24,9 @@ function Calender() {
     const events = useGet("/events")
 
     const [open, setOpen] = useState(false)
+    const [list, setList] = useState(false)
     const [confrimed, setconfrimed] = useState(false);
+    const [selected, setSelected] = useState(null)
 
 
     return (
@@ -50,6 +53,8 @@ function Calender() {
                     setOpen={setOpen}
                     title="Ajouter un event"
                     children={<AddEvent />} />
+
+
             </header>
 
             <div className="flex flex-col">
@@ -116,7 +121,8 @@ function Calender() {
                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{event.adr}</td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-indigo-700">{event.prix}</td>
                                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                <a href="#"
+                                                <a
+                                                    onClick={(e) => { setList(true); setSelected(event) }}
                                                     className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                                 >
                                                     Participant
@@ -148,6 +154,12 @@ function Calender() {
                     </div>
                 </div>
             </div>
+            <Slideover
+                open={list}
+                setOpen={setList}
+                title="Liste des participant"
+                children={<EventParticipant
+                    event={selected} />} />
 
             {confrimed &&
                 <Modal

@@ -15,6 +15,7 @@ import StatusForm from "../../Pages/Forms/StatusForm"
 import Call from "../../Pages/JitsiCall/Call"
 import Autre from "../../Pages/Dashboard/Autre"
 import Demande from "../../Pages/Dashboard/Demande"
+import Facture from "../../Pages/Dashboard/Facture"
 
 
 
@@ -32,6 +33,8 @@ const RouteDefault = () => (
                 <Route path='/statut' element={<StatusForm />} />
                 <Route path='/Call' element={<Call />} />
                 <Route path='/autre' element={<Autre />} />
+                <Route path='/facture' element={<Facture />} />
+
                 <Route path='/demande' element={<Demande />} />
                 <Route path='*' element={<Error />} />
             </Route>

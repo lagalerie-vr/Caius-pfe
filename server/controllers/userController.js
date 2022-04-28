@@ -98,7 +98,7 @@ const deleteUser = asyncHandler(async (req, res) => {
 const patchUser = asyncHandler(async (req, res) => {
 
     try {
-        await User.updateOne({ id: req.params.id }, {
+        const result = await User.updateOne({ id: req.params.id }, {
             $set: {
                 nom: req.body.nom,
                 prenom: req.body.prenom,
@@ -108,7 +108,7 @@ const patchUser = asyncHandler(async (req, res) => {
                 password: req.body.password,
             }
         })
-        res.send('update succes')
+        res.send(result)
     }
     catch (err) {
         console.log(err)

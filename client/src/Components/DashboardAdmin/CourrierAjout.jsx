@@ -1,12 +1,16 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import startups from '../../data/startup.json'
+import useGet from "../../data/Functions/useGet";
+import Progress from "../Progress";
+
+
 
 
 
 
 function Courrier() {
+    const users = useGet("/users/role/Client")
     const [startDate, setStartDate] = useState(new Date());
 
     return (
@@ -25,8 +29,8 @@ function Courrier() {
                                     autoComplete="country-name"
                                     className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                 >
-                                    {startups.map((startup) => (
-                                        <option> {startup.nameS} | {startup.name} </option>
+                                    {users.map((user) => (
+                                        <option> {user.nom} </option>
                                     ))}
 
                                 </select>
@@ -71,6 +75,9 @@ function Courrier() {
                                 <p className="text-xs text-gray-500">PDF, PNG, JPEG</p>
                             </div>
                         </div>
+                        <Progress
+                            percentage="0" />
+
 
 
                     </div>

@@ -67,6 +67,33 @@ const getCreation = asyncHandler(async (req, res) => {
 })
 
 
+const patchCreation = asyncHandler(async (req, res) => {
+
+    try {
+        await Creation.updateOne({ id: req.params.id }, {
+            $set: {
+                nom: req.body.nom,
+                domaine: req.body.domaine,
+                typeGerant: req.body.typeGerant,
+                associes: req.body.associes,
+                capital: req.body.capital,
+                siege: req.body.siege,
+                recherche: req.body.recherche,
+                rs: req.body.rs,
+                forme: req.body.forme,
+                gerant: req.body.gerant,
+                nomGerant: req.body.nomGerant,
+                user: req.body.user,
+                state: req.body.state,
+            },
+        })
+        res.send('update succes')
+    }
+    catch (err) {
+        console.log(err)
+    }
+
+});
 
 /* add 1 Video */
 const setCreation = asyncHandler(async (req, res) => {
@@ -112,5 +139,5 @@ const deleteCreation = asyncHandler(async (req, res) => {
 
 
 module.exports = {
-    getByUser, getCreations, setCreation, deleteCreation, getCreation
+    getByUser, getCreations, setCreation, deleteCreation, getCreation, patchCreation
 }

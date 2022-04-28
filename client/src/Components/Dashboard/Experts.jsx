@@ -55,7 +55,9 @@ function Experts() {
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 <div className="flex items-center">
                                                     <div className="flex-shrink-0 h-10 w-10">
-                                                        <img className="h-10 w-10 rounded-full" src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="" />
+                                                        <img className="h-10 w-10 rounded-full"
+                                                            src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+                                                            alt="" />
                                                     </div>
                                                     <div className="ml-4">
                                                         <div className="text-sm font-medium text-gray-900">{person.nom} {person.prenom}</div>
@@ -72,7 +74,7 @@ function Experts() {
                                             <td className="px-6 py-4 whitespace-nowrap">
 
                                                 <div className="text-sm font-medium text-gray-900 py-2"><button href="#"
-                                                    className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                    className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-700 hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                                     onClick={() => setopenContacter(true)}>Contacter</button></div>
                                             </td>
 
@@ -81,7 +83,7 @@ function Experts() {
                                                     href={`tel:${person.numero}`}
                                                 >
                                                     <button
-                                                        className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                        className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-700 hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                                     >Appeler par telephone</button>
                                                 </a>
                                             </td>

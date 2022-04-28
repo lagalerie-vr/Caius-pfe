@@ -1,12 +1,13 @@
 const asyncHandler = require('express-async-handler');
 const Event = require("../models/event")
+const User = require("../models/user")
 
 
 /* get all Events */
 const getEvents = asyncHandler(async (req, res) => {
 
     try {
-        await Event.find({})
+        await Event.find({}).populate("users")
             .then(result => {
                 res.send(result)
             })
@@ -71,7 +72,7 @@ const deleteEvent = asyncHandler(async (req, res) => {
 
 
 /* update 1 Event */
-const patchEvent = asyncHandler(async (req, res) => {
+const updateEvent = asyncHandler(async (req, res) => {
 
     try {
         await Event.updateOne({ id: req.params.id }, {
@@ -92,6 +93,29 @@ const patchEvent = asyncHandler(async (req, res) => {
 
 })
 
+const addUserToEvent = asyncHandler(async (req, res) => {
+
+    try {
+        const event = await Event.findById(req.params.id);
+        const user = await User.findById(req.body.user)
+        console.log(req.body.user)
+        console.log(user)
+        let index = event.users.indexOf(user._id)
+        if (index !== -1) {
+            event.users.splice(index, 1);
+            await event.save();
+        } else {
+            event.users.push(user);
+            await event.save();
+        }
+        res.send(event)
+    } catch (err) {
+        console.log(err)
+    }
+
+})
+
+
 module.exports = {
-    getEvents, setEvent, deleteEvent, patchEvent, getEvent
+    getEvents, setEvent, deleteEvent, updateEvent, getEvent, addUserToEvent
 }

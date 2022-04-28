@@ -46,10 +46,12 @@ const creationSchema = mongoose.Schema({
     nomGerant: {
         type: String,
     },
-    user: {
-        type: String,
-        required: true,
-    },
+
+    user: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user"
+    }],
+
     state: {
         type: String,
         default: "En Cours de traitement",
