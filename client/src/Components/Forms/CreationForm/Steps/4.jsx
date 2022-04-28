@@ -1,16 +1,17 @@
 import { useStepperContext } from "../../../../contexts/StepperContext";
 
-
-
 export default function Form() {
 
 
     const { userData, setUserData } = useStepperContext();
 
-    const handleChange = (e) => {
+
+    function handleChange(e) {
         const { name, value } = e.target;
         setUserData({ ...userData, [name]: value });
     };
+
+
 
 
     return (
@@ -44,7 +45,9 @@ export default function Form() {
                     required
                     value={userData["recherche"] || ""}
                     className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-                    onChange={handleChange}>
+                    onChange={handleChange}
+
+                >
                     <option></option>
                     <option>Créer ma société en déléguant toutes les démarches</option>
                     <option>Seulement des statuts</option>
@@ -53,6 +56,6 @@ export default function Form() {
                     <option>Je me renseigne</option>
                 </select>
             </div>
-        </div>
+        </div >
     );
 }

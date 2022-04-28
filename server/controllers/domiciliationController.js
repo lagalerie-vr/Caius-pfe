@@ -58,7 +58,7 @@ const setDomiciliation = asyncHandler(async (req, res) => {
         abonnement: req.body.abonnement,
         reexpedition: req.body.reexpedition,
         adresse: req.body.adresse,
-        userID: req.body.userID,
+        user: req.body.user,
         state: req.body.state,
     })
 
@@ -71,6 +71,20 @@ const setDomiciliation = asyncHandler(async (req, res) => {
     }
 })
 
+
+const getByUser = asyncHandler(async (req, res) => {
+
+    try {
+        await Domiciliation.find({ user: req.params.user })
+            .then(result => {
+                res.send(result)
+            })
+    }
+
+    catch (err) {
+        console.log(err)
+    }
+});
 
 /* delete 1 Video */
 const deleteDomiciliation = asyncHandler(async (req, res) => {
@@ -87,5 +101,5 @@ const deleteDomiciliation = asyncHandler(async (req, res) => {
 
 
 module.exports = {
-    getDomiciliations, setDomiciliation, deleteDomiciliation, getDomiciliation
+    getByUser, getDomiciliations, setDomiciliation, deleteDomiciliation, getDomiciliation
 }

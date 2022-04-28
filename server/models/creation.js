@@ -52,7 +52,7 @@ const creationSchema = mongoose.Schema({
     },
     state: {
         type: String,
-        required: true,
+        default: "En Cours de traitement",
     }
 },
 );

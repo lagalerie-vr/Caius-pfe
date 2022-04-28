@@ -27,13 +27,13 @@ const domiciliationSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    userID: {
+    user: {
         type: String,
         required: true,
     },
     state: {
         type: String,
-        required: true,
+        default: "En Cours de traitement",
     }
 
 },

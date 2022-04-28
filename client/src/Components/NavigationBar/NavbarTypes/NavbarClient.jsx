@@ -11,7 +11,6 @@ import { useUser } from '../../../contexts/AuthProvider'
 function NavbarClient() {
 
     const user = useUser()
-    console.log(user)
 
     const navigation = [
         { name: 'Dashboard', href: '/' },
@@ -127,7 +126,7 @@ function NavbarClient() {
 
                                                 <button
                                                     onClick={handleLogout}
-                                                    className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-indigo-700 text-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none">
+                                                    className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-red-700 text-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none">
                                                     Deconnecte
                                                 </button>
 
@@ -177,7 +176,7 @@ function NavbarClient() {
                                         <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
                                     </div>
                                     <div className="ml-3">
-                                        <div className="text-base font-medium text-white">{user.name}</div>
+                                        <div className="text-base font-medium text-white">{user.mail}</div>
                                         <div className="text-sm font-medium text-indigo-400">{user.email}</div>
                                     </div>
                                 </div>

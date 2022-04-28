@@ -8,7 +8,6 @@ import { useUser } from '../../../contexts/AuthProvider'
 function NavbarExpert() {
 
     const user = useUser()
-    console.log(user)
 
     const navigation = [
         { name: 'Dashboard', href: '/' },

@@ -2,27 +2,17 @@ import { useStepperContext } from "../../../../contexts/StepperContext";
 import { Link } from 'react-router-dom'
 import API from "../../../../api/api";
 import { useState } from "react";
-import { useUser } from "../../../../contexts/AuthProvider";
-
 
 export default function Final() {
 
     const [error, setError] = useState(false);
     const [confrimed, setconfrimed] = useState(false);
     const { userData, setUserData } = useStepperContext();
-    const user = useUser()._id
-
-
-    function addData() {
-        console.log(user)
-        setUserData({ ...userData, userID: user });
-        setUserData({ ...userData, state: "En Cours de traitement" });
-    }
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        addData()
+
         try {
             const { userData: res } = await API.post("/creations", userData);
             console.log(userData);

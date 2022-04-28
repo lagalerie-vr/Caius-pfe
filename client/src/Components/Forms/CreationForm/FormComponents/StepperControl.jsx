@@ -1,4 +1,4 @@
-export default function StepperControl({ handleClick, currentStep, steps }) {
+export default function StepperControl({ handleClick, currentStep }) {
     return (
         <div className="container mt-4 mb-8 flex justify-around">
             <button

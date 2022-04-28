@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import API from '../../api/api';
+import { useUser } from '../../contexts/AuthProvider';
 import useGet from '../../data/Functions/useGet'
 import Modal from '../Modals/Modal';
 
@@ -30,8 +31,10 @@ function Demande() {
         }
     }
 
-    const demandeCreation = useGet('/creations')
-    const demandeDomiciliation = useGet('/domiciliation')
+    const user = useUser()
+    const demandeCreation = useGet(`/creations/user/${user._id}`)
+    const demandeDomiciliation = useGet(`/domiciliation/user/${user._id}`)
+
     return (
         <div>
             <header className="py-10">
