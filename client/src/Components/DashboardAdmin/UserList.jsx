@@ -176,7 +176,7 @@ function UserList() {
                                         <Slideover
                                             open={openEdit}
                                             setOpen={setopenEdit}
-                                            title="Liste des participant"
+                                            title="Modifier un utilisateur"
                                             children={<EditUser
                                                 user={selected} />} />
 

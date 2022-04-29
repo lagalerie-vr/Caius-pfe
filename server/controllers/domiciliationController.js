@@ -133,7 +133,22 @@ const deleteDomiciliation = asyncHandler(async (req, res) => {
 
 })
 
+const getByState = asyncHandler(async (req, res) => {
+
+    try {
+        await Domiciliation.find({ state: req.params.state })
+            .then(result => {
+                res.send(result)
+            })
+    }
+
+    catch (err) {
+        console.log(err)
+    }
+});
+
+
 
 module.exports = {
-    getByUser, getDomiciliations, setDomiciliation, deleteDomiciliation, getDomiciliation, patchDomiciliation, updateRole
+    getByUser, getDomiciliations, setDomiciliation, deleteDomiciliation, getDomiciliation, patchDomiciliation, updateRole, getByState
 }

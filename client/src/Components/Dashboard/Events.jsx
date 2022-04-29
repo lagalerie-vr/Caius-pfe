@@ -2,6 +2,8 @@ import useGet from "../../data/Functions/useGet"
 import API from "../../api/api"
 import UserID from "../../data/Functions/UserID"
 import { useEffect, useState } from "react"
+import EventDetail from "../Slideover/EventDetail"
+import Slideover from "../../Layouts/Slideover"
 
 
 export default function Events() {
@@ -83,6 +85,10 @@ function Line({ event }) {
     }
 
     const [reserved, setReserved] = useState(false)
+    const [selected, setSelected] = useState("")
+    const [open, setOpen] = useState(false)
+
+
 
     useEffect(() => {
         event.users.forEach(element => {
@@ -90,7 +96,7 @@ function Line({ event }) {
                 setReserved(true)
             }
         })
-    }, [event])
+    }, [event.users])
 
     return (
         <>
@@ -125,7 +131,8 @@ function Line({ event }) {
                         </a>)}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <button href="#"
+                    <button
+                        onClick={(e) => { setOpen(true); setSelected(event) }}
                         className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-700 hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                         Plus de détail
@@ -133,6 +140,14 @@ function Line({ event }) {
                 </td>
 
             </tr>
+            <Slideover
+                open={open}
+                setOpen={setOpen}
+                title="Description de l'event"
+                children={<EventDetail
+                    event={selected}
+                    reserved={reserved}
+                    setReserved={setReserved} />} />
         </>
     )
 }

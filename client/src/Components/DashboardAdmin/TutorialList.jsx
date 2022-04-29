@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Documents from '../../data/doc.json'
 
 import AddTutorial from '../Slideover/AddTutorial'
+import EditTutorial from '../Slideover/EditTutorial'
 import AddDocument from '../Slideover/AddDocument'
 
 import useGet from '../../data/Functions/useGet'
@@ -32,6 +33,8 @@ function TutorialList() {
     const [confrimed, setconfrimed] = useState(false);
 
     const [open, setOpen] = useState(false)
+    const [edit, setEdit] = useState(false)
+    const [selected, setSelected] = useState(null)
     const [openDoc, setOpenDoc] = useState(false)
 
     return (
@@ -62,6 +65,12 @@ function TutorialList() {
                                 setOpen={setOpen}
                                 title="Ajouter une video"
                                 children={<AddTutorial />} />
+                            <Slideover
+                                open={edit}
+                                setOpen={setEdit}
+                                title="Modifier une video"
+                                children={<EditTutorial
+                                    video={selected} />} />
                         </div>
                     </div>
                     <div className='py-3'></div>
@@ -80,7 +89,8 @@ function TutorialList() {
                                     <p className="block text-sm font-medium text-gray-500 pointer-events-none">{file.description}</p>
                                 </div>
 
-                                <a href="#"
+                                <a
+                                    onClick={(e) => { setEdit(true); setSelected(file) }}
                                     className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                 >
                                     Modifier

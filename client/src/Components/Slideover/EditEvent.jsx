@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Modal from "../Modals/Modal"
 
 import API from '../../api/api';
 
 
-function AddEvent() {
+function EditEvent({ event }) {
     const [data, setData] = useState({
         nom: "",
         dateEvent: "",
@@ -16,31 +16,32 @@ function AddEvent() {
 
     })
 
-    const [startDate, setStartDate] = useState(new Date())
-    const [error, setError] = useState("");
     const [confrimed, setconfrimed] = useState(false);
+
+    useEffect(() => {
+
+        setData({
+            nom: event.nom,
+            dateEvent: event.dateEvent,
+            type: event.type,
+            cat: event.description,
+            adr: event.adr,
+            prix: event.prix,
+            description: event.description,
+        })
+    }, [event])
 
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError("");
         try {
-            data.date = startDate;
-            const { data: res } = await API.post("/events", data);
+            const { data: res } = await API.put(`/Events/${event._id}`, data);
             console.log(res.message);
             setconfrimed(true);
-
         } catch (error) {
-            if (
-                error.response &&
-                error.response.status >= 400 &&
-                error.response.status <= 500
-            ) {
-                setError(error.response.data.message);
-            }
+            console.log(error)
         }
-        console.log(data)
     };
 
     const handleChange = ({ currentTarget: input }) => {
@@ -172,14 +173,13 @@ function AddEvent() {
                         type="submit"
                         className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                        Ajouter un Event
+                        Modifier l'Event
                     </button>
                 </div>
             </form>
             <div className='py-5'>
                 <div className="relative">
                     <div className="relative flex justify-center text-sm">
-                        {error && <span className="px-2 bg-white text-red-500" >{error}</span>}
                         {confrimed &&
                             <Modal
                                 open={confrimed}
@@ -191,4 +191,4 @@ function AddEvent() {
     )
 }
 
-export default AddEvent
+export default EditEvent

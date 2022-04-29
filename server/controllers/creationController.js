@@ -64,6 +64,22 @@ const getByUser = asyncHandler(async (req, res) => {
     }
 });
 
+
+const getByState = asyncHandler(async (req, res) => {
+
+    try {
+        await Creation.find({ state: req.params.state })
+            .then(result => {
+                res.send(result)
+            })
+    }
+
+    catch (err) {
+        console.log(err)
+    }
+});
+
+
 /* get 1 Video */
 const getCreation = asyncHandler(async (req, res) => {
 
@@ -152,5 +168,5 @@ const deleteCreation = asyncHandler(async (req, res) => {
 
 
 module.exports = {
-    getByUser, getCreations, setCreation, deleteCreation, getCreation, patchCreation, updateRole
+    getByUser, getCreations, setCreation, deleteCreation, getCreation, patchCreation, updateRole, getByState
 }

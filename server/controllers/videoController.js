@@ -79,7 +79,7 @@ const deleteVideo = asyncHandler(async (req, res) => {
 
 
 /* update 1 Video */
-const patchVideo = asyncHandler(async (req, res) => {
+const updateVideo = asyncHandler(async (req, res) => {
 
     try {
         await Video.updateOne({ id: req.params.id }, {
@@ -98,5 +98,5 @@ const patchVideo = asyncHandler(async (req, res) => {
 })
 
 module.exports = {
-    getVideos, setVideo, deleteVideo, patchVideo, getVideo
+    getVideos, setVideo, deleteVideo, updateVideo, getVideo
 }

@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import useGet from '../../data/Functions/useGet'
 
 import Slideover from '../../Layouts/Slideover'
 import Facture from '../Facture/App'
-import list from '../../data/facture.json'
 
 function FactureList() {
+
+    const list = useGet("/creations/accepted/Acceptée")
 
     const [open, setOpen] = useState(false)
     const [openView, setOpenView] = useState(false)
