@@ -43,7 +43,7 @@ function Demande() {
     const creationAccept = (id, e) => {
         e.preventDefault();
         try {
-            API.put(`/domiciliation/${id}`)
+            API.put(`/creations/${id}`)
             console.log("done")
             setconfrimed(true)
         } catch (error) {
@@ -90,7 +90,7 @@ function Demande() {
 
                             {demande.state === "Acceptée" ? <></> :
                                 <a className="inline-flex ml-3 items-center py-2 px-3 text-sm font-medium text-center text-green-700 bg-white rounded-lg hover:bg-green-800 hover:text-white"
-                                    onClick={(e) => domicilationAccept(demande._id, e)}
+                                    onClick={(e) => creationAccept(demande._id, e)}
                                 >
                                     Acceptée la demande
                                 </a>

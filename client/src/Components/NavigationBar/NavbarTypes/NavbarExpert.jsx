@@ -13,7 +13,6 @@ function NavbarExpert() {
         { name: 'Dashboard', href: '/' },
         { name: 'Demande de devis', href: '/demande' },
         { name: 'Demande des utilisateurs', href: '/question' },
-        { name: 'Espace de dépôt', href: '/depot' },
         { name: 'Visioconférence', href: '/call' },
     ]
 

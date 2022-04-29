@@ -17,7 +17,6 @@ function NavbarClient() {
         { name: 'Accompagnement', href: '/expert' },
         { name: 'Calendrier ', href: '/Calendar' },
         { name: 'Tutoriel', href: '/Tutorial' },
-        { name: 'Espace de dépôt', href: '/depot' },
         { name: 'Mes demande', href: '/demande' },
         { name: 'Visioconférence', href: '/call' },
         { name: 'Autre Service', href: '/autre' },
