@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const Domiciliation = require("../models/domiciliation");
-
+const User = require("../models/user")
 
 /* ---------------model---------------
     {
@@ -35,6 +35,18 @@ const patchDomiciliation = asyncHandler(async (req, res) => {
     }
 
 });
+
+const updateRole = asyncHandler(async (req, res) => {
+    try {
+        const domiciliation = await Domiciliation.findById(req.params.id);
+        const user = await User.findByIdAndUpdate(domiciliation.user._id, { role: "Client" })
+        await Domiciliation.findByIdAndUpdate(req.params.id, { state: "Acceptée" })
+        console.log(req.body.user)
+        console.log(user)
+    } catch (err) {
+        console.log(err)
+    }
+})
 
 
 /* get all Domiciliation  */
@@ -122,5 +134,5 @@ const deleteDomiciliation = asyncHandler(async (req, res) => {
 
 
 module.exports = {
-    getByUser, getDomiciliations, setDomiciliation, deleteDomiciliation, getDomiciliation, patchDomiciliation
+    getByUser, getDomiciliations, setDomiciliation, deleteDomiciliation, getDomiciliation, patchDomiciliation, updateRole
 }

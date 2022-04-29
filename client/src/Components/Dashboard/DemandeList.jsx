@@ -79,19 +79,24 @@ function Demande() {
                                 <div>
                                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">{demande.nom}</h5>
                                 </div>
-                                <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mb-3'>En cours de traitement</p>
+                                <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mb-3'>{demande.state}</p>
 
                                 <hr className="mb-3" />
                                 <p className="mb-3 font-normal text-white">Domaine : {demande.domaine}</p>
                                 <hr className="mb-3" />
                                 <p className="mb-3 font-normal text-white">{demande.recherche}</p>
-                                <hr className="mb-3" />
 
-                                <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
-                                    onClick={(e) => creationDelete(demande._id, e)}
-                                >
-                                    Annuler la demande
-                                </a>
+
+                                {demande.state === "Acceptée" ? <></> :
+                                    <div>
+                                        <hr className="mb-3" />
+                                        <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
+                                            onClick={(e) => creationDelete(demande._id, e)}
+                                        >
+                                            Annuler la demande
+                                        </a>
+                                    </div>
+                                }
                             </div>
                         </div>
                     ))
@@ -135,14 +140,16 @@ function Demande() {
                                 <p className="mb-3 font-normal text-white">Abonnement : {demande.abonnement}</p>
                                 <hr className="mb-3" />
                                 <p className="mb-3 font-normal text-white">Adresse : {demande.adresse}</p>
-                                <hr className="mb-3" />
-                                <p className="mb-3 font-normal text-white">Etat : En cours de traitement</p>
-                                <hr className="mb-3" />
-                                <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
-                                    onClick={(e) => domicilationDelete(demande._id, e)}
-                                >
-                                    Annuler la demande
-                                </a>
+                                {demande.state === "Acceptée" ? <></> :
+                                    <div>
+                                        <hr className="mb-3" />
+                                        <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
+                                            onClick={(e) => domicilationDelete(demande._id, e)}
+                                        >
+                                            Annuler la demande
+                                        </a>
+                                    </div>
+                                }
                             </div>
                         </div>
                     ))

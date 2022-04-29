@@ -7,10 +7,12 @@ import Form1 from "./Steps/1";
 import Form2 from "./Steps/2";
 import Form3 from "./Steps/3";
 import Form4 from "./Steps/4"
+import Payment from "../payment"
 import Final from "./Steps/Final";
 
 function Form() {
     const [currentStep, setCurrentStep] = useState(1);
+
 
     const steps = [
         "Form1",
@@ -36,6 +38,7 @@ function Form() {
             default:
         }
     };
+
 
     const handleClick = (direction) => {
         let newStep = currentStep;

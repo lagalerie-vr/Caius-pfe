@@ -47,10 +47,10 @@ const creationSchema = mongoose.Schema({
         type: String,
     },
 
-    user: [{
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "user"
-    }],
+    },
 
     state: {
         type: String,

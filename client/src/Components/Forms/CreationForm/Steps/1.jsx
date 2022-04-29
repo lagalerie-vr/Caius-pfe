@@ -50,7 +50,7 @@ export default function Form() {
                         name="nom"
                         required
                         placeholder="société"
-                        className="w-full appearance-none p-1 px-2 text-gray-800 outline-none"
+                        className="w-full required appearance-none p-1 px-2 text-gray-800 outline-none"
                     />
                 </div>
 

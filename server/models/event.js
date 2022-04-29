@@ -29,12 +29,11 @@ const eventSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    users: [
-        {
+    users:
+        [{
             type: mongoose.Schema.Types.ObjectId,
             ref: "user",
-        },
-    ],
+        }]
 },
 );
 

@@ -84,6 +84,8 @@ function NavbarDefault() {
                                 </div>
                                 <div className="hidden lg:relative  lg:ml-4 lg:flex lg:items-center">
 
+                                    <div className="text-sm font-medium text-indigo-200">{user.nom}</div>
+
                                     {/* Profile dropdown */}
                                     <Menu as="div" className="flex-shrink-0 relative ml-4">
                                         <div>

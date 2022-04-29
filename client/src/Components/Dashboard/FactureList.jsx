@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import Slideover from '../../Layouts/Slideover'
-import Facture from './Facture/App'
+import Facture from '../Facture/App'
 import list from '../../data/facture.json'
 
 function FactureList() {

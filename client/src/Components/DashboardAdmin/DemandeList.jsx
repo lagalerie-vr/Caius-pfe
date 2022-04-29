@@ -29,6 +29,28 @@ function Demande() {
         }
     }
 
+    const domicilationAccept = (id, e) => {
+        e.preventDefault();
+        try {
+            API.put(`/domiciliation/${id}`)
+            console.log("done")
+            setconfrimed(true)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const creationAccept = (id, e) => {
+        e.preventDefault();
+        try {
+            API.put(`/domiciliation/${id}`)
+            console.log("done")
+            setconfrimed(true)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const demandeCreation = useGet('/creations')
     const demandeDomiciliation = useGet('/domiciliation')
     return (
@@ -52,7 +74,7 @@ function Demande() {
                             <div>
                                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">{demande.nom}</h5>
                             </div>
-                            <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mb-3'>En cours de traitement</p>
+                            <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mb-3'>{demande.state}</p>
 
                             <hr className="mb-3" />
                             <p className="mb-3 font-normal text-white">Domaine : {demande.domaine}</p>
@@ -65,6 +87,15 @@ function Demande() {
                             >
                                 Annuler la demande
                             </a>
+
+                            {demande.state === "Acceptée" ? <></> :
+                                <a className="inline-flex ml-3 items-center py-2 px-3 text-sm font-medium text-center text-green-700 bg-white rounded-lg hover:bg-green-800 hover:text-white"
+                                    onClick={(e) => domicilationAccept(demande._id, e)}
+                                >
+                                    Acceptée la demande
+                                </a>
+                            }
+
                         </div>
                     </div>
                 ))
@@ -91,7 +122,7 @@ function Demande() {
                             <div>
                                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">{demande.nom}</h5>
                             </div>
-                            <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mb-3'>En cours de traitement</p>
+                            <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mb-3'>{demande.state}</p>
                             <hr className="mb-3" />
                             <p className="mb-3 font-normal text-white">Forme : {demande.forme}</p>
                             <hr className="mb-3" />
@@ -99,13 +130,20 @@ function Demande() {
                             <hr className="mb-3" />
                             <p className="mb-3 font-normal text-white">Adresse : {demande.adresse}</p>
                             <hr className="mb-3" />
-                            <p className="mb-3 font-normal text-white">Etat : En cours de traitement</p>
-                            <hr className="mb-3" />
                             <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
                                 onClick={(e) => domicilationDelete(demande._id, e)}
                             >
                                 Annuler la demande
                             </a>
+
+                            {demande.state === "Acceptée" ? <></> :
+                                <a className="inline-flex ml-3 items-center py-2 px-3 text-sm font-medium text-center text-green-700 bg-white rounded-lg hover:bg-green-800 hover:text-white"
+                                    onClick={(e) => creationAccept(demande._id, e)}
+                                >
+                                    Acceptée la demande
+                                </a>
+                            }
+
                         </div>
                     </div>
                 ))

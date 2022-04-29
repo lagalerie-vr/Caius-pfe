@@ -1,15 +1,16 @@
-import startups from '../../data/startup.json'
 import { useState } from 'react'
 
 import Slideover from '../../Layouts/Slideover'
-import Facture from '../../Pages/DashboardAdmin/Facture'
-import App from '../Dashboard/Facture/App'
+import Facture from '../Facture/App'
+import list from '../../data/facture.json'
+import { SearchIcon } from '@heroicons/react/solid'
+
 
 function FactureList() {
 
     const [open, setOpen] = useState(false)
-
     const [openView, setOpenView] = useState(false)
+    const [selected, setSelected] = useState(null)
 
     return (
         <>
@@ -21,17 +22,26 @@ function FactureList() {
                     <div className="mt-4 flex md:mt-0 md:ml-4">
                         <button
                             type="button"
-                            className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="inline-flex mr-3 items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                             Filtre
                         </button>
-                        <button
-                            type="button"
-                            onClick={() => setOpen(true)}
-                            className="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                            Ajouter une nouvelle startup
-                        </button>
+
+
+                        <div className="w-full sm:max-w-xs">
+                            <label htmlFor="search" className="sr-only">
+                                Search
+                            </label>
+                            <div className="relative">
+                                <input
+                                    id="search"
+                                    name="search"
+                                    className="inline-flex mr-3 items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    placeholder="Search"
+                                    type="search"
+                                />
+                            </div>
+                        </div>
                     </div>
 
                     <Slideover
@@ -87,37 +97,32 @@ function FactureList() {
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
-                                        {startups.map((startup) => (
-                                            <tr key={startup.email}>
+                                        {list.map((listitem) => (
+                                            <tr key={listitem.email}>
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     <div className="flex items-center">
-                                                        <div className="flex-shrink-0 h-10 w-10">
-                                                            <img className="h-10 w-10 rounded-full" src={startup.image} alt="" />
-                                                        </div>
                                                         <div className="ml-4">
-                                                            <div className="text-sm font-medium text-gray-900">{startup.nameS}</div>
+                                                            <div className="text-sm font-medium text-gray-900"> {listitem.clientName}</div>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
-                                                    <div className="text-sm text-gray-900">{startup.name}</div>
-                                                    <div className="text-sm text-gray-500">{startup.title}</div>
+                                                    <div className="text-sm text-gray-900">{listitem.clientName}</div>
+                                                    <div className="text-sm text-gray-500">{listitem.clientName}</div>
                                                 </td>
 
 
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">                                                            <a
-                                                    href={`mailto:${startup.email}`}
                                                     className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-indigo-700"
                                                 >
-                                                    {startup.email}
-                                                </a></td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{startup.phone}</td>
+                                                    {listitem.clientName}                                                </a></td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{listitem.clientName}</td>
 
 
 
                                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                     <button href="#" className="text-indigo-600 hover:text-indigo-900"
-                                                        onClick={() => setOpenView(true)}
+                                                        onClick={(e) => { setOpenView(true); setSelected(listitem) }}
                                                     >
                                                         Voir facture
                                                     </button>
@@ -134,13 +139,17 @@ function FactureList() {
 
                                             </tr>
                                         ))}
-                                        <Slideover
-                                            open={openView}
-                                            setOpen={setOpenView}
-                                            title="Facture"
-                                            children={<App />} />
+
                                     </tbody>
                                 </table>
+                                <Slideover
+                                    open={openView}
+                                    setOpen={setOpenView}
+                                    title="Facture"
+                                    children={
+                                        <Facture
+                                            selected={selected} />
+                                    } />
                             </div>
                         </div>
                     </div>

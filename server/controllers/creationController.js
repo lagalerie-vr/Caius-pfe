@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const Creation = require("../models/creation");
+const User = require("../models/user")
 
 
 /* ---------------model---------------
@@ -26,13 +27,25 @@ const Creation = require("../models/creation");
 const getCreations = asyncHandler(async (req, res) => {
 
     try {
-        await Creation.find({})
+        await Creation.find({}).populate("user")
             .then(result => {
                 res.send(result)
             })
     }
 
     catch (err) {
+        console.log(err)
+    }
+})
+
+const updateRole = asyncHandler(async (req, res) => {
+    try {
+        const creation = await Creation.findById(req.params.id);
+        const user = await User.findByIdAndUpdate(creation.user._id, { role: "Client" })
+        await Creation.findByIdAndUpdate(req.params.id, { state: "Acceptée" })
+        console.log(req.body.user)
+        console.log(user)
+    } catch (err) {
         console.log(err)
     }
 })
@@ -139,5 +152,5 @@ const deleteCreation = asyncHandler(async (req, res) => {
 
 
 module.exports = {
-    getByUser, getCreations, setCreation, deleteCreation, getCreation, patchCreation
+    getByUser, getCreations, setCreation, deleteCreation, getCreation, patchCreation, updateRole
 }
