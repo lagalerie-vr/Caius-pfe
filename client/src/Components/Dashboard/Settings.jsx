@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../contexts/AuthProvider';
 import API from '../../api/api';
 
@@ -34,10 +33,6 @@ export default function Example() {
         console.log(data)
     }
 
-    const [error, setError] = useState("");
-
-    const navigate = useNavigate()
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -50,7 +45,7 @@ export default function Example() {
                 error.response.status >= 400 &&
                 error.response.status <= 500
             ) {
-                setError(error.response.data.message);
+                console.log(error.response.data.message);
             }
         }
     };

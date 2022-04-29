@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Modal from "../Modals/Modal"
-
 import API from '../../api/api';
 
 
@@ -15,8 +14,6 @@ function AddEvent() {
         description: "",
 
     })
-
-    const [startDate, setStartDate] = useState(new Date())
     const [error, setError] = useState("");
     const [confrimed, setconfrimed] = useState(false);
 
@@ -26,7 +23,6 @@ function AddEvent() {
         e.preventDefault();
         setError("");
         try {
-            data.date = startDate;
             const { data: res } = await API.post("/events", data);
             console.log(res.message);
             setconfrimed(true);
