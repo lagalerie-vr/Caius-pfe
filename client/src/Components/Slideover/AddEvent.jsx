@@ -8,11 +8,13 @@ import API from '../../api/api';
 function AddEvent() {
     const [data, setData] = useState({
         nom: "",
-        date: "",
+        dateEvent: "",
         type: "",
         cat: "",
         adr: "",
         prix: "",
+        description: "",
+
     })
 
     const [startDate, setStartDate] = useState(new Date())
@@ -39,6 +41,7 @@ function AddEvent() {
                 setError(error.response.data.message);
             }
         }
+        console.log(data)
     };
 
     const handleChange = ({ currentTarget: input }) => {
@@ -96,6 +99,7 @@ function AddEvent() {
                         />
                     </div>
                 </div>
+
                 <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                         Address
@@ -107,6 +111,23 @@ function AddEvent() {
                             type="adress"
                             required
                             value={data.adr}
+                            onChange={handleChange}
+                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        />
+                    </div>
+                </div>
+
+                <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                        Description
+                    </label>
+                    <div className="mt-1">
+                        <textarea
+                            id="description"
+                            name="description"
+                            type="description"
+                            required
+                            value={data.description}
                             onChange={handleChange}
                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
@@ -136,9 +157,15 @@ function AddEvent() {
                     </label>
                     <div className="mt-1">
 
-                        <DatePicker
+                        <input
+                            type="date"
                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                            selected={startDate} onChange={(date: Date) => setStartDate(date)} />
+                            id="dateEvent"
+                            name="dateEvent"
+                            required
+                            value={data.dateEvent}
+                            onChange={handleChange}
+                        />
                     </div>
                 </div>
                 <div>

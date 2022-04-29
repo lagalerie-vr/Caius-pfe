@@ -15,7 +15,6 @@ function NavbarAdmin() {
     const navigation = [
         { name: 'Dashboard', href: '/' },
         { name: 'Utilisateurs', href: 'Users' },
-        { name: 'Startup', href: '/Startups' },
         { name: 'Demande Utilisateurs ', href: '/demande' },
         { name: 'Calendrier ', href: '/Calendar' },
         { name: 'Courrier', href: '/courrier' },

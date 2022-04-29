@@ -85,7 +85,7 @@ function Demande() {
                             <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
                                 onClick={(e) => creationDelete(demande._id, e)}
                             >
-                                Annuler la demande
+                                Supprimer
                             </a>
 
                             {demande.state === "Acceptée" ? <></> :
@@ -133,7 +133,7 @@ function Demande() {
                             <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
                                 onClick={(e) => domicilationDelete(demande._id, e)}
                             >
-                                Annuler la demande
+                                Supprimer
                             </a>
 
                             {demande.state === "Acceptée" ? <></> :

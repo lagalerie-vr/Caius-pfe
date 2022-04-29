@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom"
 import Users from '../../Pages/DashboardAdmin/Users'
-import Startups from '../../Pages/DashboardAdmin/Startups'
 import Main from '../../Pages/DashboardAdmin/Main'
 import Calendar from '../../Pages/DashboardAdmin/Calendar'
 import Tutorial from '../../Pages/DashboardAdmin/Tutorial'
@@ -21,7 +20,6 @@ const RouteAdmin = () => (
             <Route path="/" element={<LayoutDashboardAdmin />}>
                 <Route path='/' element={<Main />} />
                 <Route path='/Users' element={<Users />} />
-                <Route path='/Startups' element={<Startups />} />
                 <Route path='/Calendar' element={<Calendar />} />
                 <Route path='/Tutorial' element={<Tutorial />} />
                 <Route path='/Courrier' element={<Courrier />} />

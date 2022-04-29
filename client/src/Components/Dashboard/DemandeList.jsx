@@ -133,7 +133,7 @@ function Demande() {
                                 <div>
                                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">{demande.nom}</h5>
                                 </div>
-                                <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mb-3'>En cours de traitement</p>
+                                <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mb-3'>{demande.state}</p>
                                 <hr className="mb-3" />
                                 <p className="mb-3 font-normal text-white">Forme : {demande.forme}</p>
                                 <hr className="mb-3" />

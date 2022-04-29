@@ -39,11 +39,12 @@ const setEvent = asyncHandler(async (req, res) => {
 
     let newEvent = new Event({
         nom: req.body.nom,
-        date: req.body.date,
+        dateEvent: req.body.dateEvent,
         type: req.body.type,
         cat: req.body.cat,
         adr: req.body.adr,
         prix: req.body.prix,
+        description: req.body.description,
     })
 
     try {
@@ -78,11 +79,12 @@ const updateEvent = asyncHandler(async (req, res) => {
         await Event.updateOne({ id: req.params.id }, {
             $set: {
                 nom: req.body.nom,
-                date: req.body.date,
+                dateEvent: req.body.dateEvent,
                 type: req.body.type,
                 cat: req.body.cat,
                 adr: req.body.adr,
                 prix: req.body.prix,
+                description: req.body.description,
             }
         })
         res.send('update succes')
