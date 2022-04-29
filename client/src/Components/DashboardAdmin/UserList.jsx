@@ -9,10 +9,13 @@ import Modal from '../Modals/Modal'
 
 
 
+
 function UserList() {
 
-    const [confrimed, setconfrimed] = useState(false);
-
+    const [confrimed, setconfrimed] = useState(null);
+    const [selected, setSelected] = useState("")
+    const [open, setOpen] = useState(false)
+    const [openEdit, setopenEdit] = useState(false)
 
     const userDelete = (id, e) => {
         e.preventDefault();
@@ -28,8 +31,6 @@ function UserList() {
 
     const people = useGet("/Users")
 
-    const [open, setOpen] = useState(false)
-    const [openEdit, setopenEdit] = useState(false)
 
 
     return (
@@ -140,7 +141,7 @@ function UserList() {
 
                                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                     <button href="#" className="text-indigo-600 hover:text-indigo-900"
-                                                        onClick={() => setopenEdit(true)}
+                                                        onClick={(e) => { setopenEdit(true); setSelected(person) }}
                                                     >
                                                         <a
                                                             className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -171,11 +172,13 @@ function UserList() {
                                                 open={confrimed}
                                                 setOpen={setconfrimed} />}
 
+
                                         <Slideover
                                             open={openEdit}
                                             setOpen={setopenEdit}
-                                            title={"Modifier un utilisateur"}
-                                            children={<EditUser />} />
+                                            title="Liste des participant"
+                                            children={<EditUser
+                                                user={selected} />} />
 
 
                                     </tbody>

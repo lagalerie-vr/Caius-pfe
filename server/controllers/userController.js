@@ -97,13 +97,16 @@ const deleteUser = asyncHandler(async (req, res) => {
 /* update 1 user */
 const updateUser = asyncHandler(async (req, res) => {
 
+    const salt = await bcrypt.genSalt();
+    const hashPassword = await bcrypt.hash(req.body.password, salt);
+
     const newInfo = {
         nom: req.body.nom,
         prenom: req.body.prenom,
         mail: req.body.mail,
         role: req.body.role,
         numero: req.body.numero,
-        password: req.body.password,
+        password: hashPassword,
     }
 
     try {

@@ -1,38 +1,57 @@
-import React, { useState } from 'react'
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import API from '../../api/api';
+import useGet from '../../data/Functions/useGet';
+import Modal from '../Modals/Modal';
 
-function EditUser() {
+export default function Example({ user }) {
+
     const [data, setData] = useState({
         mail: "",
         nom: "",
         prenom: "",
         numero: "",
-        role: "",
         password: "",
     })
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setError("");
-        try {
-            const { data: res } = await API.patch("/users/:id", data);
-            console.log(res.message);
-            setconfrimed(true);
-        } catch (error) {
-            setError(error.response.data.message);
-        }
-    };
 
-    const [error, setError] = useState("");
     const [confrimed, setconfrimed] = useState(false);
 
 
+    useEffect(() => {
+
+        setData({
+            mail: user.mail,
+            nom: user.nom,
+            prenom: user.prenom,
+            numero: user.numero,
+            password: user.password,
+        })
+    }, [user])
 
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value })
     }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const { data: res } = await API.put(`/users/user/${user._id}`, data);
+            console.log(res.message);
+            setconfrimed(true);
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+    const userDelete = () => {
+        API.delete(`/Users/user/${user._id}`)
+        setconfrimed(true);
+    }
+
+
     return (
-        <div>
+        <>
             <form className="space-y-6" onSubmit={handleSubmit} >
                 <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -44,7 +63,6 @@ function EditUser() {
                             name="mail"
                             type="email"
                             autoComplete="email"
-                            required
                             value={data.mail}
                             onChange={handleChange}
                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -60,31 +78,11 @@ function EditUser() {
                             name="nom"
                             type="text"
                             autoComplete="name"
-                            required
                             value={data.nom}
                             onChange={handleChange}
                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
                     </div>
-                </div>
-
-
-                <div className="col-span-6 sm:col-span-3">
-                    <label htmlFor="country" className="block text-sm font-medium text-gray-700">
-                        Role
-                    </label>
-                    <select
-                        id="role"
-                        name="role"
-                        value={data.role}
-                        onChange={handleChange}
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
-                        <option></option>
-                        <option>Client</option>
-                        <option>Expert</option>
-                        <option>Admin</option>
-                    </select>
                 </div>
 
                 <div>
@@ -96,7 +94,6 @@ function EditUser() {
                             name="prenom"
                             type="text"
                             autoComplete="prenom"
-                            required
                             value={data.prenom}
                             onChange={handleChange}
                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -113,7 +110,6 @@ function EditUser() {
                             name="numero"
                             type="numero"
                             autoComplete="phone"
-                            required
                             value={data.numero}
                             onChange={handleChange}
                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -130,8 +126,6 @@ function EditUser() {
                             id="password"
                             name="password"
                             type="password"
-                            required
-                            value={data.password}
                             onChange={handleChange}
                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
@@ -143,19 +137,28 @@ function EditUser() {
                         type="submit"
                         className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                        Modifier l'utilisateur                    </button>
+                        Enregistré
+                    </button>
                 </div>
+
             </form>
-            <div className='py-5'>
-                <div className="relative">
-                    <div className="relative flex justify-center text-sm">
-                        {error && <span className="px-2 bg-white text-red-500" >{error}</span>}
-                        {confrimed && <span className="px-2 bg-white text-green-500" >Modifier avec succès</span>}
-                    </div>
-                </div>
+
+            <div className='mt-5'>
+                <button
+                    onClick={userDelete}
+                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                >
+                    Supprimer ce compte
+                </button>
             </div>
-        </div>
+
+            {confrimed &&
+                <Modal
+                    open={confrimed}
+                    setOpen={setconfrimed} />}
+
+
+
+        </>
     )
 }
-
-export default EditUser
