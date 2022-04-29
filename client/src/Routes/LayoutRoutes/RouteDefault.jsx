@@ -16,6 +16,8 @@ import Call from "../../Pages/JitsiCall/Call"
 import Autre from "../../Pages/Dashboard/Autre"
 import Demande from "../../Pages/Dashboard/Demande"
 import Facture from "../../Pages/Dashboard/Facture"
+import Settings from '../../Pages/Dashboard/Settings'
+
 
 
 
@@ -34,6 +36,7 @@ const RouteDefault = () => (
                 <Route path='/Call' element={<Call />} />
                 <Route path='/autre' element={<Autre />} />
                 <Route path='/facture' element={<Facture />} />
+                <Route path='/Settings' element={<Settings />} />
 
                 <Route path='/demande' element={<Demande />} />
                 <Route path='*' element={<Error />} />

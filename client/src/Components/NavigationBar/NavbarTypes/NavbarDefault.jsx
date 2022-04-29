@@ -23,7 +23,7 @@ function NavbarDefault() {
 
         { name: 'Contract', href: '/Contract' },
         { name: 'Facture', href: '/Facture' },
-        { name: 'Settings', href: '#' },
+        { name: 'Settings', href: '/Settings' },
     ]
 
     function classNames(...classes) {

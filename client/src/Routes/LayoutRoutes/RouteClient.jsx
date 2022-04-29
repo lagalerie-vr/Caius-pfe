@@ -17,6 +17,8 @@ import DomiForm from "../../Pages/Forms/DomiForm"
 import StatusForm from "../../Pages/Forms/StatusForm"
 import Demande from "../../Pages/Dashboard/Demande"
 import Facture from "../../Pages/Dashboard/Facture"
+import Settings from '../../Pages/Dashboard/Settings'
+
 
 
 
@@ -35,6 +37,7 @@ const RouteClient = () => (
                 <Route path='/facture' element={<Facture />} />
                 <Route path='/CreationForm' element={<CreationForm />} />
                 <Route path='/Domicilitation' element={<DomiForm />} />
+                <Route path='/Settings' element={<Settings />} />
                 <Route path='/statut' element={<StatusForm />} />
 
                 {/*

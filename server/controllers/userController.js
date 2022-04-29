@@ -95,19 +95,20 @@ const deleteUser = asyncHandler(async (req, res) => {
 
 
 /* update 1 user */
-const patchUser = asyncHandler(async (req, res) => {
+const updateUser = asyncHandler(async (req, res) => {
+
+    const newInfo = {
+        nom: req.body.nom,
+        prenom: req.body.prenom,
+        mail: req.body.mail,
+        role: req.body.role,
+        numero: req.body.numero,
+        password: req.body.password,
+    }
 
     try {
-        const result = await User.updateOne({ id: req.params.id }, {
-            $set: {
-                nom: req.body.nom,
-                prenom: req.body.prenom,
-                mail: req.body.mail,
-                role: req.body.role,
-                numero: req.body.numero,
-                password: req.body.password,
-            }
-        })
+        console.log(newInfo)
+        const result = await User.findByIdAndUpdate(req.params.id, { $set: newInfo })
         res.send(result)
     }
     catch (err) {
@@ -170,5 +171,5 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
-    getUsers, getUser, patchUser, deleteUser, setUser, getRole, loginUser, getMail
+    getUsers, getUser, updateUser, deleteUser, setUser, getRole, loginUser, getMail
 }

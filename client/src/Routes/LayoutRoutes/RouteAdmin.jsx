@@ -8,6 +8,7 @@ import LayoutDashboardAdmin from "../../Layouts/LayoutDashboard"
 import Facture from '../../Pages/DashboardAdmin/Facture'
 import Contract from '../../Pages/DashboardAdmin/Contract'
 import DemandeList from '../../Pages/DashboardAdmin/Demande'
+import Settings from '../../Pages/Dashboard/Settings'
 
 import ProtectedRoutes from "../ProtectedRoutes"
 import Courrier from "../../Pages/DashboardAdmin/Courrier"
@@ -26,6 +27,7 @@ const RouteAdmin = () => (
                 <Route path='/facture' element={<Facture />} />
                 <Route path='/Contract' element={<Contract />} />
                 <Route path='/demande' element={<DemandeList />} />
+                <Route path='/Settings' element={<Settings />} />
                 <Route path='/Call' element={<Call />} />
                 <Route path='*' element={<Error />} />
             </Route>
