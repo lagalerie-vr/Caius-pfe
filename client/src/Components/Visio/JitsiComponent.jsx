@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 class JitsiComponent extends Component {
 
 
+
     domain = 'meet.jit.si';
     api = {};
 
@@ -13,7 +14,7 @@ class JitsiComponent extends Component {
         this.state = {
             room: (props.room),
             user: {
-                name: (props.name)
+                name: (props.nom)
             },
         }
     }

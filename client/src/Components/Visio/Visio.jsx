@@ -6,8 +6,8 @@ function Visio() {
 
     const user = useUser()
 
-    const [room, setRoom] = useState()
-    const [name, setName] = useState()
+    const [room, setRoom] = useState("")
+    const [name, setName] = useState("")
     const [start, setStart] = useState(false)
     const [show, setShow] = useState(true)
 
@@ -23,7 +23,6 @@ function Visio() {
     useEffect(() => {
         setName(user.name)
     }, [user])
-
 
 
     return (
@@ -72,7 +71,7 @@ function Visio() {
                             <form onSubmit={handleRoom}>
                                 <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                                     <button
-                                        onClick={(() => setRoom(user.email))}
+                                        onClick={(() => setRoom(user.mail))}
                                         className="flex uppercase items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8"
                                     >
                                         Créé une room
@@ -89,7 +88,8 @@ function Visio() {
                     {start &&
                         <div>
                             <JitsiComponent
-                                room={room} />
+                                room={room}
+                                user={user} />
                             <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                                 <button
                                     onClick={(() => {
@@ -102,7 +102,6 @@ function Visio() {
                             </div>
                         </div>}
                 </div>
-
             </div>
         </div >
     )
