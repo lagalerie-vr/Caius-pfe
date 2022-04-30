@@ -97,7 +97,20 @@ const deleteExpertMessage = asyncHandler(async (req, res) => {
 
 })
 
+const repondre = asyncHandler(async (req, res) => {
+    try {
+        await ExpertMessage.findByIdAndUpdate(req.params.id, { reponse: req.body.reponse })
+        await ExpertMessage.findByIdAndUpdate(req.params.id, { state: "répondu" })
+        res.send('succes')
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+
+
+
 
 module.exports = {
-    deleteExpertMessage, setExpertMessages, getExpertMessage, getExpertMessages, getByUser, getByExpert
+    deleteExpertMessage, setExpertMessages, getExpertMessage, getExpertMessages, getByUser, getByExpert, repondre
 }

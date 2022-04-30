@@ -2,7 +2,7 @@ import { useState } from 'react'
 import useGet from '../../data/Functions/useGet'
 
 import Slideover from '../../Layouts/Slideover'
-import Facture from '../Facture/App'
+import Facture from '../Facture/Facture'
 
 
 

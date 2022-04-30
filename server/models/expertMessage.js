@@ -23,6 +23,11 @@ const expertMessageSchema = mongoose.Schema({
         type: String,
     },
 
+    reponse: {
+        type: String,
+        default: ""
+    },
+
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "user"
@@ -32,6 +37,11 @@ const expertMessageSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "user"
     },
+
+    state: {
+        type: String,
+        default: "En Cours de traitement",
+    }
 },
 );
 
