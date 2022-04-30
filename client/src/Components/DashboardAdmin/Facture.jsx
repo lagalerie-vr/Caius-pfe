@@ -8,8 +8,8 @@ import Facture from '../Facture/App'
 
 function FactureList() {
 
-    const creation = useGet("/creations/accepted/Acceptée")
-    const domiciliation = useGet("/Domiciliation/accepted/Acceptée")
+    const creation = useGet("/creations/state/Acceptée")
+    const domiciliation = useGet("/Domiciliation/state/Acceptée")
 
 
     const [open, setOpen] = useState(false)

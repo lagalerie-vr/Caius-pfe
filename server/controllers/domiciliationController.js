@@ -147,8 +147,22 @@ const getByState = asyncHandler(async (req, res) => {
     }
 });
 
+const updateState = asyncHandler(async (req, res) => {
+    try {
+        await Domiciliation.findByIdAndUpdate(req.params.id, { state: "Passer a l'Expert" })
+    } catch (err) {
+        console.log(err)
+    }
+})
 
+const refuser = asyncHandler(async (req, res) => {
+    try {
+        await Domiciliation.findByIdAndUpdate(req.params.id, { state: "Refuser" })
+    } catch (err) {
+        console.log(err)
+    }
+})
 
 module.exports = {
-    getByUser, getDomiciliations, setDomiciliation, deleteDomiciliation, getDomiciliation, patchDomiciliation, updateRole, getByState
+    getByUser, getDomiciliations, setDomiciliation, deleteDomiciliation, getDomiciliation, patchDomiciliation, updateRole, getByState, updateState, refuser
 }

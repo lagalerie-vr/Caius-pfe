@@ -50,6 +50,23 @@ const updateRole = asyncHandler(async (req, res) => {
     }
 })
 
+
+const updateState = asyncHandler(async (req, res) => {
+    try {
+        await Creation.findByIdAndUpdate(req.params.id, { state: "Passer a l'Expert" })
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+const refuser = asyncHandler(async (req, res) => {
+    try {
+        await Creation.findByIdAndUpdate(req.params.id, { state: "Refuser" })
+    } catch (err) {
+        console.log(err)
+    }
+})
+
 const getByUser = asyncHandler(async (req, res) => {
 
     try {
@@ -168,5 +185,5 @@ const deleteCreation = asyncHandler(async (req, res) => {
 
 
 module.exports = {
-    getByUser, getCreations, setCreation, deleteCreation, getCreation, patchCreation, updateRole, getByState
+    getByUser, getCreations, setCreation, deleteCreation, getCreation, patchCreation, updateRole, getByState, updateState, refuser
 }

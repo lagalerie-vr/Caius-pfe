@@ -10,7 +10,7 @@ function Demande() {
     const creationDelete = (id, e) => {
         e.preventDefault();
         try {
-            API.delete(`/creations/${id}`)
+            API.put(`/creations/refuser/${id}`)
             console.log("done")
             setconfrimed(true)
         } catch (error) {
@@ -21,7 +21,7 @@ function Demande() {
     const domicilationDelete = (id, e) => {
         e.preventDefault();
         try {
-            API.delete(`/domiciliation/${id}`)
+            API.put(`/domiciliation/refuser/${id}`)
             console.log("done")
             setconfrimed(true)
         } catch (error) {
@@ -32,7 +32,7 @@ function Demande() {
     const domicilationAccept = (id, e) => {
         e.preventDefault();
         try {
-            API.put(`/domiciliation/update/${id}`)
+            API.put(`/domiciliation/${id}`)
             console.log("done")
             setconfrimed(true)
         } catch (error) {
@@ -43,7 +43,7 @@ function Demande() {
     const creationAccept = (id, e) => {
         e.preventDefault();
         try {
-            API.put(`/creations/update/${id}`)
+            API.put(`/creations/${id}`)
             console.log("done")
             setconfrimed(true)
         } catch (error) {
@@ -51,8 +51,9 @@ function Demande() {
         }
     }
 
-    const demandeCreation = useGet('/creations')
-    const demandeDomiciliation = useGet('/domiciliation')
+    const demandeCreation = useGet("/creations/state/Passer a l'Expert")
+    const demandeDomiciliation = useGet("/Domiciliation/state/Passer a l'Expert")
+
     return (
         <div>
             <header className="py-10">
@@ -84,24 +85,19 @@ function Demande() {
                             <p className="mb-3 font-normal text-white">{demande.recherche}</p>
                             <hr className="mb-3" />
 
-                            <a className="inline-flex items-center mr-3 py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
+                            <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
                                 onClick={(e) => creationDelete(demande._id, e)}
                             >
-                                Supprimer
+                                Refuser la demande
                             </a>
 
-                            {(demande.state === "Passer a l'Expert" || demande.state === "Acceptée") ? <></> :
-                                <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-green-700 bg-white rounded-lg hover:bg-green-800 hover:text-white"
+                            {demande.state === "Acceptée" ? <></> :
+                                <a className="inline-flex ml-3 items-center py-2 px-3 text-sm font-medium text-center text-green-700 bg-white rounded-lg hover:bg-green-800 hover:text-white"
                                     onClick={(e) => creationAccept(demande._id, e)}
                                 >
-                                    Passer la demande a un expert
+                                    Acceptée la demande
                                 </a>
                             }
-
-                            <a className="mt-3 ml-3 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-indigo-700 bg-white rounded-lg hover:bg-indigo-100 hover:text-indigo-700"
-                            >
-                                Plus de détails
-                            </a>
 
                         </div>
                     </div>
@@ -140,24 +136,19 @@ function Demande() {
                             <hr className="mb-3" />
                             <p className="mb-3 font-normal text-white">Adresse : {demande.adresse}</p>
                             <hr className="mb-3" />
-                            <a className="inline-flex items-center mr-3 py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
+                            <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
                                 onClick={(e) => domicilationDelete(demande._id, e)}
                             >
                                 Supprimer
                             </a>
 
-                            {(demande.state === "Passer a l'Expert" || demande.state === "Acceptée") ? <></> :
-                                <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-green-700 bg-white rounded-lg hover:bg-green-800 hover:text-white"
+                            {demande.state === "Acceptée" ? <></> :
+                                <a className="inline-flex ml-3 items-center py-2 px-3 text-sm font-medium text-center text-green-700 bg-white rounded-lg hover:bg-green-800 hover:text-white"
                                     onClick={(e) => domicilationAccept(demande._id, e)}
                                 >
-                                    Passer la demande a un expert
+                                    Acceptée la demande
                                 </a>
                             }
-
-                            <a className="mt-3 ml-3 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-indigo-700 bg-white rounded-lg hover:bg-indigo-100 hover:text-indigo-700"
-                            >
-                                Plus de détails
-                            </a>
 
                         </div>
                     </div>
