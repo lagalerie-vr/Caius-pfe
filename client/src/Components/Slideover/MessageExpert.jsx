@@ -1,22 +1,46 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import API from '../../api/api';
 import Modal from '../Modals/Modal';
 import Progress from '../Progress';
+import { useUser } from '../../contexts/AuthProvider'
 
-function MessageExpert() {
+
+function MessageExpert({ selected }) {
+    const expert = selected
+
+    const user = useUser()
+
     const [data, setData] = useState({
         nom: "",
         mail: "",
-        numero: "",
+        number: "",
         demande: "",
         file: "",
     })
+
+
+    useEffect(() => {
+
+        setData({
+            nom: "",
+            mail: "",
+            number: "",
+            demande: "",
+            file: "",
+            user: user._id,
+            expert: expert._id
+        })
+
+    }, [user])
+
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
         try {
-            const { data: res } = await API.post("/users/register", data);
+            const { data: res } = await API.post("/expertMessage", data);
             console.log(res.message);
             setconfrimed(true);
         } catch (error) {
@@ -37,6 +61,7 @@ function MessageExpert() {
 
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value })
+        console.log(data)
     }
     return (
         <div>
@@ -83,12 +108,12 @@ function MessageExpert() {
                     </label>
                     <div className="mt-1">
                         <input
-                            id="numero"
-                            name="numero"
-                            type="numero"
+                            id="number"
+                            name="number"
+                            type="number"
                             autoComplete="phone"
                             required
-                            value={data.numero}
+                            value={data.number}
                             onChange={handleChange}
                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
@@ -156,6 +181,7 @@ function MessageExpert() {
             <div className='py-5'>
                 <div className="relative">
                     <div className="relative flex justify-center text-sm">
+
                         {error && <span className="px-2 bg-white text-red-500" >{error}</span>}
                         {confrimed &&
                             <Modal

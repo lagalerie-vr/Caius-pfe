@@ -11,8 +11,9 @@ function Experts() {
 
     const experts = useGet("/users/role/Expert")
 
-
+    const [selected, setSelected] = useState("")
     const [openContacter, setopenContacter] = useState(false)
+
     return (
 
         <div>
@@ -77,7 +78,14 @@ function Experts() {
 
                                                 <div className="text-sm font-medium text-gray-900 py-2"><button href="#"
                                                     className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-700 hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                                    onClick={() => setopenContacter(true)}>Contacter</button></div>
+                                                    onClick={
+                                                        () => {
+                                                            setopenContacter(true);
+                                                            setSelected(person);
+                                                        }
+                                                    }
+
+                                                >Contacter</button></div>
                                             </td>
 
                                             <td className="px-6 py-4 whitespace-nowrap">
@@ -103,7 +111,8 @@ function Experts() {
                 open={openContacter}
                 setOpen={setopenContacter}
                 title="Contacter"
-                children={<MessageExpert />}
+                children={<MessageExpert
+                    selected={selected} />}
             />
         </div>
     )

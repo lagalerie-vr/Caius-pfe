@@ -70,10 +70,6 @@ function FactureList() {
                                                 <span className="sr-only">Edit</span>
                                             </th>
 
-                                            <th scope="col" className="relative px-6 py-3">
-                                                <span className="sr-only">supprimer</span>
-                                            </th>
-
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
@@ -110,15 +106,6 @@ function FactureList() {
                                                         Voir facture
                                                     </button>
                                                 </td>
-
-
-                                                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <button href="#" className="text-red-600 hover:text-red-900"
-                                                    >
-                                                        Supprimer
-                                                    </button>
-                                                </td>
-
 
                                             </tr>
                                         ))}
@@ -188,10 +175,6 @@ function FactureList() {
                                                 <span className="sr-only">Edit</span>
                                             </th>
 
-                                            <th scope="col" className="relative px-6 py-3">
-                                                <span className="sr-only">supprimer</span>
-                                            </th>
-
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
@@ -225,15 +208,6 @@ function FactureList() {
                                                         Voir facture
                                                     </button>
                                                 </td>
-
-
-                                                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <button href="#" className="text-red-600 hover:text-red-900"
-                                                    >
-                                                        Supprimer
-                                                    </button>
-                                                </td>
-
 
                                             </tr>
                                         ))}

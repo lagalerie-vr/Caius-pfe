@@ -8,6 +8,7 @@ const videoRoutes = require("./routes/videoRoutes")
 const creationRoutes = require("./routes/creationRoutes")
 const eventRoutes = require("./routes/eventRoutes")
 const domiciliationRoutes = require("./routes/domiciliationRoutes")
+const expertMessageRoutes = require("./routes/expertMessageRoutes")
 
 
 require('dotenv/config')
@@ -23,6 +24,7 @@ app.use('/users', userRoutes)
 app.use('/events', eventRoutes)
 app.use('/videos', videoRoutes)
 app.use('/creations', creationRoutes)
+app.use('/expertMessage', expertMessageRoutes)
 app.use('/domiciliation', domiciliationRoutes)
 
 mongoose.connect(process.env.DB_CONNECTION, (err, done) => {
