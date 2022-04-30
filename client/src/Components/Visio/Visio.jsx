@@ -89,7 +89,7 @@ function Visio() {
                         <div>
                             <JitsiComponent
                                 room={room}
-                                user={user} />
+                                user={{ user: { name: name } }} />
                             <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                                 <button
                                     onClick={(() => {
