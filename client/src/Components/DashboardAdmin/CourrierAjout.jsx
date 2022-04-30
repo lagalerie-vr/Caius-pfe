@@ -11,7 +11,6 @@ import Progress from "../Progress";
 
 function Courrier() {
     const users = useGet("/users/role/Client")
-    const [startDate, setStartDate] = useState(new Date());
 
     return (
         <div>
@@ -41,9 +40,13 @@ function Courrier() {
                             <label htmlFor="project-name" className="block text-sm font-medium text-gray-900">
                                 Date recu                            </label>
                             <div className="mt-1">
-                                <DatePicker
-                                    className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                    selected={startDate} onChange={(date: Date) => setStartDate(date)} />
+                                <input
+                                    type="date"
+                                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                    id="dateEvent"
+                                    name="dateEvent"
+                                    required
+                                />
                             </div>
                         </div>
 
