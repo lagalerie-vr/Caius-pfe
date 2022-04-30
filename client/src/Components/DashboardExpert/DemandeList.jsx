@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
 import API from '../../api/api';
 import useGet from '../../data/Functions/useGet'
+import Slideover from '../../Layouts/Slideover';
+import DomiDetail from '../Slideover/DomiDetail'
+
 import Modal from '../Modals/Modal';
 
 function Demande() {
 
     const [confrimed, setconfrimed] = useState(false);
+    const [selected, setSelected] = useState("")
+    const [detailCreation, setDetailCreation] = useState(false)
 
     const creationDelete = (id, e) => {
         e.preventDefault();
@@ -100,6 +105,7 @@ function Demande() {
                             }
 
                             <a className="mt-3 ml-3 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-indigo-700 bg-white rounded-lg hover:bg-indigo-100 hover:text-indigo-700"
+                                onClick={(e) => { setDetailCreation(true); setSelected(demande) }}
                             >
                                 Plus de détails
                             </a>
@@ -154,6 +160,11 @@ function Demande() {
                                     Acceptée la demande
                                 </a>
                             }
+                            <a className="mt-3 ml-3 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-indigo-700 bg-white rounded-lg hover:bg-indigo-100 hover:text-indigo-700"
+                                onClick={(e) => { setDetailCreation(true); setSelected(demande) }}
+                            >
+                                Plus de détails
+                            </a>
 
                         </div>
                     </div>
@@ -164,6 +175,20 @@ function Demande() {
                 <Modal
                     open={confrimed}
                     setOpen={setconfrimed} />}
+
+            <Slideover
+                open={detailCreation}
+                setOpen={setDetailCreation}
+                title="Plus de détail"
+                children={<DomiDetail
+                    selected={selected} />} />
+
+            <Slideover
+                open={detailCreation}
+                setOpen={setDetailCreation}
+                title="Plus de détail"
+                children={<DomiDetail
+                    selected={selected} />} />
 
         </div >
     )
