@@ -5,7 +5,7 @@ import Faq from '../../Components/DashboardExpert/Faq'
 export default function Questions() {
     return (
         <Page
-            title="Demande Utilisateurs "
+            title="Demande d'accompagnement"
             content={<Faq />}
         />
     )

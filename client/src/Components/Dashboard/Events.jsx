@@ -84,11 +84,11 @@ function Line({ event }) {
         API.post(`events/User/${id}`, { user: userId })
     }
 
-    const [reserved, setReserved] = useState(false)
     const [selected, setSelected] = useState("")
     const [open, setOpen] = useState(false)
-
-
+    
+    
+    const [reserved, setReserved] = useState(false)
 
     useEffect(() => {
         event.users.forEach(element => {

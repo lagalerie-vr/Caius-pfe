@@ -11,7 +11,7 @@ function NavbarExpert() {
 
     const navigation = [
         { name: 'Dashboard', href: '/' },
-        { name: 'Demande de devis', href: '/devis' },
+        { name: "Demande d'accompagnement", href: '/devis' },
         { name: 'Demande des utilisateurs', href: '/demande' },
         { name: 'Visioconférence', href: '/call' },
     ]

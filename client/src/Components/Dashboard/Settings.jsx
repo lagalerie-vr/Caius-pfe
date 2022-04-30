@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useUser } from '../../contexts/AuthProvider';
 import API from '../../api/api';
+import Modal from '../../Components/Modals/Modal'
 
 export default function Example() {
 
@@ -26,6 +27,7 @@ export default function Example() {
     }, [user])
 
 
+    const [confrimed, setconfrimed] = useState(false);
 
 
     const handleChange = ({ currentTarget: input }) => {
@@ -38,7 +40,7 @@ export default function Example() {
         try {
             const { data: res } = await API.put(`/users/user/${user._id}`, data);
             console.log(res.message);
-            window.location.reload()
+            setconfrimed(true)
         } catch (error) {
             if (
                 error.response &&
@@ -167,6 +169,10 @@ export default function Example() {
 
 
                 </div>
+                {confrimed &&
+                    <Modal
+                        open={confrimed}
+                        setOpen={setconfrimed} />}
             </div>
 
         </>
