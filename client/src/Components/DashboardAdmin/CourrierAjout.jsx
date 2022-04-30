@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import api from "../../api/api";
 import useGet from "../../data/Functions/useGet";
 import Progress from "../Progress";
 
@@ -10,6 +11,37 @@ import Progress from "../Progress";
 
 
 function Courrier() {
+
+    const [confrimed, setconfrimed] = useState(false);
+
+
+    const [data, setData] = useState({
+        dateFile: "",
+        user: "",
+        image: "",
+    })
+
+
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const { data: res } = await api.post("/users/register", data);
+            console.log(res.message);
+            setconfrimed(true);
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+
+
+    const handleChange = ({ currentTarget: input }) => {
+        setData({ ...data, [input.name]: input.value })
+        console.log(data)
+    }
+
     const users = useGet("/users/role/Client")
 
     return (
@@ -23,9 +55,11 @@ function Courrier() {
                             </label>
                             <div className="mt-1">
                                 <select
-                                    id="country"
-                                    name="country"
-                                    autoComplete="country-name"
+                                    id="user"
+                                    name="user"
+                                    onChange={handleChange}
+                                    required
+                                    value={data.user}
                                     className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                 >
                                     {users.map((user) => (
@@ -42,10 +76,12 @@ function Courrier() {
                             <div className="mt-1">
                                 <input
                                     type="date"
+                                    onChange={handleChange}
                                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                    id="dateEvent"
-                                    name="dateEvent"
+                                    id="dateFile"
+                                    name="dateFile"
                                     required
+                                    value={data.dateFile}
                                 />
                             </div>
                         </div>
@@ -72,7 +108,11 @@ function Courrier() {
                                         className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                                     >
                                         <span>Partager un fichier </span>
-                                        <input id="file" name="file" type="file" className="sr-only" />
+                                        <input id="file" name="file" type="file" className="sr-only"
+                                            onChange={handleChange}
+                                            required
+                                            value={data.file}
+                                        />
                                     </label>
                                 </div>
                                 <p className="text-xs text-gray-500">PDF, PNG, JPEG</p>
