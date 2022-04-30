@@ -2,6 +2,24 @@ const asyncHandler = require('express-async-handler');
 const File = require("../models/file")
 const User = require("../models/user")
 
+const multer = require('multer')
+const fs = require('fs');
+const file = require('../models/file');
+
+//Upload Storage
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './public')
+
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + "_" + file.originalname)
+    }
+})
+
+const upload = multer({ storage }).single('image')
+
+
 
 
 
@@ -39,27 +57,18 @@ const getFile = asyncHandler(async (req, res) => {
 
 /* add 1 File */
 const setFile = asyncHandler(async (req, res) => {
-
-    let newEvent = new Event({
-        nom: req.body.nom,
-        dateEvent: req.body.dateEvent,
-        type: req.body.type,
-        cat: req.body.cat,
-        adr: req.body.adr,
-        prix: req.body.prix,
-        description: req.body.description,
-    })
-
     try {
-        await newEvent.save()
-        res.send('saved succes')
-    }
-    catch (err) {
+
+        upload(req, res, (err) => {
+            res.send({
+                file: req.originalname,
+                path: req.path,
+            })
+        })
+    } catch (err) {
         console.log(err)
     }
-
 })
-
 
 /* delete 1 File */
 const deleteFile = asyncHandler(async (req, res) => {
