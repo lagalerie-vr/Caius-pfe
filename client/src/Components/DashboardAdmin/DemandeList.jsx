@@ -9,6 +9,7 @@ function Demande() {
 
     const [confrimed, setconfrimed] = useState(false);
     const [selected, setSelected] = useState("")
+    const [detailDomi, setDetailDomi] = useState(false)
     const [detailCreation, setDetailCreation] = useState(false)
 
     const creationDelete = (id, e) => {
@@ -160,10 +161,10 @@ function Demande() {
                             }
 
                             <a className="mt-3 ml-3 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-indigo-700 bg-white rounded-lg hover:bg-indigo-100 hover:text-indigo-700"
+                                onClick={(e) => { setDetailDomi(true); setSelected(demande) }}
                             >
                                 Plus de détails
                             </a>
-
                         </div>
                     </div>
                 ))
@@ -179,6 +180,14 @@ function Demande() {
             <Slideover
                 open={detailCreation}
                 setOpen={setDetailCreation}
+                title="Plus de détail"
+                children={<DomiDetail
+                    selected={selected} />} />
+
+
+            <Slideover
+                open={detailDomi}
+                setOpen={setDetailDomi}
                 title="Plus de détail"
                 children={<DomiDetail
                     selected={selected} />} />
