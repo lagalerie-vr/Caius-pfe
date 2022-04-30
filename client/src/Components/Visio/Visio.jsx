@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import JitsiComponent from './JitsiComponent'
 import { useUser } from '../../contexts/AuthProvider'
 
 function Visio() {
+
     const user = useUser()
-    console.log(user)
+
     const [room, setRoom] = useState()
+    const [name, setName] = useState()
     const [start, setStart] = useState(false)
     const [show, setShow] = useState(true)
 
@@ -16,6 +18,11 @@ function Visio() {
         setShow(false)
         setStart(true)
     };
+
+
+    useEffect(() => {
+        setName(user.name)
+    }, [user])
 
 
 
