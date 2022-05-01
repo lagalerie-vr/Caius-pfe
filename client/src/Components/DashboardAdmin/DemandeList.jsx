@@ -3,6 +3,7 @@ import API from '../../api/api';
 import useGet from '../../data/Functions/useGet'
 import Modal from '../Modals/Modal';
 import DomiDetail from '../Slideover/DomiDetail'
+import CreationDetail from '../Slideover/CreationDetail'
 import Slideover from '../../Layouts/Slideover'
 
 function Demande() {
@@ -181,7 +182,7 @@ function Demande() {
                 open={detailCreation}
                 setOpen={setDetailCreation}
                 title="Plus de détail"
-                children={<DomiDetail
+                children={<CreationDetail
                     selected={selected} />} />
 
 

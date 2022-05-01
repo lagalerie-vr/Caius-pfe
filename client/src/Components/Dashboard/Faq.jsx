@@ -37,9 +37,25 @@ export default function Faq() {
     }
 
     return (
+
         <div className="flex flex-col">
+
+
+
             <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+
                 <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                    <header className="py-10">
+
+                        <div className="md:flex md:items-center md:justify-between">
+                            <h className="text-3xl font-bold text-indigo-900">Demandes envoyées</h>
+
+                            <div className="flex-1 min-w-0">
+                                <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate"></h2>
+                            </div>
+                        </div>
+                        <div className='py-3'></div>
+                    </header>
                     <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                         <table className="min-w-full divide-y divide-gray-200">
                             <thead className="bg-gray-50">
@@ -117,7 +133,6 @@ export default function Faq() {
 
                 </div>
             </div>
-
 
             {confrimed &&
                 <Modal

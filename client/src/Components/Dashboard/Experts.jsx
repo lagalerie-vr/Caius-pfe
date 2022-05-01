@@ -116,18 +116,6 @@ function Experts() {
                     selected={selected} />}
             />
 
-            <header className="py-10">
-
-                <div className="md:flex md:items-center md:justify-between">
-                    <h className="text-3xl font-bold text-indigo-900">Demandes envoyées</h>
-
-                    <div className="flex-1 min-w-0">
-                        <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate"></h2>
-                    </div>
-                </div>
-                <div className='py-3'></div>
-            </header>
-
             <Faq />
 
         </div>

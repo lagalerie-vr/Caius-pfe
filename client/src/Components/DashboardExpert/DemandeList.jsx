@@ -3,6 +3,8 @@ import API from '../../api/api';
 import useGet from '../../data/Functions/useGet'
 import Slideover from '../../Layouts/Slideover';
 import DomiDetail from '../Slideover/DomiDetail'
+import CreationDetail from '../Slideover/CreationDetail'
+
 
 import Modal from '../Modals/Modal';
 
@@ -151,7 +153,8 @@ function Demande() {
                             <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
                                 onClick={(e) => domicilationDelete(demande._id, e)}
                             >
-                                Supprimer
+                                Refuser la demande
+
                             </a>
 
                             {demande.state === "Acceptée" ? <></> :
@@ -181,7 +184,7 @@ function Demande() {
                 open={detailCreation}
                 setOpen={setDetailCreation}
                 title="Plus de détail"
-                children={<DomiDetail
+                children={<CreationDetail
                     selected={selected} />} />
 
             <Slideover

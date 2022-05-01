@@ -9,13 +9,6 @@ export default function EventDetail({ reserved, setReserved, event }) {
         API.post(`events/User/${id}`, { user: userId })
     }
 
-    useEffect(() => {
-        event.users.forEach(element => {
-            if (element._id === userId) {
-                setReserved(true)
-            }
-        })
-    }, [event])
     return (
 
         <div className="bg-white shadow overflow-hidden sm:rounded-lg">

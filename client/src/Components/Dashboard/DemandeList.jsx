@@ -3,12 +3,17 @@ import { Link } from 'react-router-dom';
 import API from '../../api/api';
 import { useUser } from '../../contexts/AuthProvider';
 import Modal from '../Modals/Modal';
+import Slideover from '../../Layouts/Slideover'
+import DomiDetail from '../Slideover/DomiDetail'
+import CreationDetail from '../Slideover/CreationDetail'
 
 
 function Demande() {
     const user = useUser()
     const [creation, setCreation] = useState([])
     const [domiciliation, setDomiciliation] = useState([])
+    const [detailDomi, setDetailDomi] = useState(false)
+    const [detailCreation, setDetailCreation] = useState(false)
 
     useEffect(() => {
         async function fetchData() {
@@ -21,6 +26,8 @@ function Demande() {
     }, [user])
 
     const [confrimed, setconfrimed] = useState(false);
+    const [selected, setSelected] = useState("")
+
 
 
     const creationDelete = (id, e) => {
@@ -99,6 +106,11 @@ function Demande() {
                                         </a>
                                     </div>
                                 }
+                                <a className="mt-3 ml-3 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-indigo-700 bg-white rounded-lg hover:bg-indigo-100 hover:text-indigo-700"
+                                    onClick={(e) => { setDetailCreation(true); setSelected(demande) }}
+                                >
+                                    Plus de détails
+                                </a>
                             </div>
                         </div>
                     ))
@@ -155,6 +167,11 @@ function Demande() {
                                         </a>
                                     </div>
                                 }
+                                <a className="mt-3 ml-3 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-indigo-700 bg-white rounded-lg hover:bg-indigo-100 hover:text-indigo-700"
+                                    onClick={(e) => { setDetailDomi(true); setSelected(demande) }}
+                                >
+                                    Plus de détails
+                                </a>
                             </div>
                         </div>
                     ))
@@ -166,6 +183,21 @@ function Demande() {
                         open={confrimed}
                         setOpen={setconfrimed} />
                 }
+
+                <Slideover
+                    open={detailCreation}
+                    setOpen={setDetailCreation}
+                    title="Plus de détail"
+                    children={<CreationDetail
+                        selected={selected} />} />
+
+
+                <Slideover
+                    open={detailDomi}
+                    setOpen={setDetailDomi}
+                    title="Plus de détail"
+                    children={<DomiDetail
+                        selected={selected} />} />
             </div>
         </>
 

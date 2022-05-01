@@ -57,7 +57,7 @@ export default function Example() {
     const userDelete = () => {
         API.delete(`/Users/user/${user._id}`)
         localStorage.removeItem('token')
-        window.location.reload()
+        setconfrimed(true)
     }
 
 

@@ -13,10 +13,8 @@ function NavbarDefault() {
     const navigation = [
         { name: 'Dashboard', href: '/' },
         { name: 'Mes demande', href: '/demande' },
-        { name: 'Accompagnement', href: 'expert' },
         { name: 'Calendrier ', href: 'Calendar' },
         { name: 'Tutoriel', href: 'Tutorial' },
-        { name: 'Visioconférence', href: '/call' },
     ]
 
     const userNavigation = [

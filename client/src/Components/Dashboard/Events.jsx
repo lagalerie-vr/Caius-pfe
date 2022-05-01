@@ -86,8 +86,8 @@ function Line({ event }) {
 
     const [selected, setSelected] = useState("")
     const [open, setOpen] = useState(false)
-    
-    
+
+
     const [reserved, setReserved] = useState(false)
 
     useEffect(() => {
