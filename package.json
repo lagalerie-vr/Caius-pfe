@@ -1,0 +1,24 @@
+{
+  "name": "caius-pfe",
+  "version": "1.0.0",
+  "description": "cairus",
+  "main": "index.js",
+  "scripts": {
+    "server": "npm run start --prefix ./server",
+    "client": "npm run start --prefix ./client",
+    "cairus": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohamedlwed/Caius-pfe.git"
+  },
+  "keywords": [
+    "cairus"
+  ],
+  "author": "lwed mbarki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohamedlwed/Caius-pfe/issues"
+  },
+  "homepage": "https://github.com/mohamedlwed/Caius-pfe#readme"
+}
