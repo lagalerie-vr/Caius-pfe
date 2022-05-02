@@ -2,29 +2,8 @@ const asyncHandler = require('express-async-handler');
 const File = require("../models/file")
 const User = require("../models/user")
 
-const multer = require('multer')
-const fs = require('fs');
-const file = require('../models/file');
 
-//Upload Storage
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, './public')
-
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + "_" + file.originalname)
-    }
-})
-
-const upload = multer({ storage }).single('image')
-
-
-
-
-
-
-/* get all Files */
+/* get all Events */
 const getFiles = asyncHandler(async (req, res) => {
 
     try {
@@ -39,7 +18,7 @@ const getFiles = asyncHandler(async (req, res) => {
 })
 
 
-/* get 1 File */
+/* get 1 Event */
 const getFile = asyncHandler(async (req, res) => {
 
     try {
@@ -55,22 +34,27 @@ const getFile = asyncHandler(async (req, res) => {
 })
 
 
-/* add 1 File */
+/* add 1 Event */
 const setFile = asyncHandler(async (req, res) => {
-    try {
 
-        upload(req, res, (err) => {
-            res.send({
-                file: req.originalname,
-                path: req.path,
-            })
-        })
-    } catch (err) {
+    let newFile = new File({
+        user: req.body.nom,
+        image: req.body.dateEvent,
+        dateFile: req.body.type,
+    })
+
+    try {
+        await newFile.save()
+        res.send('saved succes')
+    }
+    catch (err) {
         console.log(err)
     }
+
 })
 
-/* delete 1 File */
+
+/* delete 1 Event */
 const deleteFile = asyncHandler(async (req, res) => {
 
     try {
@@ -84,30 +68,6 @@ const deleteFile = asyncHandler(async (req, res) => {
 })
 
 
-/* update 1 Event */
-const updateFile = asyncHandler(async (req, res) => {
-
-    try {
-        await Event.updateOne({ id: req.params.id }, {
-            $set: {
-                nom: req.body.nom,
-                dateEvent: req.body.dateEvent,
-                type: req.body.type,
-                cat: req.body.cat,
-                adr: req.body.adr,
-                prix: req.body.prix,
-                description: req.body.description,
-            }
-        })
-        res.send('update succes')
-    }
-    catch (err) {
-        console.log(err)
-    }
-
-})
-
-
 module.exports = {
-    getFiles, setFile, deleteFile, updateFile, getFile
+    deleteFile, setFile, getFile, getFiles
 }

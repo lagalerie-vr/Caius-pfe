@@ -23,7 +23,7 @@ app.use(bodyParser.json())
 // Shared
 app.use('/users', userRoutes)
 app.use('/events', eventRoutes)
-app.use('/file', fileRoutes)
+app.use('/files', fileRoutes)
 app.use('/videos', videoRoutes)
 app.use('/creations', creationRoutes)
 app.use('/expertMessage', expertMessageRoutes)
