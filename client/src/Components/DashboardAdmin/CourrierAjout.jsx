@@ -116,14 +116,15 @@ function Courrier() {
                                 <input
                                     type="date"
                                     onChange={handleChange}
+                                    required
+                                    value={data.dateFile}
                                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                     id="dateFile"
                                     name="dateFile"
-                                    required
-                                    value={data.dateFile}
                                 />
                             </div>
                         </div>
+
                         {loading ?
                             <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                                 <div className="space-y-1 text-center">
@@ -151,6 +152,7 @@ function Courrier() {
                                                 id="file"
                                                 name="file"
                                                 type="file"
+                                                accept=".jpg, .jpeg, .png .pdf"
                                                 className="sr-only"
                                                 onChange={e => uploadImage(e.target.files[0])}
                                                 required

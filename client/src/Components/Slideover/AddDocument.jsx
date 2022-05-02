@@ -17,8 +17,8 @@ export default function AddDocument() {
 
     useEffect(() => {
         setData({
-            dateFile: data.dateFile,
-            user: data.user,
+            desc: data.desc,
+            titre: data.titre,
             image: fileUrl,
         })
         console.log(data)
@@ -28,7 +28,7 @@ export default function AddDocument() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data: res } = await API.post("/files/uploads", data);
+            const { data: res } = await API.post("/documents", data);
             console.log(res.message);
             setconfrimed(true);
         } catch (error) {
@@ -117,6 +117,7 @@ export default function AddDocument() {
                                             <span>Partager un fichier </span>
                                             <input
                                                 id="file"
+                                                accept=".jpg, .jpeg, .png, .pdf"
                                                 name="file"
                                                 type="file"
                                                 className="sr-only"
@@ -167,23 +168,31 @@ export default function AddDocument() {
                         }
 
                         {loading ? <Progress
-                            percentage="0" /> : <Progress
-                            percentage="100" />}
+                            percentage="0" /> : <>
+
+
+                            <Progress
+                                percentage="100" />
+
+                            <div className="flex-shrink-0 px-4 py-4 flex justify-end">
+                                <button
+                                    type="submit"
+                                    onClick={handleSubmit}
+                                    className="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                >
+                                    Ajouter
+                                </button>
+                            </div>
+
+                        </>
+                        }
 
 
 
                     </div>
                 </div>
             </div>
-            <div className="flex-shrink-0 px-4 py-4 flex justify-end">
-                <button
-                    type="submit"
-                    onClick={() => setconfrimed(true)}
-                    className="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    Ajouter
-                </button>
-            </div>
+
             <Modal
                 open={confrimed}
                 setOpen={setconfrimed} />
