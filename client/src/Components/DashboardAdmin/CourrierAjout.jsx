@@ -17,8 +17,6 @@ function Courrier() {
     const [confrimed, setconfrimed] = useState(false);
     const [fileUrl, setFileUrl] = useState('');
     const [loading, setLoading] = useState(true);
-
-
     const [data, setData] = useState({
         dateFile: "",
         user: "",
