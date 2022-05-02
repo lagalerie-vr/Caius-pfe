@@ -1,10 +1,11 @@
-import Documents from '../../data/doc.json'
 import useGet from '../../data/Functions/useGet'
 
 
 
 function TutorialList() {
     const tutorials = useGet("/videos")
+    const Documents = useGet("/documents")
+
 
 
     return (
@@ -72,7 +73,7 @@ function TutorialList() {
                                                 scope="col"
                                                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                             >
-                                                Categorie
+                                                Description
                                             </th>
                                             <th scope="col" className="relative px-6 py-3">
                                                 <span className="sr-only">Telecharger</span>
@@ -83,9 +84,11 @@ function TutorialList() {
                                         {Documents.map((Document) => (
                                             <tr key={Document.titre}>
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{Document.titre}</td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{Document.cat}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{Document.desc}</td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <a href={Document.href} className="text-indigo-600 hover:text-indigo-900">
+                                                    <a href={Document.image}
+                                                        className="m-3 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                                                    >
                                                         Telecharger
                                                     </a>
                                                 </td>
@@ -97,9 +100,9 @@ function TutorialList() {
                         </div>
                     </div>
                 </div>
-
-
             </div>
+
+
         </div>
     )
 }

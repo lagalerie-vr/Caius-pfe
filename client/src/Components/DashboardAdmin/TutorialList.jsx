@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Documents from '../../data/doc.json'
 
 import AddTutorial from '../Slideover/AddTutorial'
 import EditTutorial from '../Slideover/EditTutorial'
@@ -13,6 +12,7 @@ import Modal from '../Modals/Modal'
 
 
 function TutorialList() {
+    const Documents = useGet("/documents")
 
     // useGet DATA
     const tutorials = useGet("/videos")
@@ -29,9 +29,19 @@ function TutorialList() {
         }
     }
 
+    const documentDelete = (id, e) => {
+        e.preventDefault();
+        try {
+            API.delete(`/documents/${id}`)
+            setconfrimed(true)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
 
     const [confrimed, setconfrimed] = useState(false);
-
     const [open, setOpen] = useState(false)
     const [edit, setEdit] = useState(false)
     const [selected, setSelected] = useState(null)
@@ -158,7 +168,7 @@ function TutorialList() {
                                                 scope="col"
                                                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                             >
-                                                Categorie
+                                                Description
                                             </th>
                                             <th scope="col" className="relative px-6 py-3">
                                                 <span className="sr-only">Telecharger</span>
@@ -169,9 +179,9 @@ function TutorialList() {
                                         {Documents.map((Document) => (
                                             <tr key={Document.titre}>
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{Document.titre}</td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{Document.cat}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{Document.desc}</td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <a href={Document.href}
+                                                    <a href={Document.image}
                                                         className="m-3 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                                                     >
                                                         Telecharger
@@ -179,16 +189,8 @@ function TutorialList() {
                                                 </td>
 
                                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <a href={Document.href}
-                                                        className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                                    >
-                                                        Modifier
-                                                    </a>
-                                                </td>
-
-                                                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                     <a
-
+                                                        onClick={(e) => documentDelete(Document._id, e)}
                                                         className="m-3 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                                                     >
                                                         Supprimer
