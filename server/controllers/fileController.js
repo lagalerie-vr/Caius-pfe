@@ -40,7 +40,7 @@ const setFile = asyncHandler(async (req, res) => {
     let newFile = new File({
         user: req.body.nom,
         image: req.body.dateEvent,
-        dateFile: req.body.type,
+        dateFile: req.body.dateFile,
     })
 
     try {
