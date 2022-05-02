@@ -34,7 +34,7 @@ export default function Faq() {
                                         scope="col"
                                         className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                     >
-                                        Name
+                                        Nom
                                     </th>
                                     <th
                                         scope="col"
@@ -90,7 +90,7 @@ export default function Faq() {
             <Slideover
                 open={open}
                 setOpen={setOpen}
-                title="Ajouter un utilisateur"
+                title="Plus de détail"
                 children={<MessageDetail
                     selected={selected}
                 />} />

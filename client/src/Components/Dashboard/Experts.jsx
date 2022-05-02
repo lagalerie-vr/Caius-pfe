@@ -3,7 +3,7 @@ import Slideover from '../../Layouts/Slideover'
 import { useEffect, useState } from 'react'
 import MessageExpert from '../Slideover/MessageExpert'
 import useGet from '../../data/Functions/useGet'
-import Faq from './Faq'
+import ExpertMessage from './ExpertMessage'
 
 
 function Experts() {
@@ -31,19 +31,19 @@ function Experts() {
                                             scope="col"
                                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                         >
-                                            Name
+                                            Nom
                                         </th>
                                         <th
                                             scope="col"
                                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                         >
-                                            Title
+                                            Role
                                         </th>
                                         <th
                                             scope="col"
                                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                         >
-                                            Status
+                                            Numéro
                                         </th>
                                         <th scope="col" className="relative px-6 py-3">
                                             <span className="sr-only">Edit</span>
@@ -108,6 +108,7 @@ function Experts() {
                     </div>
                 </div>
             </div>
+
             <Slideover
                 open={openContacter}
                 setOpen={setopenContacter}
@@ -116,7 +117,7 @@ function Experts() {
                     selected={selected} />}
             />
 
-            <Faq />
+            <ExpertMessage />
 
         </div>
     )

@@ -24,6 +24,14 @@ export default function AddDocument() {
         console.log(data)
     }, [fileUrl])
 
+    const uploadImage = async (file) => {
+        const form = new FormData()
+        form.append('file', file)
+        form.append("upload_preset", "mindup")
+        await axios.post("https://api.cloudinary.com/v1_1/mindup/upload", form)
+            .then(result => setFileUrl(result.data.secure_url))
+        setLoading(false)
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -36,14 +44,6 @@ export default function AddDocument() {
         }
     };
 
-    const uploadImage = async (file) => {
-        const form = new FormData()
-        form.append('file', file)
-        form.append("upload_preset", "mindup")
-        await axios.post("https://api.cloudinary.com/v1_1/mindup/upload", form)
-            .then(result => setFileUrl(result.data.secure_url))
-        setLoading(false)
-    }
 
 
     const handleChange = ({ currentTarget: input }) => {
