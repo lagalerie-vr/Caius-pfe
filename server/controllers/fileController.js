@@ -38,8 +38,8 @@ const getFile = asyncHandler(async (req, res) => {
 const setFile = asyncHandler(async (req, res) => {
 
     let newFile = new File({
-        user: req.body.nom,
-        image: req.body.dateEvent,
+        user: req.body.user,
+        image: req.body.image,
         dateFile: req.body.dateFile,
     })
 
