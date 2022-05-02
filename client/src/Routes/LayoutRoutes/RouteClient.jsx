@@ -5,6 +5,7 @@ import Calendar from '../../Pages/Dashboard/Calendar'
 import Error from '../../Pages/Error'
 import Expert from '../../Pages/Dashboard/Expert'
 import Main from '../../Pages/DashboardClient/Main'
+import Courrier from '../../Pages/DashboardClient/CourrierList'
 
 import LayoutDashboardClient from "../../Layouts/LayoutDashboard"
 
@@ -30,6 +31,7 @@ const RouteClient = () => (
                 <Route path='/' element={<Main />} />
                 <Route path='/expert' element={<Expert />} />
                 <Route path='/Calendar' element={<Calendar />} />
+                <Route path='/Courrier' element={<Courrier />} />
                 <Route path='/Tutorial' element={<Tutorial />} />
                 <Route path='/Call' element={<Call />} />
                 <Route path='/demande' element={<Demande />} />

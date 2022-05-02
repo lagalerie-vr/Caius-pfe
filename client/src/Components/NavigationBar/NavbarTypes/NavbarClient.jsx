@@ -18,8 +18,9 @@ function NavbarClient() {
         { name: 'Calendrier ', href: '/Calendar' },
         { name: 'Tutoriel', href: '/Tutorial' },
         { name: 'Mes demande', href: '/demande' },
+        { name: 'Mon courrier', href: '/courrier' },
         { name: 'Visioconférence', href: '/call' },
-        { name: 'Autre Service', href: '/autre' },
+        { name: 'Autre service', href: '/autre' },
 
 
     ]

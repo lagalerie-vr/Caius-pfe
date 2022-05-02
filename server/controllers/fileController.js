@@ -33,6 +33,20 @@ const getFile = asyncHandler(async (req, res) => {
     }
 })
 
+const getByUser = asyncHandler(async (req, res) => {
+
+    try {
+        await File.find({ user: req.params.user })
+            .then(result => {
+                res.send(result)
+            })
+    }
+
+    catch (err) {
+        console.log(err)
+    }
+});
+
 
 /* add 1 Event */
 const setFile = asyncHandler(async (req, res) => {
@@ -69,5 +83,5 @@ const deleteFile = asyncHandler(async (req, res) => {
 
 
 module.exports = {
-    deleteFile, setFile, getFile, getFiles
+    deleteFile, setFile, getFile, getFiles, getByUser
 }
