@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import Modal from "../Modals/Modal"
 import API from "../../api/api";
 import axios from "axios";
-import Progress from "../Progress";
+import Progress from "../Stats/Progress";
 
 export default function AddDocument() {
     const [confrimed, setconfrimed] = useState(false);

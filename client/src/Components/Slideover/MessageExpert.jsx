@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import API from '../../api/api';
 import Modal from '../Modals/Modal';
-import Progress from '../Progress';
 import { useUser } from '../../contexts/AuthProvider'
 
 

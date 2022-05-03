@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import API from "../../api/api";
 import useGet from "../../data/Functions/useGet";
-import Progress from "../Progress";
+import Progress from "../Stats/Progress";
 import Modal from '../Modals/Modal';
 import { useUser } from "../../contexts/AuthProvider";
 
