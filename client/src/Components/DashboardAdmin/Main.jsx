@@ -7,9 +7,7 @@ function Main() {
         <>
             <section className="text-gray-600 body-font">
 
-                <div className="flex flex-wrap -m-4 text-center">
-                    <Pie />
-                </div>
+                <Pie />
 
             </section>
         </>
