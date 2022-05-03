@@ -10,11 +10,11 @@ import CreationDetail from '../Slideover/CreationDetail'
 
 function Demande() {
     const user = useUser()
-    const [creation, setCreation] = useState([])
-    const [domiciliation, setDomiciliation] = useState([])
     const [detailDomi, setDetailDomi] = useState(false)
     const [detailCreation, setDetailCreation] = useState(false)
 
+    const [creation, setCreation] = useState([])
+    const [domiciliation, setDomiciliation] = useState([])
     useEffect(() => {
         async function fetchData() {
             if (user) {

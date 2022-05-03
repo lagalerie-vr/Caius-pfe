@@ -9,6 +9,7 @@ import ProtectedRoutes from "../ProtectedRoutes"
 import Call from "../../Pages/JitsiCall/Call"
 import Demande from "../../Pages/DashboardExpert/Demande"
 import Questions from "../../Pages/DashboardExpert/Questions"
+import Main from "../../Pages/DashboardExpert/Main"
 
 
 const RouteExpert = () => (
@@ -16,7 +17,7 @@ const RouteExpert = () => (
     <Routes>
         <Route path="/" element={<ProtectedRoutes />}>
             <Route path="/" element={<LayoutDashboardExpert />}>
-                <Route path='/' element={<Page />} />
+                <Route path='/' element={<Main />} />
                 <Route path='/demande' element={<Demande />} />
                 <Route path='/depot' element={<Page />} />
                 <Route path='/devis' element={<Questions />} />
