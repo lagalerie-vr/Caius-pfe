@@ -1,29 +1,44 @@
 import { Link } from 'react-router-dom'
 import { CursorClickIcon, MailOpenIcon, UsersIcon } from '@heroicons/react/outline'
 import useGet from '../../data/Functions/useGet'
+import { useUser } from '../../contexts/AuthProvider'
+import { useEffect, useState } from 'react'
+import API from '../../api/api'
 
 
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
 
 
 
-export default function Example() {
-    const Clients = useGet("/users/role/Client")
-    const defaults = useGet("/users/role/default")
-    const Creation = useGet("/creations/state/En Cours de traitement")
-    const Domicilation = useGet("/domiciliation/state/En Cours de traitement")
-    const expert = useGet("/creations/state/Passer a l'Expert")
-    const expert2 = useGet("/domiciliation/state/Passer a l'Expert")
-    const Refuser = useGet("/domiciliation/state/Refuser")
-    const Refuser2 = useGet("/creations/state/Refuser")
+export default function Stats() {
+    const user = useUser()
+
+    useEffect(() => {
+        async function fetchData() {
+            if (user) {
+                setDocuments((await API.get(`/files/user/${user._id}`)).data)
+            }
+        }
+        fetchData()
+    }, [user])
+
+    const [Documents, setDocuments] = useState([])
+
+    const [creation, setCreation] = useState([])
+    const [domiciliation, setDomiciliation] = useState([])
+
+    useEffect(() => {
+        async function fetchData() {
+            if (user) {
+                setCreation((await API.get(`/creations/user/${user._id}`)).data)
+                setDomiciliation((await API.get(`/domiciliation/user/${user._id}`)).data)
+            }
+        }
+        fetchData()
+    }, [user])
 
     const stats = [
-        { id: 1, name: 'N° Client', stat: Clients.length + defaults.length, icon: UsersIcon, link: "/Users" },
-        { id: 2, name: 'N° Demande en attente', stat: Creation.length + Domicilation.length, icon: MailOpenIcon, link: "/demande" },
-        { id: 3, name: "N° Demande passer a l'expert", stat: expert.length + expert2.length, icon: CursorClickIcon, link: "/demande" },
-        { id: 3, name: "N° Demande des demande refuser par l'expert", stat: Refuser2.length + Refuser.length, icon: CursorClickIcon, link: "/demande" },
+        { id: 1, name: 'Mes Courrier', stat: Documents.length, icon: UsersIcon, link: "/courrier" },
+        { id: 2, name: 'N° Demande effectué', stat: creation.length + domiciliation.length, icon: MailOpenIcon, link: "/demande" },
     ]
 
     return (
@@ -53,7 +68,8 @@ export default function Example() {
                     </div>
                 ))}
             </dl>
-            <hr className='mt-4 mb*4' />
+            <hr className='mt-4 mb-4' />
+
         </div>
     )
 }

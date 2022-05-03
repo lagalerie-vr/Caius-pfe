@@ -1,4 +1,4 @@
-import Pie from '../Stats/PieChart'
+import Stats from '../Stats/StatsAdmin'
 
 function Main() {
 
@@ -7,7 +7,7 @@ function Main() {
         <>
             <section className="text-gray-600 body-font">
 
-                <Pie />
+                <Stats />
 
             </section>
         </>
