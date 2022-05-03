@@ -152,7 +152,7 @@ function Courrier() {
                                                 id="file"
                                                 name="file"
                                                 type="file"
-                                                accept=".jpg, .jpeg, .png .pdf"
+                                                accept=".jpg, .jpeg, .png, .pdf"
                                                 className="sr-only"
                                                 onChange={e => uploadImage(e.target.files[0])}
                                                 required
