@@ -13,6 +13,7 @@ function classNames(...classes) {
 export default function Stats() {
     const Clients = useGet("/users/role/Client")
     const defaults = useGet("/users/role/default")
+
     const Creation = useGet("/creations/state/En Cours de traitement")
     const Domicilation = useGet("/domiciliation/state/En Cours de traitement")
 
@@ -27,8 +28,12 @@ export default function Stats() {
     const stats = [
         { id: 1, name: 'N° Client', stat: Clients.length + defaults.length, icon: UsersIcon, link: "/Users" },
         { id: 2, name: 'N° Demande en attente', stat: Creation.length + Domicilation.length, icon: MailOpenIcon, link: "/demande" },
+
+        { id: 5, name: "N° des Demande passer par les client", stat: Creation.length + Domicilation.length + expert.length + expert2.length + Refuser2.length + Refuser.length + Accepted2.length + Accepted.length, icon: CursorClickIcon, link: "/demande" },
+
         { id: 3, name: "N° Demande passer a l'expert", stat: expert.length + expert2.length, icon: CursorClickIcon, link: "/demande" },
-        { id: 3, name: "N° Demande des demande refuser par l'expert", stat: Refuser2.length + Refuser.length, icon: CursorClickIcon, link: "/demande" },
+        { id: 4, name: "N° Demande des demandes acceptées par l'expert", stat: Accepted2.length + Accepted.length, icon: CursorClickIcon, link: "/demande" },
+        { id: 6, name: "N° Demande des demandes refuser par l'expert", stat: Refuser2.length + Refuser.length, icon: CursorClickIcon, link: "/demande" },
     ]
 
     const data01 = [

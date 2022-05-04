@@ -11,13 +11,13 @@ function App({ selected }) {
 
   useEffect(() => {
     if (selected) {
-      setClientName(selected.clientName);
+      setClientName(selected.nom);
       setClientPhone(selected.clientPhone);
-      setPack(selected.pack);
-      setDescription(selected.description);
-      setPrix(selected.prix);
-      setInvoiceNumber(selected.id)
-      setInvoiceDate((new Date()).toDateString())
+      setPack("Creation");
+      setDescription(selected.recherche);
+      setPrix("60");
+      setInvoiceNumber(selected._id)
+      setInvoiceDate(selected.createdAt)
     }
   }, [selected])
 

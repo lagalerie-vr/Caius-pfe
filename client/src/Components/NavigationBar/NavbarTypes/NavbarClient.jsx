@@ -21,8 +21,6 @@ function NavbarClient() {
         { name: 'Mon courrier', href: '/courrier' },
         { name: 'Visioconférence', href: '/call' },
         { name: 'Autre service', href: '/autre' },
-
-
     ]
 
     const userNavigation = [

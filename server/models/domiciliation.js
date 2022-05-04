@@ -39,6 +39,9 @@ const domiciliationSchema = mongoose.Schema({
     }
 
 },
+    {
+        timestamps: true
+    }
 );
 
 module.exports = Domiciliation = mongoose.model('domiciliation', domiciliationSchema)

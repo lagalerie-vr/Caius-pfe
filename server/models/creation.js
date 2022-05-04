@@ -57,6 +57,9 @@ const creationSchema = mongoose.Schema({
         default: "En Cours de traitement",
     }
 },
+    {
+        timestamps: true
+    }
 );
 
 module.exports = Creation = mongoose.model('creation', creationSchema)
