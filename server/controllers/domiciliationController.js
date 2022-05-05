@@ -53,7 +53,7 @@ const updateRole = asyncHandler(async (req, res) => {
 const getDomiciliations = asyncHandler(async (req, res) => {
 
     try {
-        await Domiciliation.find({})
+        await Domiciliation.find({}).populate()
             .then(result => {
                 res.send(result)
             })
@@ -94,6 +94,10 @@ const setDomiciliation = asyncHandler(async (req, res) => {
         adresse: req.body.adresse,
         user: req.body.user,
         state: req.body.state,
+        rne: req.body.rne,
+        fisc: req.body.fisc,
+        cin: req.body.cin,
+        cinLink: req.body.cinLink
     })
 
     try {

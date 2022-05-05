@@ -1,15 +1,27 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useGet from '../../data/Functions/useGet'
 
 import Slideover from '../../Layouts/Slideover'
 import ContractPdf from '../Pdf/Contract'
+import { useUser } from '../../contexts/AuthProvider';
+import API from '../../api/api';
 
 
 
 function Contract() {
 
-    const domiciliation = useGet("/Domiciliation/")
+    const user = useUser()
 
+    useEffect(() => {
+        async function fetchData() {
+            if (user) {
+                setDomiciliation((await API.get(`/domiciliation/user/${user._id}`)).data)
+            }
+        }
+        fetchData()
+    }, [user])
+
+    const [domiciliation, setDomiciliation] = useState([])
 
     const [open, setOpen] = useState(false)
     const [openView, setOpenView] = useState(false)

@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from "react"
-import ClientDetails from "./ClientDetails"
-import Dates from "./Dates"
-import Footer from "./Footer"
-import Header from "./Header"
-import Table from "./Table"
+import ClientDetails from "./FactureComponents/ClientDetails"
+import Dates from "./FactureComponents/Dates"
+import Footer from "./FactureComponents/Footer"
+import Header from "./FactureComponents/Header"
+import Table from "./FactureComponents/Table"
 import ReactToPrint from "react-to-print"
 
 function App({ selected }) {

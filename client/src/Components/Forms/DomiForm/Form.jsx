@@ -7,7 +7,9 @@ import Form1 from "./Steps/1";
 import Form2 from "./Steps/2";
 import Form3 from "./Steps/3";
 import Form4 from "./Steps/4"
-import Payment from "../payment"
+import Form5 from "./Steps/5"
+import Form6 from "./Steps/6"
+import Form7 from "./Steps/7"
 import Final from "./Steps/Final";
 
 function Form() {
@@ -19,6 +21,9 @@ function Form() {
         "Form2",
         "Form3",
         "Form4",
+        "Form5",
+        "Form6",
+        "Form7",
         "Final"
     ];
 
@@ -34,8 +39,13 @@ function Form() {
             case 4:
                 return <Form4 />;
             case 5:
-                return <Final />;
-            default:
+                return <Form5 />;
+            case 6:
+                return <Form6 />
+            case 7:
+                return <Form7 />
+            case 8:
+                return <Final />
         }
     };
 

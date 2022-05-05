@@ -1,28 +1,26 @@
 import { useUser } from "../../../../contexts/AuthProvider";
 import { useStepperContext } from "../../../../contexts/StepperContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export default function Form() {
 
     const user = useUser()
 
-    const [done, setDone] = useState(false)
+    useEffect(() => {
+        id()
+    }, [user])
+
 
     const { userData, setUserData } = useStepperContext();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUserData({ ...userData, [name]: value });
-        if (!done) {
-            id()
-        }
     };
 
     async function id() {
         await setUserData({ ...userData, user: user._id });
-        setDone(true)
-
     }
     const options = [
         "",

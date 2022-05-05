@@ -23,6 +23,26 @@ const domiciliationSchema = mongoose.Schema({
         required: true,
     },
 
+    cin: {
+        type: String,
+        required: true,
+    },
+
+    cinLink: {
+        type: String,
+        required: true,
+    },
+
+    fisc: {
+        type: String,
+        required: true,
+    },
+
+    rne: {
+        type: String,
+        required: true,
+    },
+
     adresse: {
         type: String,
         required: true,
@@ -37,6 +57,7 @@ const domiciliationSchema = mongoose.Schema({
         type: String,
         default: "En Cours de traitement",
     }
+
 
 },
     {

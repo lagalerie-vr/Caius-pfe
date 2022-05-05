@@ -19,6 +19,7 @@ import StatusForm from "../../Pages/Forms/StatusForm"
 import Demande from "../../Pages/Dashboard/Demande"
 import Facture from "../../Pages/Dashboard/Facture"
 import Settings from '../../Pages/Dashboard/Settings'
+import Contract from "../../Pages/Dashboard/Contract"
 
 
 
@@ -35,6 +36,7 @@ const RouteClient = () => (
                 <Route path='/Tutorial' element={<Tutorial />} />
                 <Route path='/Call' element={<Call />} />
                 <Route path='/demande' element={<Demande />} />
+                <Route path='/Contract' element={<Contract />} />
                 <Route path='/autre' element={<Autre />} />
                 <Route path='/facture' element={<Facture />} />
                 <Route path='/CreationForm' element={<CreationForm />} />

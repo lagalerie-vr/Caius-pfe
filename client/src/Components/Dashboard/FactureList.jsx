@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import useGet from '../../data/Functions/useGet'
 
 import Slideover from '../../Layouts/Slideover'
-import Facture from '../Facture/Facture'
+import Facture from '../Pdf/Facture'
 import { useUser } from '../../contexts/AuthProvider';
 import API from '../../api/api';
 
