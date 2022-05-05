@@ -8,8 +8,8 @@ import Facture from '../Pdf/Facture'
 
 function FactureList() {
 
-    const creation = useGet("/creations/state/Acceptée")
-    const domiciliation = useGet("/Domiciliation/state/Acceptée")
+    const creation = useGet("/creations")
+    const domiciliation = useGet("/Domiciliation")
 
 
     const [open, setOpen] = useState(false)
@@ -50,7 +50,7 @@ function FactureList() {
                                                 scope="col"
                                                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                             >
-                                                Responsable
+                                                Domaine
                                             </th>
                                             <th
                                                 scope="col"
@@ -63,7 +63,7 @@ function FactureList() {
                                                 scope="col"
                                                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                             >
-                                                Numéro
+                                                Local
                                             </th>
 
                                             <th scope="col" className="relative px-6 py-3">
@@ -89,12 +89,14 @@ function FactureList() {
                                                 </td>
 
 
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                    <a
-                                                        className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-indigo-700"
-                                                    >
-                                                        {listitem.nomGerant}
-                                                    </a></td>
+                                                <td className="px-6 py-4 whitespace-nowrap">
+                                                    <div className="flex items-center">
+                                                        <div>
+                                                            <div className="text-sm font-medium text-gray-900"> {listitem.nomGerant} </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{listitem.siege}</td>
 
 
