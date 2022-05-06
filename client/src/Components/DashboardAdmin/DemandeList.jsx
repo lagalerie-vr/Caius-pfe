@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import API from '../../api/api';
 import useGet from '../../data/Functions/useGet'
 import Modal from '../Modals/Modal';
@@ -12,6 +12,25 @@ function Demande() {
     const [selected, setSelected] = useState("")
     const [detailDomi, setDetailDomi] = useState(false)
     const [detailCreation, setDetailCreation] = useState(false)
+
+
+    const [demandes, setDemandes] = useState("Tous les Demandes")
+    const [demandeCreation, setDemandeCreation] = useState([])
+    const [demandeDomiciliation, setDemandeDomiciliation] = useState([])
+
+    useEffect(() => {
+        async function demandesPick() {
+            if (demandes === "Tous les Demandes") {
+                setDemandeCreation((await API.get('/creations')).data)
+                setDemandeDomiciliation((await API.get('/domiciliation')).data)
+            } else {
+                setDemandeCreation((await API.get(`/creations/state/${demandes}`)).data)
+                setDemandeDomiciliation((await API.get(`/Domiciliation/state/${demandes}`)).data)
+            }
+        }
+        demandesPick()
+    }, [demandes])
+
 
     const creationDelete = (id, e) => {
         e.preventDefault();
@@ -56,18 +75,35 @@ function Demande() {
             console.log(error)
         }
     }
-
-    const demandeCreation = useGet('/creations')
-    const demandeDomiciliation = useGet('/domiciliation')
+    const handleChange = ({ currentTarget: input }) => {
+        setDemandes(input.value)
+    }
     return (
         <div>
-            <header className="py-10">
 
+
+            <header className="py-5">
                 <div className="md:flex md:items-center md:justify-between">
                     <h1 className="text-3xl font-bold text-indigo-900">Demande de Creation</h1>
 
                     <div className="flex-1 min-w-0">
                         <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate"></h2>
+                    </div>
+                    <div className="mt-4 flex md:mt-0 md:ml-4">
+                        <div className="col-span-6 sm:col-span-3">
+                            <select
+                                id="role"
+                                name="role"
+                                onChange={handleChange}
+                                className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            >
+                                <option>Tous les Demandes</option>
+                                <option>En Cours de traitement</option>
+                                <option>Passer a l'Expert</option>
+                                <option>Acceptée</option>
+                                <option>Refuser</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div className='py-3'></div>
@@ -117,16 +153,11 @@ function Demande() {
 
             </ul >
 
-            <header className="py-10">
+            <header className="py-7">
 
                 <div className="md:flex md:items-center md:justify-between">
                     <h1 className="text-3xl font-bold text-indigo-900">Demande de Domiciliation</h1>
-
-                    <div className="flex-1 min-w-0">
-                        <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate"></h2>
-                    </div>
                 </div>
-                <div className='py-3'></div>
             </header >
 
             <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
