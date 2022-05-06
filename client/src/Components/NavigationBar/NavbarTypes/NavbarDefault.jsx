@@ -17,9 +17,6 @@ function NavbarDefault() {
     ]
 
     const userNavigation = [
-
-        { name: 'Contract', href: '/Contract' },
-        { name: 'Facture', href: '/Facture' },
         { name: 'Settings', href: '/Settings' },
     ]
 

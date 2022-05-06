@@ -10,16 +10,18 @@ import Modal from '../Modals/Modal'
 
 function UserList() {
 
-    let people = useGet("/Users")
 
-    const [role, setRole] = useState("")
-
+    const [role, setRole] = useState("Tous les utilisateurs")
+    const [people, setPeople] = useState([])
     useEffect(() => {
-        if (role === "Tous les utilisateurs") {
-            people = API.get("/Users")
-        } else {
-            people = API.get(`/users/role/${role}`)
+        async function RolePick() {
+            if (role === "Tous les utilisateurs") {
+                setPeople((await API.get("/Users")).data)
+            } else {
+                setPeople((await API.get(`/users/role/${role}`)).data)
+            }
         }
+        RolePick()
     }, [role])
 
     const [confrimed, setconfrimed] = useState(null);
@@ -59,7 +61,6 @@ function UserList() {
                             <select
                                 id="role"
                                 name="role"
-                                value={role}
                                 onChange={handleChange}
                                 className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                             >

@@ -13,7 +13,7 @@ export default function Navbar() {
             return <NavbarExpert />;
         case "Client":
             return <NavbarClient />;
-        case "default":
+        default:
             return <NavbarDefault />;
     }
 }

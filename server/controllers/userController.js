@@ -128,7 +128,7 @@ const setUser = asyncHandler(async (req, res) => {
     if (user)
         return res
             .status(409)
-            .send({ message: "User with given email already Exist!" });
+            .send({ message: "email déja utilisé!" });
 
     const salt = await bcrypt.genSalt();
     const hashPassword = await bcrypt.hash(req.body.password, salt);
