@@ -1,8 +1,8 @@
 import { useStepperContext } from "../../../../contexts/StepperContext";
 import locals from '../../../../data/adresse.json'
+import { useEffect } from "react";
 
-
-export default function Form() {
+export default function Form({ setIsValid, step }) {
 
 
     const { userData, setUserData } = useStepperContext();
@@ -11,6 +11,11 @@ export default function Form() {
         const { name, value } = e.target;
         setUserData({ ...userData, [name]: value });
     };
+    useEffect(() => {
+        if (userData["adresse"]) {
+            setIsValid(step);
+        }
+    }, [userData])
     return (
         <div className="flex flex-col ">
             <h1 className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">

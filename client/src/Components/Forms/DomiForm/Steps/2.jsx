@@ -1,12 +1,19 @@
 import { useStepperContext } from "../../../../contexts/StepperContext";
+import { useEffect } from "react";
 
-export default function Form() {
+export default function Form({ setIsValid, step }) {
     const { userData, setUserData } = useStepperContext();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUserData({ ...userData, [name]: value });
     };
+
+    useEffect(() => {
+        if (userData["abonnement"]) {
+            setIsValid(step);
+        }
+    }, [userData])
 
 
     return (

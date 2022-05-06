@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useStepperContext } from "../../../../contexts/StepperContext";
 import Progress from '../../../Stats/Progress'
 
-export default function Form() {
+export default function Form({ setIsValid, step }) {
 
     const { userData, setUserData } = useStepperContext();
 
@@ -19,6 +19,11 @@ export default function Form() {
 
         setLoading(false)
     }
+    useEffect(() => {
+        if (userData["rne"]) {
+            setIsValid(step);
+        }
+    }, [userData])
 
 
     return (

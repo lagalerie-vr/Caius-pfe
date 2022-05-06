@@ -1,6 +1,6 @@
 import { useStepperContext } from "../../../../contexts/StepperContext";
-
-export default function Form() {
+import { useEffect } from "react";
+export default function Form({ setIsValid, step }) {
     const { userData, setUserData } = useStepperContext();
 
     const handleChange = (e) => {
@@ -8,6 +8,11 @@ export default function Form() {
         setUserData({ ...userData, [name]: value });
     };
 
+    useEffect(() => {
+        if (userData["cin"] && userData["fisc"]) {
+            setIsValid(step);
+        }
+    }, [userData])
 
     return (
         <div className="flex flex-col ">

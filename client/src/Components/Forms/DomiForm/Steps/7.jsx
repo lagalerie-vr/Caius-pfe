@@ -2,12 +2,19 @@ import axios from "axios";
 import { useState } from "react";
 import { useStepperContext } from "../../../../contexts/StepperContext";
 import Progress from '../../../Stats/Progress'
+import { useEffect } from "react";
 
-export default function Form() {
+export default function Form({ setIsValid, step }) {
 
     const { userData, setUserData } = useStepperContext();
 
     const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (userData["cinLink"]) {
+            setIsValid(step);
+        }
+    }, [userData])
 
     const uploadCin = async (file) => {
         const form = new FormData()

@@ -1,12 +1,19 @@
 import { useStepperContext } from "../../../../contexts/StepperContext";
-
-export default function Form() {
+import { useEffect } from "react";
+export default function Form({ setIsValid, step }) {
     const { userData, setUserData } = useStepperContext();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUserData({ ...userData, [name]: value });
     };
+
+    useEffect(() => {
+        if (userData["reexpedition"]) {
+            setIsValid(step);
+        }
+    }, [userData])
+
     return (
         <div className="flex flex-col ">
             <h1 className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">

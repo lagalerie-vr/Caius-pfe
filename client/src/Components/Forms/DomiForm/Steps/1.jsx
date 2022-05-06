@@ -1,9 +1,9 @@
 import { useUser } from "../../../../contexts/AuthProvider";
 import { useStepperContext } from "../../../../contexts/StepperContext";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { isLibelle } from "../../../../functions/VerifData";
 
-
-export default function Form() {
+export default function Form({ setIsValid, step }) {
 
     const user = useUser()
 
@@ -18,6 +18,12 @@ export default function Form() {
         const { name, value } = e.target;
         setUserData({ ...userData, [name]: value });
     };
+
+    useEffect(() => {
+        if (isLibelle(userData["nom"]) && userData["forme"]) {
+            setIsValid(step);
+        }
+    }, [userData])
 
     async function id() {
         await setUserData({ ...userData, user: user._id });
@@ -61,7 +67,7 @@ export default function Form() {
                         onChange={handleChange}
                     >
                         {options.map((option) => (
-                            <option>{option}</option>
+                            <option >{option}</option>
                         ))}
                     </select>
                 </div>
