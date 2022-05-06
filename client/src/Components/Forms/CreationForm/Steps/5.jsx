@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useStepperContext } from "../../../../contexts/StepperContext";
 import Progress from '../../../Stats/Progress'
 
-export default function Form() {
+export default function Form({ setIsValid, step }) {
 
     const { userData, setUserData } = useStepperContext();
 
@@ -22,6 +22,13 @@ export default function Form() {
         const { name, value } = e.target;
         setUserData({ ...userData, [name]: value });
     };
+
+    useEffect(() => {
+        if ((userData["cin"]) && userData["cinLink"]) {
+            setIsValid(step);
+        }
+    }, [userData])
+
 
     return (
         <div className="flex flex-col ">

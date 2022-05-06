@@ -10,6 +10,8 @@ import Final from "./Steps/Final";
 
 function Form() {
     const [currentStep, setCurrentStep] = useState(1);
+    const [isValid, setIsValid] = useState(0);
+
 
     const steps = [
         "Account Information",

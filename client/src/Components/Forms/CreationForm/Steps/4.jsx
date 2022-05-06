@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import { useStepperContext } from "../../../../contexts/StepperContext";
 
-export default function Form() {
+export default function Form({ setIsValid, step }) {
 
 
     const { userData, setUserData } = useStepperContext();
@@ -11,6 +12,11 @@ export default function Form() {
         setUserData({ ...userData, [name]: value });
     };
 
+    useEffect(() => {
+        if ((userData["siege"]) && userData["recherche"]) {
+            setIsValid(step);
+        }
+    }, [userData])
 
 
 

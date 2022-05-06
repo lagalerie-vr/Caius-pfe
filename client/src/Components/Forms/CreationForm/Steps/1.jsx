@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useUser } from "../../../../contexts/AuthProvider";
 import { useStepperContext } from "../../../../contexts/StepperContext";
 
-export default function Form() {
+export default function Form({ setIsValid, step }) {
     const user = useUser()
 
 
@@ -22,6 +22,12 @@ export default function Form() {
         await setUserData({ ...userData, user: user._id });
 
     }
+
+    useEffect(() => {
+        if ((userData["nom"]) && userData["domaine"]) {
+            setIsValid(step);
+        }
+    }, [userData])
 
 
     const options = [

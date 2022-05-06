@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Stepper from "./FormComponents/Stepper";
 import StepperControl from "./FormComponents/StepperControl";
 import { UseContextProvider } from "../../../contexts/StepperContext";
@@ -13,6 +13,8 @@ import Final from "./Steps/Final";
 
 function Form() {
     const [currentStep, setCurrentStep] = useState(1);
+    const [isValid, setIsValid] = useState(0);
+
 
     const steps = [
         "Form1",
@@ -28,30 +30,34 @@ function Form() {
     const displayStep = (step) => {
         switch (step) {
             case 1:
-                return <Form1 />;
+                return <Form1 setIsValid={setIsValid} step={1} />;
             case 2:
-                return <Form2 />;
+                return <Form2 setIsValid={setIsValid} step={2} />;
             case 3:
-                return <Form3 />;
+                return <Form3 setIsValid={setIsValid} step={3} />;
             case 4:
-                return <Form4 />;
+                return <Form4 setIsValid={setIsValid} step={4} />;
             case 5:
-                return <Form5 />;
+                return <Form5 setIsValid={setIsValid} step={5} />;
             case 6:
-                return <Form6 />;
+                return <Form6 setIsValid={setIsValid} step={6} />
             case 7:
-                return <Final />;
-            default:
+                return <Final setIsValid={setIsValid} step={8} />
         }
     };
 
     const handleClick = (direction) => {
         let newStep = currentStep;
 
-        direction === "next" ? newStep++ : newStep--;
+        if (currentStep === isValid && direction === "next") { newStep++ }
+        if (direction !== "next") { newStep--; }
         // check if steps are within bounds
         newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
     };
+
+    useEffect(() => {
+        console.log(isValid)
+    }, [isValid])
 
     return (
         <div >

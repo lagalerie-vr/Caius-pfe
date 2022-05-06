@@ -1,12 +1,19 @@
+import { useEffect } from "react";
 import { useStepperContext } from "../../../../contexts/StepperContext";
 
-export default function Form() {
+export default function Form({ setIsValid, step }) {
     const { userData, setUserData } = useStepperContext();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUserData({ ...userData, [name]: value });
     };
+
+    useEffect(() => {
+        if ((userData["associes"]) && userData["capital"]) {
+            setIsValid(step);
+        }
+    }, [userData])
     return (
         <div className="flex flex-col ">
             <h1 className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
@@ -35,7 +42,7 @@ export default function Form() {
                     value={userData["capital"] || ""}
                     name="capital"
                     required
-                    placeholder="EX : 1000 DT"
+                    placeholder="> 1000 DT"
                     className="w-full appearance-none p-1 px-2 text-gray-800 outline-none"
                 />
             </div>

@@ -1,12 +1,19 @@
+import { useEffect } from "react";
 import { useStepperContext } from "../../../../contexts/StepperContext";
 
-export default function Form() {
+export default function Form({ setIsValid, step }) {
     const { userData, setUserData } = useStepperContext();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUserData({ ...userData, [name]: value });
     };
+
+    useEffect(() => {
+        if ((userData["typeGerant"])) {
+            setIsValid(step);
+        }
+    }, [userData])
 
 
     return (
