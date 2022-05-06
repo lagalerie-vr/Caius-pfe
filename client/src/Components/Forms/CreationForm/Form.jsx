@@ -7,6 +7,8 @@ import Form1 from "./Steps/1";
 import Form2 from "./Steps/2";
 import Form3 from "./Steps/3";
 import Form4 from "./Steps/4"
+import Form5 from "./Steps/5"
+import Form6 from "./Steps/6"
 import Final from "./Steps/Final";
 
 function Form() {
@@ -32,6 +34,10 @@ function Form() {
             case 4:
                 return <Form4 />;
             case 5:
+                return <Form5 />;
+            case 6:
+                return <Form6 />;
+            case 7:
                 return <Final />;
             default:
         }

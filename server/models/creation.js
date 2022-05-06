@@ -6,7 +6,6 @@ const creationSchema = mongoose.Schema({
     nom: {
         type: String,
         required: true,
-        unique: true,
     },
 
     domaine: {
@@ -50,6 +49,16 @@ const creationSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "user"
+    },
+    cinLink: {
+        type: String,
+        required: true,
+
+
+    },
+    comptable: {
+        type: String,
+        required: true,
     },
 
     state: {
