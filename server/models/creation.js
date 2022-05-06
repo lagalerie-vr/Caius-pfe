@@ -54,6 +54,10 @@ const creationSchema = mongoose.Schema({
         type: String,
         required: true,
 
+    },
+    cin: {
+        type: String,
+        required: true,
 
     },
     comptable: {

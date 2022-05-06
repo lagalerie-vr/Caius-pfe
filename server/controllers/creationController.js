@@ -159,7 +159,8 @@ const setCreation = asyncHandler(async (req, res) => {
         user: req.body.user,
         state: req.body.state,
         comptable: req.body.comptable,
-        cinLink: req.body.cinLink
+        cinLink: req.body.cinLink,
+        cin: req.body.cin
     })
 
     try {

@@ -7,7 +7,6 @@ export default function Form() {
 
     const { userData, setUserData } = useStepperContext();
 
-    const [url, setUrl] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const uploadComptable = async (file) => {
