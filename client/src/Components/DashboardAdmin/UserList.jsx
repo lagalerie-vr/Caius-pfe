@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AddUser from '../../Components/Slideover/AddUser'
 import useGet from '../../data/Functions/useGet'
 import API from '../../api/api'
@@ -8,9 +8,19 @@ import EditUser from '../Slideover/EditUser'
 import Modal from '../Modals/Modal'
 
 
-
-
 function UserList() {
+
+    let people = useGet("/Users")
+
+    const [role, setRole] = useState("")
+
+    useEffect(() => {
+        if (role === "Tous les utilisateurs") {
+            people = API.get("/Users")
+        } else {
+            people = API.get(`/users/role/${role}`)
+        }
+    }, [role])
 
     const [confrimed, setconfrimed] = useState(null);
     const [selected, setSelected] = useState("")
@@ -29,8 +39,10 @@ function UserList() {
         }
     }
 
-    const people = useGet("/Users")
 
+    const handleChange = ({ currentTarget: input }) => {
+        setRole(input.value)
+    }
 
 
     return (
@@ -41,6 +53,22 @@ function UserList() {
                 <div className="md:flex md:items-center md:justify-between">
                     <div className="flex-1 min-w-0">
                         <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate"></h2>
+                    </div>
+                    <div className="mt-4 flex md:mt-0 md:ml-4">
+                        <div className="col-span-6 sm:col-span-3">
+                            <select
+                                id="role"
+                                name="role"
+                                value={role}
+                                onChange={handleChange}
+                                className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            >
+                                <option>Tous les utilisateurs</option>
+                                <option>Client</option>
+                                <option>Expert</option>
+                                <option>Admin</option>
+                            </select>
+                        </div>
                     </div>
                     <div className="mt-4 flex md:mt-0 md:ml-4">
                         <button
@@ -56,6 +84,7 @@ function UserList() {
                             title="Ajouter un utilisateur"
                             children={<AddUser />} />
                     </div>
+
                 </div>
 
                 <div className='py-3'></div>

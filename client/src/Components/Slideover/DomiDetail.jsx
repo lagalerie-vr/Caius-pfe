@@ -4,8 +4,6 @@ import Modal from '../Modals/Modal';
 export default function MessageDetail({ selected }) {
 
 
-    const [confrimed, setconfrimed] = useState(false);
-
 
     return (
         <div className="bg-white shadow overflow-hidden sm:rounded-lg">
@@ -77,13 +75,6 @@ export default function MessageDetail({ selected }) {
 
                 </dl>
             </div>
-
-            {
-                confrimed &&
-                <Modal
-                    open={confrimed}
-                    setOpen={setconfrimed} />
-            }
 
 
 
