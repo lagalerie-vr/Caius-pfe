@@ -14,6 +14,9 @@ import Final from "./Steps/Final";
 function Form() {
     const [currentStep, setCurrentStep] = useState(1);
     const [isValid, setIsValid] = useState(0);
+    const [error, setError] = useState(false)
+
+
 
 
     const steps = [
@@ -47,9 +50,13 @@ function Form() {
     };
 
     const handleClick = (direction) => {
+        setError(false)
         let newStep = currentStep;
 
         if (currentStep === isValid && direction === "next") { newStep++ }
+        if (currentStep !== isValid && direction === "next") {
+            setError(true)
+        }
         if (direction !== "next") { newStep--; }
         // check if steps are within bounds
         newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
@@ -67,6 +74,8 @@ function Form() {
 
                 <div className="my-10 p-10 ">
                     <UseContextProvider>{displayStep(currentStep)}</UseContextProvider>
+                    {error && <span className="mt-5 bg-white text-red-500" >veuillez remplir tous les champs demandés</span>}
+
                 </div>
             </div>
 
