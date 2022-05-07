@@ -164,6 +164,7 @@ const loginUser = asyncHandler(async (req, res) => {
             req.body.password,
             user.password
         );
+
         if (!validPassword)
             return res.status(401).send({ message: " Mot de passe Invalid " });
         const token = user.generateAuthToken();
