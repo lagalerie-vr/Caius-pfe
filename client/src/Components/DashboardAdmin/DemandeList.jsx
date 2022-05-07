@@ -140,7 +140,7 @@ function Demande() {
                                 </a>
                             }
 
-                            <a className="mt-3 ml-3 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-indigo-700 bg-white rounded-lg hover:bg-indigo-100 hover:text-indigo-700"
+                            <a className="mt-3 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-indigo-700 bg-white rounded-lg hover:bg-indigo-100 hover:text-indigo-700"
                                 onClick={(e) => { setDetailCreation(true); setSelected(demande) }}
                             >
                                 Plus de détails
@@ -192,7 +192,7 @@ function Demande() {
                                 </a>
                             }
 
-                            <a className="mt-3 ml-3 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-indigo-700 bg-white rounded-lg hover:bg-indigo-100 hover:text-indigo-700"
+                            <a className="mt-3 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-indigo-700 bg-white rounded-lg hover:bg-indigo-100 hover:text-indigo-700"
                                 onClick={(e) => { setDetailDomi(true); setSelected(demande) }}
                             >
                                 Plus de détails

@@ -16,7 +16,7 @@ function NavbarExpert() {
     ]
 
     const userNavigation = [
-        { name: 'Settings', href: '/Settings' },
+        { name: 'Paramétres', href: '/Settings' },
     ]
 
     function classNames(...classes) {

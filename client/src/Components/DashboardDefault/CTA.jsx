@@ -29,20 +29,20 @@ function CTA() {
                             <div className="mt-8 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-0 lg:grid-cols-2">
                                 <Link
                                     to="/CreationForm"
-                                    className="col-span-1 m-2 text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
+                                    className="col-span-1 m-2 text-center text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
 
                                     Création d'entreprise
 
                                 </Link>
                                 <Link
                                     to="/Domicilitation"
-                                    className="col-span-1  m-2 text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
+                                    className="col-span-1  m-2 text-center text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
 
                                     Domiciliation
                                 </Link>
                                 <Link
                                     to="/statut"
-                                    className="col-span-1  m-2 text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
+                                    className="col-span-1  m-2 text-center text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
 
                                     Création status
 
@@ -50,14 +50,14 @@ function CTA() {
 
                                 <Link
                                     to="/expert"
-                                    className="col-span-1  m-2 text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
+                                    className="col-span-1  m-2 text-center text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
 
                                     Accompagnement
                                 </Link>
 
                                 <Link
                                     to="/expert"
-                                    className="col-span-1  m-2 text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
+                                    className="col-span-1  m-2 text-center text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
 
                                     Evenement
                                 </Link>

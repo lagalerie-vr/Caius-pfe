@@ -51,10 +51,10 @@ function TutorialList() {
         <div>
             <div>
 
-                <header className="py-10">
+                <header className="py-5">
 
                     <div className="md:flex md:items-center md:justify-between">
-                        <h1 className="text-3xl font-bold text-indigo-900">Video</h1>
+                        <h1 className="text-3xl font-bold text-indigo-900">Tutoriel </h1>
 
                         <div className="flex-1 min-w-0">
                             <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate"></h2>
@@ -83,7 +83,6 @@ function TutorialList() {
                                     video={selected} />} />
                         </div>
                     </div>
-                    <div className='py-3'></div>
                 </header>
 
                 <div role="list" className="grid grid-cols-4 gap-x-4 gap-y-8 sm:grid-cols-4 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
@@ -121,9 +120,9 @@ function TutorialList() {
                 </div>
 
 
-                <div className="flex flex-col py-10">
+                <div className="flex flex-col">
 
-                    <header className="py-10">
+                    <header className="py-5">
 
                         <div className="md:flex md:items-center md:justify-between">
                             <h1 className="text-3xl font-bold text-indigo-900">Document Utilities</h1>

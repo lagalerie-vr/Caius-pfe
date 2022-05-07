@@ -27,7 +27,7 @@ function NavbarAdmin() {
 
         { name: 'Contract', href: '/Contract' },
         { name: 'Facture', href: '/Facture' },
-        { name: 'Settings', href: '/Settings' },
+        { name: 'Paramétres', href: '/Settings' },
     ]
 
     function classNames(...classes) {

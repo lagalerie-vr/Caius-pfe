@@ -5,7 +5,7 @@ export default function Main() {
 
     return (
         <Page
-            title="Paramétre"
+            title="Paramétres"
             content={<Settings />}
         />
     )
