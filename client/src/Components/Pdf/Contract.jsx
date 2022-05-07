@@ -41,10 +41,6 @@ function App({ selected }) {
 
   const componentRef = useRef()
 
-  const handlePrint = () => {
-    window.print()
-  }
-
   return (
     <>
 

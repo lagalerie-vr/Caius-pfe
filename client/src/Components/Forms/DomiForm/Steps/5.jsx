@@ -19,11 +19,11 @@ export default function Form({ setIsValid, step, setErrorMessage }) {
     }, [userData])
 
     useEffect(() => {
-        if ((userData["cin"]) && userData["fisc"] && isCin(userData["cin"])) {
+        if (isCin(userData["cin"]) && userData["fisc"]) {
             setIsValid(step);
             setErrorMessage("")
         } else {
-            if (!(userData["cin"]) && !userData["fisc"]) {
+            if (!(userData["cin"]) && !userData["cinLink"]) {
                 setErrorMessage("Veuillez remplir tous les champs demandés")
             } else {
 
@@ -43,6 +43,8 @@ export default function Form({ setIsValid, step, setErrorMessage }) {
             }
         }
     }, [userData])
+
+
 
     return (
         <div className="flex flex-col ">
