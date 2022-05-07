@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import useGet from '../../data/Functions/useGet'
+import FactureDomi from '../Pdf/FactureDomi'
 
 import Slideover from '../../Layouts/Slideover'
 import Facture from '../Pdf/Facture'
@@ -35,7 +35,7 @@ function FactureList() {
                 <header className="py-3">
 
                     <div className="md:flex md:items-center md:justify-between">
-                        <h className="text-3xl font-bold text-indigo-900">Facture des demandes des creation</h>
+                        <h className="text-3xl font-bold text-indigo-900">Facture des demandes de creation</h>
 
                         <div className="flex-1 min-w-0">
                             <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate"></h2>
@@ -115,7 +115,7 @@ function FactureList() {
 
                                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                     <button href="#" className="text-indigo-600 hover:text-indigo-900"
-                                                        onClick={(e) => { setOpenView(true); setSelected(listitem) }}
+                                                        onClick={(e) => { setOpen(true); setSelected(listitem) }}
                                                     >
                                                         Voir facture
                                                     </button>
@@ -126,14 +126,6 @@ function FactureList() {
 
                                     </tbody>
                                 </table>
-                                <Slideover
-                                    open={openView}
-                                    setOpen={setOpenView}
-                                    title="Facture"
-                                    children={
-                                        <Facture
-                                            selected={selected} />
-                                    } />
                             </div>
                         </div>
                     </div>
@@ -144,7 +136,7 @@ function FactureList() {
                 <header className="py-3">
 
                     <div className="md:flex md:items-center md:justify-between">
-                        <h className="text-3xl font-bold text-indigo-900">Facture des demandes des domiciliation</h>
+                        <h className="text-3xl font-bold text-indigo-900">Facture des demandes de domiciliation</h>
 
                         <div className="flex-1 min-w-0">
                             <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate"></h2>
@@ -169,20 +161,13 @@ function FactureList() {
                                                 scope="col"
                                                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                             >
-                                                Responsable
+                                                Forme
                                             </th>
                                             <th
                                                 scope="col"
                                                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                             >
-                                                Mail
-                                            </th>
-
-                                            <th
-                                                scope="col"
-                                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                            >
-                                                Numéro
+                                                Adresse
                                             </th>
 
                                             <th scope="col" className="relative px-6 py-3">
@@ -202,16 +187,18 @@ function FactureList() {
                                                     </div>
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap">
-                                                    <div className="text-sm text-gray-900">{listitem.clientName}</div>
-                                                    <div className="text-sm text-gray-500">{listitem.clientName}</div>
+                                                    <div className="text-sm text-gray-900">{listitem.forme}</div>
                                                 </td>
 
 
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">                                                            <a
-                                                    className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-indigo-700"
-                                                >
-                                                    {listitem.clientName}                                                </a></td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{listitem.clientName}</td>
+
+                                                <td className="px-6 py-4 whitespace-nowrap">
+                                                    <div className="flex items-center">
+                                                        <div className="text-sm font-medium text-gray-900">
+                                                            {listitem.adresse}
+                                                        </div>
+                                                    </div>
+                                                </td>
 
 
 
@@ -228,14 +215,26 @@ function FactureList() {
 
                                     </tbody>
                                 </table>
+
+
                                 <Slideover
                                     open={openView}
                                     setOpen={setOpenView}
-                                    title="Facture"
+                                    title="Facture Domiciliation"
+                                    children={
+                                        <FactureDomi
+                                            selected={selected} />
+                                    } />
+
+                                <Slideover
+                                    open={open}
+                                    setOpen={setOpen}
+                                    title="Facture Creation"
                                     children={
                                         <Facture
                                             selected={selected} />
                                     } />
+
                             </div>
                         </div>
                     </div>

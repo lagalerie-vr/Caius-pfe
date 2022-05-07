@@ -21,9 +21,9 @@ function App({ selected }) {
     if (selected) {
       setClientName(selected.nom);
       setClientPhone(selected.clientPhone);
-      setPack("Creation");
-      setDescription(selected.recherche);
-      setPrix("60");
+      setPack("Domiciliation");
+      setDescription(selected.forme);
+      setPrix(selected.abonnement);
       setInvoiceNumber(selected._id)
       setInvoiceDate(selected.createdAt)
     }
