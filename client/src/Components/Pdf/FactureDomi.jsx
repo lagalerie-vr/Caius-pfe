@@ -5,8 +5,16 @@ import Footer from "./FactureComponents/Footer"
 import Header from "./FactureComponents/Header"
 import Table from "./FactureComponents/Table"
 import ReactToPrint from "react-to-print"
+import useGet from "../../data/Functions/useGet"
 
 function App({ selected }) {
+
+  const user = useGet(`/users/user/${selected.user}`)
+
+  useEffect(() => {
+    setUserName(`${user.nom} ${user.nom}`);
+  }, [user])
+
 
 
   useEffect(() => {
@@ -29,6 +37,8 @@ function App({ selected }) {
 
   const [invoiceNumber, setInvoiceNumber] = useState("")
   const [invoiceDate, setInvoiceDate] = useState("")
+  const [userName, setUserName] = useState("")
+
 
   const componentRef = useRef()
 
