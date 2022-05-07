@@ -221,7 +221,7 @@ function FactureList() {
                                     setOpen={setOpenView}
                                     title="Facture"
                                     children={
-                                        <Facture
+                                        <FactureDomi
                                             selected={selected} />
                                     } />
                             </div>
