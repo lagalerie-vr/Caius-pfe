@@ -44,7 +44,7 @@ function App({ selected }) {
         <ReactToPrint
           trigger={() => (
             <button className="bg-indigo-700 ml-5 text-white font-bold py-2 px-8 rounded hover:bg-indigo-200 hover:text-indigo-700 transition-all duration-300">
-              Print / Download
+              Imprimer / Télécharger
             </button>
           )}
           content={() => componentRef.current}
