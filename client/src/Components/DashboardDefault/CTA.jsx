@@ -23,70 +23,53 @@ function CTA() {
                             Pour commencer, sélectionnez le service souhaité.
                         </p>
                         <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
-                            <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
-                                <Link to="/CreationForm">
-                                    <button
-                                        className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8"
-                                    >
-                                        Création d'entreprise
-                                    </button>
+
+
+
+                            <div className="mt-8 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-0 lg:grid-cols-2">
+                                <Link
+                                    to="/CreationForm"
+                                    className="col-span-1 m-2 text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
+
+                                    Création d'entreprise
+
+                                </Link>
+                                <Link
+                                    to="/Domicilitation"
+                                    className="col-span-1  m-2 text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
+
+                                    Domiciliation
+                                </Link>
+                                <Link
+                                    to="/statut"
+                                    className="col-span-1  m-2 text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
+
+                                    Création status
+
                                 </Link>
 
-                                <Link to="/Domicilitation">
-                                    <button
-                                        href="#"
-                                        className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8"
-                                    >
-                                        Domiciliation
-                                    </button>
-                                </Link>
-                            </div>
+                                <Link
+                                    to="/expert"
+                                    className="col-span-1  m-2 text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
 
-                        </div>
-                        <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
-                            <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
-
-                                <Link to="/statut">
-                                    <button
-                                        className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8"
-                                    >
-                                        Création status
-                                    </button>
-                                </Link>
-                                <button
-                                    disabled
-                                    className="flex  cursor-not-allowed items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8"
-                                >
-                                    Comptabilité
-                                </button>
-                            </div>
-
-                        </div>
-                        <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
-                            <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
-                                <Link to="/expert">
-
-                                    <button
-                                        className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8"
-                                    >
-                                        Accompagnement
-                                    </button>
+                                    Accompagnement
                                 </Link>
 
-                                <Link to="/Calendar">
+                                <Link
+                                    to="/expert"
+                                    className="col-span-1  m-2 text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
 
-                                    <button
-                                        className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8"
-                                    >
-                                        Evenement
-                                    </button>
+                                    Evenement
                                 </Link>
                             </div>
 
                         </div>
                     </div>
                 </div>
-            </div ></div>
+            </div >
+
+
+        </div>
     )
 }
 
