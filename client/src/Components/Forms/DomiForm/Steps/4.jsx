@@ -2,7 +2,7 @@ import { useStepperContext } from "../../../../contexts/StepperContext";
 import locals from '../../../../data/adresse.json'
 import { useEffect } from "react";
 
-export default function Form({ setIsValid, step }) {
+export default function Form({ setIsValid, step, setErrorMessage }) {
 
 
     const { userData, setUserData } = useStepperContext();
@@ -16,6 +16,19 @@ export default function Form({ setIsValid, step }) {
             setIsValid(step);
         }
     }, [userData])
+
+    useEffect(() => {
+        if (userData["adresse"]) {
+            setIsValid(step);
+            setErrorMessage("")
+
+        } else {
+            if (!userData["adresse"]) {
+                setErrorMessage("Veuillez sélectionner l'adresse de domicilitation")
+            }
+        }
+    }, [userData])
+
     return (
         <div className="flex flex-col ">
             <h1 className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">

@@ -15,6 +15,7 @@ function Form() {
     const [currentStep, setCurrentStep] = useState(1);
     const [isValid, setIsValid] = useState(0);
     const [error, setError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
 
 
 
@@ -33,19 +34,19 @@ function Form() {
     const displayStep = (step) => {
         switch (step) {
             case 1:
-                return <Form1 setIsValid={setIsValid} step={1} />;
+                return <Form1 setIsValid={setIsValid} step={1} setErrorMessage={setErrorMessage} />;
             case 2:
-                return <Form2 setIsValid={setIsValid} step={2} />;
+                return <Form2 setIsValid={setIsValid} step={2} setErrorMessage={setErrorMessage} />;
             case 3:
-                return <Form3 setIsValid={setIsValid} step={3} />;
+                return <Form3 setIsValid={setIsValid} step={3} setErrorMessage={setErrorMessage} />;
             case 4:
-                return <Form4 setIsValid={setIsValid} step={4} />;
+                return <Form4 setIsValid={setIsValid} step={4} setErrorMessage={setErrorMessage} />;
             case 5:
-                return <Form5 setIsValid={setIsValid} step={5} />;
+                return <Form5 setIsValid={setIsValid} step={5} setErrorMessage={setErrorMessage} />;
             case 6:
-                return <Form6 setIsValid={setIsValid} step={6} />
+                return <Form6 setIsValid={setIsValid} step={6} setErrorMessage={setErrorMessage} />;
             case 7:
-                return <Final setIsValid={setIsValid} step={8} />
+                return <Final setIsValid={setIsValid} step={8} setErrorMessage={setErrorMessage} />;
         }
     };
 
@@ -74,20 +75,33 @@ function Form() {
 
                 <div className="my-10 p-10 ">
                     <UseContextProvider>{displayStep(currentStep)}</UseContextProvider>
-                    {error && <span className="mt-5 bg-white text-red-500" >veuillez remplir tous les champs demandés</span>}
+
+
+                    {(error && errorMessage) &&
+                        <div className=" bg-red-50 p-4">
+                            <div>
+                                <p className="text-sm text-red-700">
+                                    {errorMessage}
+                                </p>
+                            </div>
+                        </div>
+                    }
 
                 </div>
             </div>
 
+
             {/* navigation button */}
-            {currentStep !== steps.length && (
-                <StepperControl
-                    handleClick={handleClick}
-                    currentStep={currentStep}
-                    steps={steps}
-                />
-            )}
-        </div>
+            {
+                currentStep !== steps.length && (
+                    <StepperControl
+                        handleClick={handleClick}
+                        currentStep={currentStep}
+                        steps={steps}
+                    />
+                )
+            }
+        </div >
     );
 }
 

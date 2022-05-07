@@ -1,29 +1,33 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useStepperContext } from "../../../../contexts/StepperContext";
 import Progress from '../../../Stats/Progress'
-import { useEffect } from "react";
 
-export default function Form({ setIsValid, step }) {
+export default function Form({ setIsValid, step, setErrorMessage }) {
 
     const { userData, setUserData } = useStepperContext();
 
+    const [url, setUrl] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        if (userData["cinLink"]) {
-            setIsValid(step);
-        }
-    }, [userData])
-
-    const uploadCin = async (file) => {
+    const uploadRne = async (file) => {
         const form = new FormData()
         form.append('file', file)
         form.append("upload_preset", "mindup")
         await axios.post("https://api.cloudinary.com/v1_1/mindup/upload", form)
-            .then(result => setUserData({ ...userData, cinLink: (result.data.secure_url) }))
+            .then(result => setUserData({ ...userData, rne: (result.data.secure_url) }))
+
         setLoading(false)
     }
+    useEffect(() => {
+        if ((userData["rne"])) {
+            setIsValid(step);
+            setErrorMessage("")
+        } else {
+            setErrorMessage("Veuillez envoyer une copie de votre attestation de réservation du raison sociale de l'RNE")
+        }
+    }, [userData])
+
 
 
     return (
@@ -50,14 +54,14 @@ export default function Form({ setIsValid, step }) {
                             htmlFor="file"
                             className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                         >
-                            <span>Copie de votre CIN </span>
+                            <span>Copie de votre attestation de réservation du raison sociale de l'RNE </span>
                             <input
                                 id="file"
                                 name="file"
                                 type="file"
                                 accept=".jpg, .jpeg, .png, .pdf"
                                 className="sr-only"
-                                onChange={e => uploadCin(e.target.files[0])}
+                                onChange={e => uploadRne(e.target.files[0])}
                                 required
                             />
                         </label>

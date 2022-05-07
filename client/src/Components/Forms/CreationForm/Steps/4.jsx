@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useStepperContext } from "../../../../contexts/StepperContext";
 
-export default function Form({ setIsValid, step }) {
+export default function Form({ setIsValid, step, setErrorMessage }) {
 
 
     const { userData, setUserData } = useStepperContext();
@@ -15,6 +15,10 @@ export default function Form({ setIsValid, step }) {
     useEffect(() => {
         if ((userData["siege"]) && userData["recherche"]) {
             setIsValid(step);
+            setErrorMessage("")
+        } else {
+            setErrorMessage("Veuillez selectionez tous les champ")
+
         }
     }, [userData])
 

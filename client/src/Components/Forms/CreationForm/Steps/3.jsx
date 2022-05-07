@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useStepperContext } from "../../../../contexts/StepperContext";
+import { isCapital1000 } from '../../../../functions/VerifData'
 
-export default function Form({ setIsValid, step }) {
+export default function Form({ setIsValid, step, setErrorMessage }) {
     const { userData, setUserData } = useStepperContext();
 
     const handleChange = (e) => {
@@ -10,9 +11,24 @@ export default function Form({ setIsValid, step }) {
     };
 
     useEffect(() => {
-        if ((userData["associes"]) && userData["capital"]) {
+        if ((userData["associes"]) && userData["capital"] && !isCapital1000(parseInt(userData["capital"]))) {
             setIsValid(step);
+            setErrorMessage("")
+
+        } else {
+            if (!(userData["associes"]) && !userData["capital"]) {
+                setErrorMessage("Veuillez remplir tous les champs demandés")
+
+            } else {
+                if (!(userData["capital"])) {
+                    setErrorMessage("Veuillez saisir votre capital")
+                }
+                if (isCapital1000(parseInt(userData["capital"])))
+                    setErrorMessage("Votre capital doit etre >= 1000")
+            }
+
         }
+
     }, [userData])
     return (
         <div className="flex flex-col ">

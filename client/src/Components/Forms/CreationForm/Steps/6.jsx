@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useStepperContext } from "../../../../contexts/StepperContext";
 import Progress from '../../../Stats/Progress'
 
-export default function Form({ setIsValid, step }) {
+export default function Form({ setIsValid, step, setErrorMessage }) {
 
     const { userData, setUserData } = useStepperContext();
 
@@ -22,6 +22,9 @@ export default function Form({ setIsValid, step }) {
     useEffect(() => {
         if ((userData["comptable"])) {
             setIsValid(step);
+            setErrorMessage("")
+        } else {
+            setErrorMessage("Veuillez envoyer une copie d'une procuration au nom du comptable ")
         }
     }, [userData])
 

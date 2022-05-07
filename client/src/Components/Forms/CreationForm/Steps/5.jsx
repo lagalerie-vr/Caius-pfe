@@ -2,8 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useStepperContext } from "../../../../contexts/StepperContext";
 import Progress from '../../../Stats/Progress'
+import { isCin } from '../../../../functions/VerifData'
 
-export default function Form({ setIsValid, step }) {
+export default function Form({ setIsValid, step, setErrorMessage }) {
 
     const { userData, setUserData } = useStepperContext();
 
@@ -24,8 +25,28 @@ export default function Form({ setIsValid, step }) {
     };
 
     useEffect(() => {
-        if ((userData["cin"]) && userData["cinLink"]) {
+        if ((userData["cin"]) && userData["cinLink"] && isCin(userData["cin"])) {
             setIsValid(step);
+            setErrorMessage("")
+        } else {
+            if (!(userData["cin"]) && !userData["cinLink"]) {
+                setErrorMessage("Veuillez remplir tous les champs demandés")
+            } else {
+
+
+                if (!isCin(userData["cin"])) {
+
+                    if (!(userData["cin"])) {
+                        setErrorMessage("Veuillez Saisir votre N° CIN ")
+                    } else {
+                        setErrorMessage("Veuillez verifier votre N° CIN ")
+                    }
+                }
+
+                if (!(userData["cinLink"])) {
+                    setErrorMessage("Veuillez envoyer une copie de votre CIN ")
+                }
+            }
         }
     }, [userData])
 

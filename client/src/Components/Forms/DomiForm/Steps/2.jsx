@@ -1,7 +1,7 @@
 import { useStepperContext } from "../../../../contexts/StepperContext";
 import { useEffect } from "react";
 
-export default function Form({ setIsValid, step }) {
+export default function Form({ setIsValid, step, setErrorMessage }) {
     const { userData, setUserData } = useStepperContext();
 
     const handleChange = (e) => {
@@ -12,6 +12,12 @@ export default function Form({ setIsValid, step }) {
     useEffect(() => {
         if (userData["abonnement"]) {
             setIsValid(step);
+            setErrorMessage("")
+
+        } else {
+            if (!userData["abonnement"]) {
+                setErrorMessage("Veuillez sélectionner votre abonnement")
+            }
         }
     }, [userData])
 
@@ -31,8 +37,8 @@ export default function Form({ setIsValid, step }) {
                         className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                         onChange={handleChange}>
                         <option></option>
-                        <option>Mensuel</option>
-                        <option>Annuel</option>
+                        <option value={60}>Mensuel | 60 DT</option>
+                        <option value={660}>Annuel | 660 DT</option>
 
                     </select>
                 </div>

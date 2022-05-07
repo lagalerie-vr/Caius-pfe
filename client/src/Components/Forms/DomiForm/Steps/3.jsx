@@ -1,6 +1,6 @@
 import { useStepperContext } from "../../../../contexts/StepperContext";
 import { useEffect } from "react";
-export default function Form({ setIsValid, step }) {
+export default function Form({ setIsValid, step, setErrorMessage }) {
     const { userData, setUserData } = useStepperContext();
 
     const handleChange = (e) => {
@@ -11,6 +11,12 @@ export default function Form({ setIsValid, step }) {
     useEffect(() => {
         if (userData["reexpedition"]) {
             setIsValid(step);
+            setErrorMessage("")
+
+        } else {
+            if (!userData["reexpedition"]) {
+                setErrorMessage("Veuillez sélectionner la fréquences de réexpéditions.")
+            }
         }
     }, [userData])
 

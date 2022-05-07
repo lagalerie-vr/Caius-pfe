@@ -1,6 +1,10 @@
 import { useStepperContext } from "../../../../contexts/StepperContext";
 import { useEffect } from "react";
-export default function Form({ setIsValid, step }) {
+import { isCin } from '../../../../functions/VerifData'
+
+
+
+export default function Form({ setIsValid, step, setErrorMessage }) {
     const { userData, setUserData } = useStepperContext();
 
     const handleChange = (e) => {
@@ -11,6 +15,32 @@ export default function Form({ setIsValid, step }) {
     useEffect(() => {
         if (userData["cin"] && userData["fisc"]) {
             setIsValid(step);
+        }
+    }, [userData])
+
+    useEffect(() => {
+        if ((userData["cin"]) && userData["fisc"] && isCin(userData["cin"])) {
+            setIsValid(step);
+            setErrorMessage("")
+        } else {
+            if (!(userData["cin"]) && !userData["fisc"]) {
+                setErrorMessage("Veuillez remplir tous les champs demandés")
+            } else {
+
+
+                if (!isCin(userData["cin"])) {
+
+                    if (!(userData["cin"])) {
+                        setErrorMessage("Veuillez Saisir votre N° CIN ")
+                    } else {
+                        setErrorMessage("Veuillez verifier votre N° CIN ")
+                    }
+                }
+
+                if (!(userData["fisc"])) {
+                    setErrorMessage("Veuillez Saisir votre matricule fiscal")
+                }
+            }
         }
     }, [userData])
 

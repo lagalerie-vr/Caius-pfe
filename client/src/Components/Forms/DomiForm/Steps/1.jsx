@@ -1,9 +1,9 @@
 import { useUser } from "../../../../contexts/AuthProvider";
 import { useStepperContext } from "../../../../contexts/StepperContext";
 import { useEffect, useState } from "react";
-import { isLibelle } from "../../../../functions/VerifData";
+import { isNomForm } from "../../../../functions/VerifData";
 
-export default function Form({ setIsValid, step }) {
+export default function Form({ setIsValid, step, setErrorMessage }) {
 
     const user = useUser()
 
@@ -20,9 +20,24 @@ export default function Form({ setIsValid, step }) {
     };
 
     useEffect(() => {
-        if (isLibelle(userData["nom"]) && userData["forme"]) {
+        if (userData["nom"] && isNomForm(userData["nom"]) && userData["forme"]) {
             setIsValid(step);
+            setErrorMessage("")
+
+        } else {
+            if (!userData["domaine"] && !userData["nom"]) {
+                setErrorMessage("Veuillez remplir tous les champs demandés")
+            } else {
+                if (!isNomForm(userData["nom"])) {
+                    setErrorMessage("Veuillez vérifier le nom de sociéte")
+                } else {
+                    if (!userData["forme"]) {
+                        setErrorMessage("Veuillez sélectionner la forme souhaité ")
+                    }
+                }
+            }
         }
+
     }, [userData])
 
     async function id() {

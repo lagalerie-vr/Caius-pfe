@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useStepperContext } from "../../../../contexts/StepperContext";
+import { isNom } from '../../../../functions/VerifData'
 
-export default function Form({ setIsValid, step }) {
+export default function Form({ setIsValid, step, setErrorMessage }) {
     const { userData, setUserData } = useStepperContext();
 
     const handleChange = (e) => {
@@ -10,9 +11,34 @@ export default function Form({ setIsValid, step }) {
     };
 
     useEffect(() => {
-        if ((userData["typeGerant"])) {
-            setIsValid(step);
+        if (userData["typeGerant"]) {
+
+            if (userData["typeGerant"] === "Un particulier") {
+                if (!userData["nomGerant"]) {
+                    setErrorMessage("Veuillez verifier le nom du gérant")
+                } else {
+                    setErrorMessage("")
+                    setIsValid(step);
+                }
+            }
+
+            if (userData["typeGerant"] === "Une société") {
+
+                if (!userData["rs"] || !userData["forme"] || !userData["gerant"]) {
+                    setErrorMessage("Veuillez remplir tous les champs demandés")
+
+                } else {
+                    setErrorMessage("")
+                    setIsValid(step);
+                }
+            }
+
+        } else {
+            if (!userData["typeGerant"]) {
+                setErrorMessage("Veuillez sélectionner le type du gérant")
+            }
         }
+
     }, [userData])
 
 
