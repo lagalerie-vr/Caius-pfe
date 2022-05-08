@@ -14,11 +14,12 @@ function NavbarClient() {
     const navigation = [
         { name: 'Dashboard', href: '/' },
         { name: 'Accompagnement', href: '/expert' },
-        { name: 'Calendrier ', href: '/Calendar' },
-        { name: 'Tutoriel', href: '/Tutorial' },
         { name: 'Mes demande', href: '/demande' },
+        { name: 'Mes statuts', href: '/statutlist' },
         { name: 'Mon courrier', href: '/courrier' },
         { name: 'Visioconférence', href: '/call' },
+        { name: 'Calendrier ', href: '/Calendar' },
+        { name: 'Tutoriel', href: '/Tutorial' },
         { name: 'Autre service', href: '/autre' },
     ]
 

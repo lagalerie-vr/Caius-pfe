@@ -44,7 +44,7 @@ function CTA() {
                                     to="/statut"
                                     className="col-span-1  m-2 text-center text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
 
-                                    Création status
+                                    Création statut SA
 
                                 </Link>
 
