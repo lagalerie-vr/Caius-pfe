@@ -117,7 +117,7 @@ function StatutList() {
                                 <Slideover
                                     open={openView}
                                     setOpen={setOpenView}
-                                    title="Facture"
+                                    title="Statut"
                                     children={
                                         <StatutsSA
                                             selected={selected} />
