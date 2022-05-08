@@ -1,5 +1,5 @@
 import Page from '../../Layouts/LayoutPage'
-import Form from '../../Components/Forms/CreationForm/Form'
+import Form from '../../Components/Forms/StatusForm/Form'
 
 function CreationForm() {
     return (

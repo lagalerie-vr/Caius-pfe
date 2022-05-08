@@ -1,66 +1,99 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Stepper from "./FormComponents/Stepper";
 import StepperControl from "./FormComponents/StepperControl";
 import { UseContextProvider } from "../../../contexts/StepperContext";
 
-import Account from "./Steps/Account";
-import Details from "./Steps/Details";
-import Payment from "./Steps/Payment";
+import Form1 from "./Steps/1";
+import Form2 from "./Steps/2";
+import Form3 from "./Steps/3";
+import Form4 from "./Steps/4"
+
 import Final from "./Steps/Final";
 
 function Form() {
     const [currentStep, setCurrentStep] = useState(1);
     const [isValid, setIsValid] = useState(0);
+    const [error, setError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
+
+
 
 
     const steps = [
-        "Account Information",
-        "Personal Details",
-        "Payment",
-        "Complete",
+        "Form1",
+        "Form2",
+        "Form3",
+        "Form4",
+
+        "Final"
     ];
+
 
     const displayStep = (step) => {
         switch (step) {
             case 1:
-                return <Account />;
+                return <Form1 setIsValid={setIsValid} step={1} setErrorMessage={setErrorMessage} />;
             case 2:
-                return <Details />;
+                return <Form2 setIsValid={setIsValid} step={2} setErrorMessage={setErrorMessage} />;
             case 3:
-                return <Payment />;
+                return <Form3 setIsValid={setIsValid} step={3} setErrorMessage={setErrorMessage} />;
             case 4:
-                return <Final />;
-            default:
+                return <Form4 setIsValid={setIsValid} step={4} setErrorMessage={setErrorMessage} />;
+            case 5:
+                return <Final setIsValid={setIsValid} step={5} setErrorMessage={setErrorMessage} />;
         }
     };
 
+
     const handleClick = (direction) => {
+        setError(false)
         let newStep = currentStep;
 
-        direction === "next" ? newStep++ : newStep--;
+        if (currentStep === isValid && direction === "next") { newStep++ }
+        if (currentStep !== isValid && direction === "next") {
+            setError(true)
+        }
+        if (direction !== "next") { newStep--; }
         // check if steps are within bounds
         newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
     };
 
+    useEffect(() => {
+        console.log(isValid)
+    }, [isValid])
+
     return (
         <div >
             {/* Stepper */}
-            <div className="horizontal container mt-5 ">
+            <div className="horizontal container">
+
                 <Stepper steps={steps} currentStep={currentStep} />
 
                 <div className="my-10 p-10 ">
                     <UseContextProvider>{displayStep(currentStep)}</UseContextProvider>
+                    {(error && errorMessage) &&
+                        <div className=" bg-red-50 p-4">
+                            <div>
+                                <p className="text-sm text-red-700">
+                                    {errorMessage}
+                                </p>
+                            </div>
+                        </div>
+                    }
+
                 </div>
             </div>
+
+
 
             {/* navigation button */}
             {currentStep !== steps.length && (
                 <StepperControl
                     handleClick={handleClick}
                     currentStep={currentStep}
-                    steps={steps}
                 />
             )}
+
         </div>
     );
 }

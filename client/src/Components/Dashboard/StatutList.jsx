@@ -57,7 +57,7 @@ function StatutList() {
                                                 scope="col"
                                                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                             >
-                                                Nom Startup
+                                                Nom societe
                                             </th>
                                             <th
                                                 scope="col"
@@ -69,7 +69,7 @@ function StatutList() {
                                                 scope="col"
                                                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                             >
-                                                Abonnement
+                                                Siège Social
                                             </th>
 
                                             <th scope="col" className="relative px-6 py-3">
@@ -85,7 +85,7 @@ function StatutList() {
                                                 <td className="px-6 py-4 whitespace-nowrap">
                                                     <div className="flex items-center">
                                                         <div className="ml-4">
-                                                            <div className="text-sm font-medium text-gray-900"> {listitem.nom}</div>
+                                                            <div className="text-sm font-medium text-gray-900"> {listitem.nomSociete}</div>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -96,7 +96,7 @@ function StatutList() {
 
 
                                                 <td className="px-6 py-4 whitespace-nowrap">
-                                                    <div className="text-sm text-gray-900">{listitem.abonnement}</div>
+                                                    <div className="text-sm text-gray-900">{listitem.siege}</div>
                                                 </td>
 
 
@@ -105,7 +105,7 @@ function StatutList() {
                                                         onClick={(e) => { setOpenView(true); setSelected(listitem) }}
                                                         className=" ml-10 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                                                     >
-                                                        Voir Contract
+                                                        Voir Statut
                                                     </a>
                                                 </td>
 

@@ -86,12 +86,6 @@ const Stepper = ({ steps, currentStep }) => {
                             index + 1
                         )}
                     </div>
-                    <div
-                        className={`absolute top-0  text-center mt-16 w-32 text-xs font-medium uppercase ${step.highlighted ? "text-gray-900" : "text-gray-400"
-                            }`}
-                    >
-                        {step.description}
-                    </div>
                 </div>
                 <div
                     className={`flex-auto border-t-2 transition duration-500 ease-in-out  ${step.completed ? "border-indigo-700" : "border-gray-300 "
