@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import Slideover from '../../Layouts/Slideover'
-import ContractPdf from '../Pdf/Contract'
+import StatutsSA from '../Pdf/StatutsSA'
 import { useUser } from '../../contexts/AuthProvider';
 import API from '../../api/api';
 import { Link } from 'react-router-dom';
@@ -119,7 +119,7 @@ function StatutList() {
                                     setOpen={setOpenView}
                                     title="Facture"
                                     children={
-                                        <ContractPdf
+                                        <StatutsSA
                                             selected={selected} />
                                     } />
                             </div>
