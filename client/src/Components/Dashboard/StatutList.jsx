@@ -15,13 +15,13 @@ function StatutList() {
     useEffect(() => {
         async function fetchData() {
             if (user) {
-                setDomiciliation((await API.get(`/domiciliation/user/${user._id}`)).data)
+                setStatut((await API.get(`/statut/user/${user._id}`)).data)
             }
         }
         fetchData()
     }, [user])
 
-    const [domiciliation, setDomiciliation] = useState([])
+    const [statut, setStatut] = useState([])
 
     const [openView, setOpenView] = useState(false)
     const [selected, setSelected] = useState(null)
@@ -79,7 +79,7 @@ function StatutList() {
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
-                                        {domiciliation.map((listitem) => (
+                                        {statut.map((listitem) => (
                                             <tr key={listitem.email}>
 
                                                 <td className="px-6 py-4 whitespace-nowrap">
