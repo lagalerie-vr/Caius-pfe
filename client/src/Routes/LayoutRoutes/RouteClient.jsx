@@ -15,11 +15,11 @@ import Call from "../../Pages/JitsiCall/Call"
 import Autre from "../../Pages/Dashboard/Autre"
 import CreationForm from "../../Pages/Forms/CreationForm"
 import DomiForm from "../../Pages/Forms/DomiForm"
-import StatusForm from "../../Pages/Forms/StatusForm"
 import Demande from "../../Pages/Dashboard/Demande"
 import Facture from "../../Pages/Dashboard/Facture"
 import Settings from '../../Pages/Dashboard/Settings'
 import Contract from "../../Pages/Dashboard/Contract"
+import StatusForm from "../../Pages/Forms/StatusForm"
 import Statuts from "../../Pages/Dashboard/Statuts"
 
 
@@ -33,7 +33,6 @@ const RouteClient = () => (
                 <Route path='/' element={<Main />} />
                 <Route path='/expert' element={<Expert />} />
                 <Route path='/Calendar' element={<Calendar />} />
-                <Route path='/statutlist' element={<Statuts />} />
                 <Route path='/Courrier' element={<Courrier />} />
                 <Route path='/Tutorial' element={<Tutorial />} />
                 <Route path='/Call' element={<Call />} />
@@ -44,6 +43,7 @@ const RouteClient = () => (
                 <Route path='/CreationForm' element={<CreationForm />} />
                 <Route path='/Domicilitation' element={<DomiForm />} />
                 <Route path='/Settings' element={<Settings />} />
+                <Route path='/statutlist' element={<Statuts />} />
                 <Route path='/statut' element={<StatusForm />} />
 
                 {/*

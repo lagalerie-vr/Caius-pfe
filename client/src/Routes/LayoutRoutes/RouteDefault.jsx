@@ -11,6 +11,7 @@ import ProtectedRoutes from "../ProtectedRoutes"
 import CreationForm from "../../Pages/Forms/CreationForm"
 import DomiForm from "../../Pages/Forms/DomiForm"
 import StatusForm from "../../Pages/Forms/StatusForm"
+import Statuts from "../../Pages/Dashboard/Statuts"
 import Autre from "../../Pages/Dashboard/Autre"
 import Demande from "../../Pages/Dashboard/Demande"
 import Facture from "../../Pages/Dashboard/Facture"
@@ -29,11 +30,11 @@ const RouteDefault = () => (
                 <Route path='/Tutorial' element={<Tutorial />} />
                 <Route path='/CreationForm' element={<CreationForm />} />
                 <Route path='/Domicilitation' element={<DomiForm />} />
+                <Route path='/statutlist' element={<Statuts />} />
                 <Route path='/statut' element={<StatusForm />} />
                 <Route path='/autre' element={<Autre />} />
                 <Route path='/facture' element={<Facture />} />
                 <Route path='/Settings' element={<Settings />} />
-
                 <Route path='/demande' element={<Demande />} />
                 <Route path='*' element={<Error />} />
             </Route>

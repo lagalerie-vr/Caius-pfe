@@ -16,7 +16,6 @@ function NavbarAdmin() {
         { name: 'Demande Utilisateurs ', href: '/demande' },
         { name: 'Courrier', href: '/courrier' },
         { name: 'Utilisateurs', href: 'Users' },
-        { name: 'Statuts', href: '/statutlist' },
         { name: 'Calendrier ', href: '/Calendar' },
         { name: 'Tutoriel', href: '/tutorial' },
         { name: 'Visioconférence', href: '/call' },

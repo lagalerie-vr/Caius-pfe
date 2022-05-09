@@ -45,90 +45,94 @@ function StatutList() {
 
                 </div>
 
+
                 <div className='py-3'></div>
-                <div className="flex flex-col">
-                    <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                <table className="min-w-full divide-y divide-gray-200">
-                                    <thead className="bg-gray-50">
-                                        <tr>
-                                            <th
-                                                scope="col"
-                                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                            >
-                                                Nom societe
-                                            </th>
-                                            <th
-                                                scope="col"
-                                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                            >
-                                                Ref
-                                            </th>
-                                            <th
-                                                scope="col"
-                                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                            >
-                                                Siège Social
-                                            </th>
+                {statut.length > 0 ?
+                    <div className="flex flex-col">
+                        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                            <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                    <table className="min-w-full divide-y divide-gray-200">
+                                        <thead className="bg-gray-50">
+                                            <tr>
+                                                <th
+                                                    scope="col"
+                                                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                                >
+                                                    Nom societe
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                                >
+                                                    Ref
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                                >
+                                                    Siège Social
+                                                </th>
 
-                                            <th scope="col" className="relative px-6 py-3">
-                                                <span className="sr-only">Edit</span>
-                                            </th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody className="bg-white divide-y divide-gray-200">
-                                        {statut.map((listitem) => (
-                                            <tr key={listitem.email}>
-
-                                                <td className="px-6 py-4 whitespace-nowrap">
-                                                    <div className="flex items-center">
-                                                        <div className="ml-4">
-                                                            <div className="text-sm font-medium text-gray-900"> {listitem.nomSociete}</div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-
-                                                <td className="px-6 py-4 whitespace-nowrap">
-                                                    <div className="text-sm text-gray-900">{listitem._id}</div>
-                                                </td>
-
-
-                                                <td className="px-6 py-4 whitespace-nowrap">
-                                                    <div className="text-sm text-gray-900">{listitem.siege}</div>
-                                                </td>
-
-
-                                                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <a
-                                                        onClick={(e) => { setOpenView(true); setSelected(listitem) }}
-                                                        className=" ml-10 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                                                    >
-                                                        Voir Statut
-                                                    </a>
-                                                </td>
+                                                <th scope="col" className="relative px-6 py-3">
+                                                    <span className="sr-only">Edit</span>
+                                                </th>
 
                                             </tr>
-                                        ))}
+                                        </thead>
+                                        <tbody className="bg-white divide-y divide-gray-200">
+                                            {statut.map((listitem) => (
+                                                <tr key={listitem.email}>
 
-                                    </tbody>
-                                </table>
-                                <Slideover
-                                    open={openView}
-                                    setOpen={setOpenView}
-                                    title="Statut"
-                                    children={
-                                        <StatutsSA
-                                            selected={selected} />
-                                    } />
+                                                    <td className="px-6 py-4 whitespace-nowrap">
+                                                        <div className="flex items-center">
+                                                            <div className="ml-4">
+                                                                <div className="text-sm font-medium text-gray-900"> {listitem.nomSociete}</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+
+                                                    <td className="px-6 py-4 whitespace-nowrap">
+                                                        <div className="text-sm text-gray-900">{listitem._id}</div>
+                                                    </td>
+
+
+                                                    <td className="px-6 py-4 whitespace-nowrap">
+                                                        <div className="text-sm text-gray-900">{listitem.siege}</div>
+                                                    </td>
+
+
+                                                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                        <a
+                                                            onClick={(e) => { setOpenView(true); setSelected(listitem) }}
+                                                            className=" ml-10 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                                                        >
+                                                            Voir Statut
+                                                        </a>
+                                                    </td>
+
+                                                </tr>
+                                            ))}
+
+                                        </tbody>
+                                    </table>
+                                    <Slideover
+                                        open={openView}
+                                        setOpen={setOpenView}
+                                        title="Statut"
+                                        children={
+                                            <StatutsSA
+                                                selected={selected} />
+                                        } />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    : <>
+                        vous n'avez rédiger aucun statut </>}
+
+
                 <div className='py-3'></div>
-
-
             </div>
         </>)
 }
