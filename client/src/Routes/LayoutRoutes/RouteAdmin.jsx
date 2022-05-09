@@ -35,4 +35,5 @@ const RouteAdmin = () => (
     </Routes>
 )
 
+
 export default RouteAdmin
