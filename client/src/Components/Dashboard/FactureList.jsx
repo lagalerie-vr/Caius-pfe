@@ -35,7 +35,7 @@ function FactureList() {
                 <header className="py-3">
 
                     <div className="md:flex md:items-center md:justify-between">
-                        <h className="text-3xl font-bold text-indigo-900">Facture des demandes de creation</h>
+                        <h className="text-3xl font-bold text-indigo-900">Factures des demandes de creation</h>
 
                         <div className="flex-1 min-w-0">
                             <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate"></h2>
@@ -136,7 +136,7 @@ function FactureList() {
                 <header className="py-3">
 
                     <div className="md:flex md:items-center md:justify-between">
-                        <h className="text-3xl font-bold text-indigo-900">Facture des demandes de domiciliation</h>
+                        <h className="text-3xl font-bold text-indigo-900">Factures des demandes de domiciliation</h>
 
                         <div className="flex-1 min-w-0">
                             <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate"></h2>

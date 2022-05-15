@@ -9,7 +9,7 @@ function Call() {
         <>
 
             <Page
-                title="Visio Conference"
+                title="Visioconférence"
                 content={<Visio />}
             />
         </>

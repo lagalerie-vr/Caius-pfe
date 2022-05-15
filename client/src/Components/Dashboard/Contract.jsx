@@ -31,7 +31,7 @@ function Contract() {
                 <header>
 
                     <div className="md:flex md:items-center md:justify-between">
-                        <h className="text-3xl font-bold text-indigo-900">Contract des demandes des domiciliation</h>
+                        <h className="text-3xl font-bold text-indigo-900">Contrats de domiciliations</h>
 
                         <div className="flex-1 min-w-0">
                             <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate"></h2>
@@ -98,7 +98,7 @@ function Contract() {
                                                         onClick={(e) => { setOpenView(true); setSelected(listitem) }}
                                                         className=" ml-10 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                                                     >
-                                                        Voir Contract
+                                                        Voir Contrat
                                                     </a>
                                                 </td>
 
@@ -110,7 +110,7 @@ function Contract() {
                                 <Slideover
                                     open={openView}
                                     setOpen={setOpenView}
-                                    title="Facture"
+                                    title="Contrat"
                                     children={
                                         <ContractPdf
                                             selected={selected} />

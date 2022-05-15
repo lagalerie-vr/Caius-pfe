@@ -10,7 +10,7 @@ function NavbarDefault() {
     const user = useUser()
 
     const navigation = [
-        { name: 'Dashboard', href: '/' },
+        { name: 'Accueil', href: '/' },
         { name: 'Mes demande', href: '/demande' },
         { name: 'Mes statuts', href: '/statutlist' },
         { name: 'Calendrier ', href: 'Calendar' },

@@ -6,7 +6,7 @@ export default function Contract() {
 
     return (
         <Page
-            title="Contract"
+            title="Contrats"
             content={<ContractPage />}
         />
     )

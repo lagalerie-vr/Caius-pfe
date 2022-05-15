@@ -49,14 +49,7 @@ function CTA() {
                                 </Link>
 
                                 <Link
-                                    to="/expert"
-                                    className="col-span-1  m-2 text-center text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
-
-                                    Accompagnement
-                                </Link>
-
-                                <Link
-                                    to="/expert"
+                                    to="/Calendar"
                                     className="col-span-1  m-2 text-center text-base font-medium rounded-md justify-center py-8 px-8 bg-gray-50 text-indigo-800  hover:bg-indigo-200">
 
                                     Evenement

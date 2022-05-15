@@ -4,7 +4,7 @@ import Form from '../../Components/Forms/DomiForm/Form'
 function CreationForm() {
     return (
         <Page
-            title="Demande de Domicilitation"
+            title="Demande de Domiciliation "
             content={<Form />}
         />
     )

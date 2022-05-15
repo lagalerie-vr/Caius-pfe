@@ -60,7 +60,7 @@ function Visio() {
                                         <button
                                             className="flex uppercase items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8"
                                         >
-                                            rejoindre une room
+                                            rejoindre une réunion
                                         </button>
                                     </div>
 
@@ -75,7 +75,7 @@ function Visio() {
                                         onClick={(() => setRoom(user.mail))}
                                         className="flex uppercase items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8"
                                     >
-                                        Créé une room
+                                        Créé une réunion
                                     </button>
                                 </div>
                             </form>
