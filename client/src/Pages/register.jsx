@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import API from '../api/api';
-import Modal from '../Components/Modals/Modal';
+import { isPass, isMobile, isNom } from '../functions/VerifData'
 
 export default function Example() {
 
@@ -15,27 +15,41 @@ export default function Example() {
         password: "",
     })
 
+
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value })
     }
 
-    const [error, setError] = useState("");
+    const [error, setError] = useState(null);
 
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const { data: res } = await API.post("/users/register", data);
-            navigate("/");
-            console.log(res.message);
-        } catch (error) {
-            if (
-                error.response &&
-                error.response.status >= 400 &&
-                error.response.status <= 500
-            ) {
-                setError(error.response.data.message);
+        setError(null)
+
+
+        if (!isNom(data.nom)) { setError("Verifier votre nom") }
+        else {
+            if (!isPass(data.password)) { setError("Votre mot de passe doit etre compose de 8 charactere et un caractère spécial") } else {
+                if (!isMobile(data.numero)) { setError("Verifier votre numero") } else {
+                    if (!isNom(data.prenom)) { setError("Verifier votre prénom") }
+                    else {
+                        try {
+                            const { data: res } = await API.post("/users/register", data);
+                            navigate("/");
+                            console.log(res.message);
+                        } catch (error) {
+                            if (
+                                error.response &&
+                                error.response.status >= 400 &&
+                                error.response.status <= 500
+                            ) {
+                                setError(error.response.data.message);
+                            }
+                        }
+                    }
+                }
             }
         }
     };
@@ -161,7 +175,15 @@ export default function Example() {
                     <div className='py-5'>
                         <div className="relative">
                             <div className="relative flex justify-center text-sm">
-                                {error && <span className="px-2 bg-white text-red-500" >{error}</span>}
+
+                                {error && <div className=" bg-blue-50 p-4">
+                                    <div>
+                                        <p className="text-sm text-blue-700">
+                                            {error}
+                                        </p>
+                                    </div>
+                                </div>}
+
                             </div>
                         </div>
                     </div>

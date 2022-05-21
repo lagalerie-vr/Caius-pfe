@@ -1,6 +1,7 @@
-import React, { useState, useReducer } from 'react'
+import React, { useState } from 'react'
 import API from '../../api/api';
 import Modal from '../Modals/Modal';
+import { isPass, isMobile, isNom } from '../../functions/VerifData'
 
 function AddUser() {
 
@@ -15,24 +16,36 @@ function AddUser() {
         password: "",
     })
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError("");
-        try {
-            const { data: res } = await API.post("/users/register", data);
-            console.log(res.message);
-            setconfrimed(true);
-        } catch (error) {
-            if (
-                error.response &&
-                error.response.status >= 400 &&
-                error.response.status <= 500
-            ) {
-                setError(error.response.data.message);
+        setError(null)
+
+
+        if (!isNom(data.nom)) { setError("Verifier votre nom") }
+        else {
+            if (!isPass(data.password)) { setError("Votre mot de passe doit etre compose de 8 charactere et un caractère spécial") } else {
+                if (!isMobile(data.numero)) { setError("Verifier votre numero") } else {
+                    if (!isNom(data.prenom)) { setError("Verifier votre prénom") }
+                    else {
+                        try {
+                            const { data: res } = await API.post("/users/register", data);
+                            console.log(res.message);
+                            setconfrimed(true);
+                        } catch (error) {
+                            if (
+                                error.response &&
+                                error.response.status >= 400 &&
+                                error.response.status <= 500
+                            ) {
+                                setError(error.response.data.message);
+                            }
+                        }
+                    }
+                }
             }
         }
     };
-
 
 
     const handleChange = ({ currentTarget: input }) => {
