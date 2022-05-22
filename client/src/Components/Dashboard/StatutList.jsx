@@ -128,8 +128,14 @@ function StatutList() {
                             </div>
                         </div>
                     </div>
-                    : <>
-                        vous n'avez rédiger aucun statut </>}
+                    : <div className=" bg-blue-50 p-4">
+                        <div>
+                            <p className="text-sm text-blue-700">
+                                vous n'avez rédiger aucun statut
+                            </p>
+                        </div>
+                    </div>}
+
 
 
                 <div className='py-3'></div>

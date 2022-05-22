@@ -75,7 +75,15 @@ export default function Events() {
                             </div>
                         </div>
                     </div>
-                    : <> Il n'y a aucun événement prévu. </>}
+                    :
+                    <div className=" bg-blue-50 p-4">
+                        <div>
+                            <p className="text-sm text-blue-700">
+                                Il n'y a aucun événement prévu
+                            </p>
+                        </div>
+                    </div>
+                }
             </div></div>
     )
 }

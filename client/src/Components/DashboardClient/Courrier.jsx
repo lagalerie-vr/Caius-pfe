@@ -94,8 +94,13 @@ function Courrier() {
                         </div>
                     </div>
                 </div>
-                : <>
-                    vous n'avez aucun Courrier </>}
+                : <div className=" bg-blue-50 p-4">
+                    <div>
+                        <p className="text-sm text-blue-700">
+                            vous n'avez aucun Courrier
+                        </p>
+                    </div>
+                </div>}
         </div>
 
 

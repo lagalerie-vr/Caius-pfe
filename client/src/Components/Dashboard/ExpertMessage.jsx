@@ -134,8 +134,14 @@ export default function Faq() {
 
                     </div>
                 </div>
-                : <>
-                    <p className="mt-5 text-indigo-700">vous n'avez aucune demande en cours de traitement </p> </>
+                :
+                <div className=" bg-blue-50 p-4 mt-5">
+                    <div>
+                        <p className="text-sm text-blue-700">
+                            vous n'avez aucune demande en cours de traitement
+                        </p>
+                    </div>
+                </div>
             }
 
             {confrimed &&

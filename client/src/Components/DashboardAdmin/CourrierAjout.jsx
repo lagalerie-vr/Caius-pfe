@@ -230,89 +230,90 @@ function Courrier() {
             }
 
 
-            <div className="flex flex-col py-10">
+            {Documents.length > 0 ?
+                <div className="flex flex-col py-10">
 
-                <header className="py-10">
+                    <header className="py-10">
 
-                    <div className="md:flex md:items-center md:justify-between">
-                        <h1 className="text-3xl font-bold text-indigo-900">Courrier envoyé</h1>
+                        <div className="md:flex md:items-center md:justify-between">
+                            <h1 className="text-3xl font-bold text-indigo-900">Courrier envoyé</h1>
 
-                        <div className="flex-1 min-w-0">
-                            <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate"></h2>
+                            <div className="flex-1 min-w-0">
+                                <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate"></h2>
+                            </div>
                         </div>
-                    </div>
-                    <div className='py-3'></div>
-                </header>
+                        <div className='py-3'></div>
+                    </header>
 
 
 
-                <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                        <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                            <table className="min-w-full divide-y divide-gray-200">
-                                <thead className="bg-gray-50">
-                                    <tr>
-                                        <th
-                                            scope="col"
-                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                        >
-                                            Client
-                                        </th>
-                                        <th
-                                            scope="col"
-                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                        >
-                                            Date
-                                        </th>
-                                        <th
-                                            scope="col"
-                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                        >
-                                            Date recu
-                                        </th>
-                                        <th scope="col" className="relative px-6 py-3">
-                                            <span className="sr-only">Telecharger</span>
-                                        </th>
-                                        <th scope="col" className="relative px-6 py-3">
-                                            <span className="sr-only">Telecharger</span>
-                                        </th>
-                                    </tr>
-                                </thead>
-
-
-                                <tbody className="bg-white divide-y divide-gray-200">
-                                    {Documents.map((Document) => (
-                                        <tr key={Document._id}>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{Document.user.nom}</td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{Document.dateFile}</td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{Document.createdAt}</td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                <a href={Document.image}
-                                                    className="m-3 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                                                >
-                                                    Telecharger
-                                                </a>
-                                            </td>
-
-                                            <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                <button
-                                                    onClick={(e) => uploadDelete(Document._id, e)}
-                                                    className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-                                                >
-                                                    Supprimer
-
-                                                </button>
-                                            </td>
-
-
+                    <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                <table className="min-w-full divide-y divide-gray-200">
+                                    <thead className="bg-gray-50">
+                                        <tr>
+                                            <th
+                                                scope="col"
+                                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                            >
+                                                Client
+                                            </th>
+                                            <th
+                                                scope="col"
+                                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                            >
+                                                Date
+                                            </th>
+                                            <th
+                                                scope="col"
+                                                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                            >
+                                                Date recu
+                                            </th>
+                                            <th scope="col" className="relative px-6 py-3">
+                                                <span className="sr-only">Telecharger</span>
+                                            </th>
+                                            <th scope="col" className="relative px-6 py-3">
+                                                <span className="sr-only">Telecharger</span>
+                                            </th>
                                         </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                                    </thead>
+
+
+                                    <tbody className="bg-white divide-y divide-gray-200">
+                                        {Documents.map((Document) => (
+                                            <tr key={Document._id}>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{Document.user.nom}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{Document.dateFile}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{Document.createdAt}</td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                    <a href={Document.image}
+                                                        className="m-3 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                                                    >
+                                                        Telecharger
+                                                    </a>
+                                                </td>
+
+                                                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                    <button
+                                                        onClick={(e) => uploadDelete(Document._id, e)}
+                                                        className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                                                    >
+                                                        Supprimer
+
+                                                    </button>
+                                                </td>
+
+
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div> : <></>}
 
         </div>
 
