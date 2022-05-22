@@ -73,52 +73,62 @@ function Demande() {
                         <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate"></h2>
                     </div>
                 </div>
-                <div className='py-3'></div>
             </header >
 
-            <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {demandeCreation.map((demande) => (
-                    <div className="max-w-sm bg-white rounded-lg border border-indigo-700 shadow-md bg-indigo-800">
-                        <div className="p-5">
-                            <div>
-                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">{demande.nom}</h5>
-                            </div>
-                            {demande.state === "Acceptée" ?
-                                <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mb-3'>{demande.state}</p>
-                                : <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-red-100 text-red-800 mb-3'>{demande.state}</p>
-                            }
-                            <hr className="mb-3" />
-                            <p className="mb-3 font-normal text-white">Domaine : {demande.domaine}</p>
-                            <hr className="mb-3" />
-                            <p className="mb-3 font-normal text-white">{demande.recherche}</p>
-                            <hr className="mb-3" />
 
-                            <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
-                                onClick={(e) => creationDelete(demande._id, e)}
-                            >
-                                Refuser la demande
-                            </a>
+            {demandeCreation.length > 0 ?
 
-                            {demande.state === "Acceptée" ? <></> :
-                                <a className="inline-flex ml-3 items-center py-2 px-3 text-sm font-medium text-center text-green-700 bg-white rounded-lg hover:bg-green-800 hover:text-white"
-                                    onClick={(e) => creationAccept(demande._id, e)}
+                <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    {demandeCreation.map((demande) => (
+                        <div className="max-w-sm bg-white rounded-lg border border-indigo-700 shadow-md bg-indigo-800">
+                            <div className="p-5">
+                                <div>
+                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">{demande.nom}</h5>
+                                </div>
+                                {demande.state === "Acceptée" ?
+                                    <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mb-3'>{demande.state}</p>
+                                    : <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-red-100 text-red-800 mb-3'>{demande.state}</p>
+                                }
+                                <hr className="mb-3" />
+                                <p className="mb-3 font-normal text-white">Domaine : {demande.domaine}</p>
+                                <hr className="mb-3" />
+                                <p className="mb-3 font-normal text-white">{demande.recherche}</p>
+                                <hr className="mb-3" />
+
+                                <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
+                                    onClick={(e) => creationDelete(demande._id, e)}
                                 >
-                                    Acceptée la demande
+                                    Refuser la demande
                                 </a>
-                            }
 
-                            <a className="mt-3 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-indigo-700 bg-white rounded-lg hover:bg-indigo-100 hover:text-indigo-700"
-                                onClick={(e) => { setDetailCreation(true); setSelected(demande) }}
-                            >
-                                Plus de détails
-                            </a>
+                                {demande.state === "Acceptée" ? <></> :
+                                    <a className="inline-flex ml-3 items-center py-2 px-3 text-sm font-medium text-center text-green-700 bg-white rounded-lg hover:bg-green-800 hover:text-white"
+                                        onClick={(e) => creationAccept(demande._id, e)}
+                                    >
+                                        Acceptée la demande
+                                    </a>
+                                }
 
+                                <a className="mt-3 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-indigo-700 bg-white rounded-lg hover:bg-indigo-100 hover:text-indigo-700"
+                                    onClick={(e) => { setDetailCreation(true); setSelected(demande) }}
+                                >
+                                    Plus de détails
+                                </a>
+
+                            </div>
+                        </div>
+                    ))
+                    }
+
+                </ul >
+                : <>
+                    <div className=" bg-blue-50 p-4 mb-2">
+                        <div>
+                            <p className="text-sm text-blue-700">
+                                Aucun demande de création a été passé                        </p>
                         </div>
                     </div>
-                ))
-                }
-
-            </ul >
+                </>}
 
             <header className="py-10">
 
@@ -129,52 +139,62 @@ function Demande() {
                         <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate"></h2>
                     </div>
                 </div>
-                <div className='py-3'></div>
             </header >
 
-            <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {demandeDomiciliation.map((demande) => (
-                    <div className="max-w-sm bg-white rounded-lg border border-indigo-700 shadow-md bg-indigo-800">
-                        <div className="p-5">
-                            <div>
-                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">{demande.nom}</h5>
-                            </div>
-                            {demande.state === "Acceptée" ?
-                                <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mb-3'>{demande.state}</p>
-                                : <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-red-100 text-red-800 mb-3'>{demande.state}</p>
-                            }
-                            <hr className="mb-3" />
-                            <p className="mb-3 font-normal text-white">Forme : {demande.forme}</p>
-                            <hr className="mb-3" />
-                            <p className="mb-3 font-normal text-white">Abonnement : {demande.abonnement}</p>
-                            <hr className="mb-3" />
-                            <p className="mb-3 font-normal text-white">Adresse : {demande.adresse}</p>
-                            <hr className="mb-3" />
-                            <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
-                                onClick={(e) => domicilationDelete(demande._id, e)}
-                            >
-                                Refuser la demande
+            {demandeDomiciliation.length > 0 ?
 
-                            </a>
-
-                            {demande.state === "Acceptée" ? <></> :
-                                <a className="inline-flex ml-3 items-center py-2 px-3 text-sm font-medium text-center text-green-700 bg-white rounded-lg hover:bg-green-800 hover:text-white"
-                                    onClick={(e) => domicilationAccept(demande._id, e)}
+                <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    {demandeDomiciliation.map((demande) => (
+                        <div className="max-w-sm bg-white rounded-lg border border-indigo-700 shadow-md bg-indigo-800">
+                            <div className="p-5">
+                                <div>
+                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">{demande.nom}</h5>
+                                </div>
+                                {demande.state === "Acceptée" ?
+                                    <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mb-3'>{demande.state}</p>
+                                    : <p className='inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-red-100 text-red-800 mb-3'>{demande.state}</p>
+                                }
+                                <hr className="mb-3" />
+                                <p className="mb-3 font-normal text-white">Forme : {demande.forme}</p>
+                                <hr className="mb-3" />
+                                <p className="mb-3 font-normal text-white">Abonnement : {demande.abonnement}</p>
+                                <hr className="mb-3" />
+                                <p className="mb-3 font-normal text-white">Adresse : {demande.adresse}</p>
+                                <hr className="mb-3" />
+                                <a className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-red-700 bg-white rounded-lg hover:bg-red-800 hover:text-white"
+                                    onClick={(e) => domicilationDelete(demande._id, e)}
                                 >
-                                    Acceptée la demande
-                                </a>
-                            }
-                            <a className="mt-3 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-indigo-700 bg-white rounded-lg hover:bg-indigo-100 hover:text-indigo-700"
-                                onClick={(e) => { setDetailDomi(true); setSelected(demande) }}
-                            >
-                                Plus de détails
-                            </a>
+                                    Refuser la demande
 
+                                </a>
+
+                                {demande.state === "Acceptée" ? <></> :
+                                    <a className="inline-flex ml-3 items-center py-2 px-3 text-sm font-medium text-center text-green-700 bg-white rounded-lg hover:bg-green-800 hover:text-white"
+                                        onClick={(e) => domicilationAccept(demande._id, e)}
+                                    >
+                                        Acceptée la demande
+                                    </a>
+                                }
+                                <a className="mt-3 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-indigo-700 bg-white rounded-lg hover:bg-indigo-100 hover:text-indigo-700"
+                                    onClick={(e) => { setDetailDomi(true); setSelected(demande) }}
+                                >
+                                    Plus de détails
+                                </a>
+
+                            </div>
+                        </div>
+                    ))
+                    }
+                </ul >
+                : <>
+                    <div className=" bg-blue-50 p-4">
+                        <div>
+                            <p className="text-sm text-blue-700">
+                                Aucun demande de domiciliation a été passé                        </p>
                         </div>
                     </div>
-                ))
-                }
-            </ul >
+                </>}
+
             {confrimed &&
                 <Modal
                     open={confrimed}
