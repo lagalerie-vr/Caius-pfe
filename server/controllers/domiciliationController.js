@@ -53,7 +53,7 @@ const updateRole = asyncHandler(async (req, res) => {
 const getDomiciliations = asyncHandler(async (req, res) => {
 
     try {
-        await Domiciliation.find({}).populate()
+        await Domiciliation.find({}).populate("user").populate("user")
             .then(result => {
                 res.send(result)
             })
@@ -70,7 +70,7 @@ const getDomiciliations = asyncHandler(async (req, res) => {
 const getDomiciliation = asyncHandler(async (req, res) => {
 
     try {
-        await Domiciliation.findById(req.params.id)
+        await Domiciliation.findById(req.params.id).populate("user")
             .then(result => {
                 res.send(result)
             })
@@ -113,7 +113,7 @@ const setDomiciliation = asyncHandler(async (req, res) => {
 const getByUser = asyncHandler(async (req, res) => {
 
     try {
-        await Domiciliation.find({ user: req.params.user })
+        await Domiciliation.find({ user: req.params.user }).populate("user")
             .then(result => {
                 res.send(result)
             })
@@ -140,7 +140,7 @@ const deleteDomiciliation = asyncHandler(async (req, res) => {
 const getByState = asyncHandler(async (req, res) => {
 
     try {
-        await Domiciliation.find({ state: req.params.state })
+        await Domiciliation.find({ state: req.params.state }).populate("user")
             .then(result => {
                 res.send(result)
             })

@@ -4,12 +4,6 @@ import useGet from '../../data/Functions/useGet'
 
 
 
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
-
-
-
 export default function Stats() {
     const Clients = useGet("/users/role/Client")
     const defaults = useGet("/users/role/default")
@@ -35,11 +29,6 @@ export default function Stats() {
         { id: 4, name: "N° Demande des demandes acceptées par l'expert", stat: Accepted2.length + Accepted.length, icon: CursorClickIcon, link: "/demande" },
         { id: 6, name: "N° Demande des demandes refuser par l'expert", stat: Refuser2.length + Refuser.length, icon: CursorClickIcon, link: "/demande" },
     ]
-
-    const data01 = [
-        { name: 'Demandes de creations', value: expert.length + Refuser.length + Accepted.length },
-        { name: 'Demandes de domiciliations', value: expert2.length + Refuser2.length + Accepted2.length },
-    ];
 
 
     return (

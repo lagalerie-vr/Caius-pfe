@@ -70,7 +70,7 @@ const refuser = asyncHandler(async (req, res) => {
 const getByUser = asyncHandler(async (req, res) => {
 
     try {
-        await Creation.find({ user: req.params.user })
+        await Creation.find({ user: req.params.user }).populate("user")
             .then(result => {
                 res.send(result)
             })
@@ -85,7 +85,7 @@ const getByUser = asyncHandler(async (req, res) => {
 const getByState = asyncHandler(async (req, res) => {
 
     try {
-        await Creation.find({ state: req.params.state })
+        await Creation.find({ state: req.params.state }).populate("user")
             .then(result => {
                 res.send(result)
             })
@@ -97,11 +97,10 @@ const getByState = asyncHandler(async (req, res) => {
 });
 
 
-/* get 1 Video */
 const getCreation = asyncHandler(async (req, res) => {
 
     try {
-        await Creation.findById(req.params.id)
+        await Creation.findById(req.params.id).populate("user")
             .then(result => {
                 res.send(result)
             })
@@ -141,7 +140,6 @@ const patchCreation = asyncHandler(async (req, res) => {
 
 });
 
-/* add 1 Video */
 const setCreation = asyncHandler(async (req, res) => {
 
     let newCreation = new Creation({

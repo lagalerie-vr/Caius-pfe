@@ -1,9 +1,5 @@
-import { useState } from 'react'
-import Modal from '../Modals/Modal';
 
 export default function MessageDetail({ selected }) {
-
-
 
     return (
         <div className="bg-white shadow overflow-hidden sm:rounded-lg">
@@ -67,12 +63,33 @@ export default function MessageDetail({ selected }) {
                     </div>
 
 
-
                     <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt className="text-sm font-medium text-gray-500">Etat</dt>
                         <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{selected.state}</dd>
                     </div>
 
+
+                </dl>
+
+                <dl>
+                    <div className=" py-5 pl-4 text-lg font-medium text-indigo-900"><h1>
+                        Détail Client :
+                    </h1></div>
+
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className="text-sm font-medium text-gray-500">Nom</dt>
+                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{selected.user.nom}</dd>
+                    </div>
+
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className="text-sm font-medium text-gray-500">Mail</dt>
+                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{selected.user.mail}</dd>
+                    </div>
+
+                    <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt className="text-sm font-medium text-gray-500">Numero</dt>
+                        <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{selected.user.numero}</dd>
+                    </div>
                 </dl>
             </div>
 
