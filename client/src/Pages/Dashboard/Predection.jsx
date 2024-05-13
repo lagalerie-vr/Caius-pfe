@@ -1,11 +1,11 @@
 import Page from '../../Layouts/LayoutPage'
-import CTA from '../../Components/DashboardDefault/CTA'
+import Predection from '../../Components/Dashboard/Predection'
 function Autre() {
     return (
         <Page
-            content={< CTA />}
+        title="Predection"
+            content={< Predection />}
         />
     )
 }
 export default Autre
-

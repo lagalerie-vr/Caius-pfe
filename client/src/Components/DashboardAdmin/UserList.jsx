@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import AddUser from '../../Components/Slideover/AddUser'
-import useGet from '../../data/Functions/useGet'
 import API from '../../api/api'
 
 import Slideover from '../../Layouts/Slideover'
@@ -62,11 +61,10 @@ function UserList() {
                                 id="role"
                                 name="role"
                                 onChange={handleChange}
-                                className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                             >
                                 <option>Tous les utilisateurs</option>
-                                <option>Client</option>
-                                <option>Expert</option>
+                                <option value="default">User</option>
                                 <option>Admin</option>
                             </select>
                         </div>
@@ -75,7 +73,7 @@ function UserList() {
                         <button
                             type="button"
                             onClick={() => setOpen(true)}
-                            className="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                         >
                             Ajouter un nouveau utilisateur
                         </button>
@@ -164,11 +162,11 @@ function UserList() {
 
 
                                                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <button href="#" className="text-indigo-600 hover:text-indigo-900"
+                                                    <button href="#" className="text-green-600 hover:text-green-900"
                                                         onClick={(e) => { setopenEdit(true); setSelected(person) }}
                                                     >
                                                         <a
-                                                            className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                            className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                                                         >
                                                             Modifier
                                                         </a>

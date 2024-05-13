@@ -1,5 +1,4 @@
 const Libelle_test = /^[a-zA-Z0-9 ]{2,30}$/;
-const cin_test = /^[0-9]{8}$/;
 const nom_test = /^[a-zA-Z ]{2,20}$/;
 const prenom_test = /^[a-zA-Z ]{2,20}$/;
 const email_test = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -22,10 +21,6 @@ export const isPositivNumber = (number) => {
 
 export const isNotEmpty = (string) => {
     return string.length > 0;
-};
-
-export const isCin = (cin) => {
-    return cin_test.test(cin);
 };
 
 export const is8Numb = (number) => {

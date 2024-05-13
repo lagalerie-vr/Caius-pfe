@@ -6,16 +6,17 @@ import logo from '../../../Assets/logoWW.png'
 import { useUser } from '../../../contexts/AuthProvider'
 
 
-function NavbarDefault() {
+
+function NavbarAdmin() {
+
     const user = useUser()
 
     const navigation = [
-        { name: 'Accueil', href: '/' },
-        { name: 'Mes demande', href: '/demande' },
-        { name: 'Mes statuts', href: '/statutlist' },
-        { name: 'Calendrier ', href: 'Calendar' },
-        { name: 'Tutoriel', href: 'Tutorial' },
+        { name: 'Dashboard', href: '/' },
+        { name: 'Prediction', href: 'Prediction' },
     ]
+
+
 
     const userNavigation = [
         { name: 'Paramétres', href: '/Settings' },
@@ -33,23 +34,24 @@ function NavbarDefault() {
 
     return (
         <>
-            <Disclosure as="header" className="bg-indigo-800">
+            <Disclosure as="header" className="bg-red-800">
                 {({ open }) => (
                     <>
-                        <div className=" max-w-7xl mx-auto px-2 sm:px-4 lg:divide-y lg:divide-indigo-700 lg:px-8">
+                        <div className=" max-w-7xl mx-auto px-2 sm:px-4 lg:divide-y lg:divide-red-700 lg:px-8">
                             <div className="relative h-16 flex justify-between">
                                 <div className="relative z-10 px-2 flex lg:px-0">
                                     <div className="flex-shrink-0 flex items-center">
                                         <img
-                                            className="block h-8 w-auto"
+                                            className="block h-12 w-auto"
                                             src={logo}
                                             alt="Workflow"
                                         />
                                     </div>
                                 </div>
+
                                 <div className="relative z-10 flex items-center lg:hidden">
                                     {/* Mobile menu button */}
-                                    <Disclosure.Button className="rounded-md p-2 inline-flex items-center justify-center text-indigo-400 hover:bg-indigo-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                                    <Disclosure.Button className="rounded-md p-2 inline-flex items-center justify-center text-red-400 hover:bg-red-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                                         <span className="sr-only">Open menu</span>
                                         {open ? (
                                             <XIcon className="block h-6 w-6" aria-hidden="true" />
@@ -60,12 +62,12 @@ function NavbarDefault() {
                                 </div>
                                 <div className="hidden lg:relative  lg:ml-4 lg:flex lg:items-center">
 
-                                    <div className="text-sm font-medium text-indigo-200">{user.nom}</div>
+                                    <div className="text-sm font-medium text-red-200">{user.nom}</div>
 
                                     {/* Profile dropdown */}
                                     <Menu as="div" className="flex-shrink-0 relative ml-4">
                                         <div>
-                                            <Menu.Button className="bg-indigo-800 rounded-full flex text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-800 focus:ring-white">
+                                            <Menu.Button className="bg-red-800 rounded-full flex text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-red-800 focus:ring-white">
                                                 <span className="sr-only">Open user menu</span>
                                                 <img className="h-8 w-8 rounded-full" src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="" />
                                             </Menu.Button>
@@ -86,8 +88,8 @@ function NavbarDefault() {
                                                             <Link
                                                                 to={item.href}
                                                                 className={classNames(
-                                                                    active ? 'bg-indigo-100' : '',
-                                                                    'block py-2 px-4 text-sm text-indigo-700'
+                                                                    active ? 'bg-red-100' : '',
+                                                                    'block py-2 px-4 text-sm text-red-700'
                                                                 )}
                                                             >
                                                                 {item.name}
@@ -114,7 +116,7 @@ function NavbarDefault() {
                                         key={item.name}
                                         to={item.href}
                                         className={classNames(
-                                            item.current ? 'bg-indigo-900 text-white' : 'text-indigo-300 hover:bg-indigo-700 hover:text-white',
+                                            item.current ? 'bg-red-900 text-white' : 'text-red-300 hover:bg-red-700 hover:text-white',
                                             'rounded-md py-2 px-3 inline-flex items-center text-sm font-medium'
                                         )}
                                         aria-current={item.current ? 'page' : undefined}
@@ -133,7 +135,7 @@ function NavbarDefault() {
                                         as="a"
                                         href={item.href}
                                         className={classNames(
-                                            item.current ? 'bg-indigo-900 text-white' : 'text-indigo-300 hover:bg-indigo-700 hover:text-white',
+                                            item.current ? 'bg-red-900 text-white' : 'text-red-300 hover:bg-red-700 hover:text-white',
                                             'block rounded-md py-2 px-3 text-base font-medium'
                                         )}
                                         aria-current={item.current ? 'page' : undefined}
@@ -142,14 +144,14 @@ function NavbarDefault() {
                                     </Disclosure.Button>
                                 ))}
                             </div>
-                            <div className="border-t border-indigo-700 pt-4 pb-3">
+                            <div className="border-t border-red-700 pt-4 pb-3">
                                 <div className="px-4 flex items-center">
                                     <div className="flex-shrink-0">
                                         <img className="h-10 w-10 rounded-full" src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="" />
                                     </div>
                                     <div className="ml-3">
                                         <div className="text-base font-medium text-white">{user.mail}</div>
-                                        <div className="text-sm font-medium text-indigo-400">{user.email}</div>
+                                        <div className="text-sm font-medium text-red-400">{user.email}</div>
                                     </div>
                                 </div>
                                 <div className="mt-3 px-2 space-y-1">
@@ -158,7 +160,7 @@ function NavbarDefault() {
                                             key={item.name}
                                             as="a"
                                             href={item.href}
-                                            className="block rounded-md py-2 px-3 text-base font-medium text-indigo-400 hover:bg-indigo-700 hover:text-white"
+                                            className="block rounded-md py-2 px-3 text-base font-medium text-red-400 hover:bg-red-700 hover:text-white"
                                         >
                                             {item.name}
                                         </Disclosure.Button>
@@ -166,7 +168,7 @@ function NavbarDefault() {
 
                                     <button
                                         onClick={handleLogout}
-                                        className="block rounded-md py-2 px-3 text-base font-medium text-indigo-400 hover:bg-indigo-700 hover:text-white"
+                                        className="block rounded-md py-2 px-3 text-base font-medium text-red-400 hover:bg-red-700 hover:text-white"
                                     >
                                         Deconnecte
                                     </button>
@@ -180,5 +182,4 @@ function NavbarDefault() {
     )
 }
 
-
-export default NavbarDefault
+export default NavbarAdmin

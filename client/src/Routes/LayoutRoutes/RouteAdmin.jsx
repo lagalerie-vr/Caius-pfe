@@ -1,18 +1,13 @@
 import { Routes, Route } from "react-router-dom"
 import Users from '../../Pages/DashboardAdmin/Users'
-import Main from '../../Pages/DashboardAdmin/Main'
-import Calendar from '../../Pages/DashboardAdmin/Calendar'
-import Tutorial from '../../Pages/DashboardAdmin/Tutorial'
+import Main from '../../Pages/Dashboard/Main'
 import Error from '../../Pages/Error'
 import LayoutDashboardAdmin from "../../Layouts/LayoutDashboard"
-import Facture from '../../Pages/DashboardAdmin/Facture'
-import Contract from '../../Pages/DashboardAdmin/Contract'
-import DemandeList from '../../Pages/DashboardAdmin/Demande'
+
 import Settings from '../../Pages/Dashboard/Settings'
 
 import ProtectedRoutes from "../ProtectedRoutes"
-import Courrier from "../../Pages/DashboardAdmin/Courrier"
-import Call from "../../Pages/JitsiCall/Call"
+import Predection from "../../Pages/Dashboard/Predection"
 
 const RouteAdmin = () => (
 
@@ -21,14 +16,8 @@ const RouteAdmin = () => (
             <Route path="/" element={<LayoutDashboardAdmin />}>
                 <Route path='/' element={<Main />} />
                 <Route path='/Users' element={<Users />} />
-                <Route path='/Calendar' element={<Calendar />} />
-                <Route path='/Tutorial' element={<Tutorial />} />
-                <Route path='/Courrier' element={<Courrier />} />
-                <Route path='/facture' element={<Facture />} />
-                <Route path='/Contract' element={<Contract />} />
-                <Route path='/demande' element={<DemandeList />} />
+                <Route path='/Prediction' element={<Predection/>} />
                 <Route path='/Settings' element={<Settings />} />
-                <Route path='/Call' element={<Call />} />
                 <Route path='*' element={<Error />} />
             </Route>
         </Route>

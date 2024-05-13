@@ -6,7 +6,7 @@
   "scripts": {
     "server": "npm run start --prefix ./server",
     "client": "npm run start --prefix ./client",
-    "cairus": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    "rnta": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",

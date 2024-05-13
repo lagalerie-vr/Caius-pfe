@@ -57,6 +57,7 @@ export default function Example() {
         API.delete(`/Users/user/${user._id}`)
         localStorage.removeItem('token')
         setconfrimed(true)
+        window.location.reload();  
     }
 
 

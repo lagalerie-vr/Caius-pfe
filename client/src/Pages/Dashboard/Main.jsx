@@ -1,7 +1,7 @@
-import Page from '../../Layouts/LayoutPage'
-import Stats from '../../Components/Stats/StatsClient'
-import { useUser } from '../../contexts/AuthProvider'
 
+import Page from '../../Layouts/LayoutPage'
+import Stats from '../../Components/Dashboard/Main'
+import { useUser } from '../../contexts/AuthProvider'
 export default function Main() {
     const user = useUser()
     return (

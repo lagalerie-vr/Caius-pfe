@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import API from '../../api/api';
-import useGet from '../../data/Functions/useGet';
 import Modal from '../Modals/Modal';
 
 export default function Example({ user }) {
@@ -11,6 +9,7 @@ export default function Example({ user }) {
         nom: "",
         prenom: "",
         numero: "",
+        role: "",
         password: "",
     })
 
@@ -26,6 +25,7 @@ export default function Example({ user }) {
             prenom: user.prenom,
             numero: user.numero,
             password: user.password,
+            role: user.role,
         })
     }, [user])
 
@@ -65,7 +65,7 @@ export default function Example({ user }) {
                             autoComplete="email"
                             value={data.mail}
                             onChange={handleChange}
-                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                         />
                     </div>
                 </div>
@@ -80,7 +80,7 @@ export default function Example({ user }) {
                             autoComplete="name"
                             value={data.nom}
                             onChange={handleChange}
-                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                         />
                     </div>
                 </div>
@@ -96,7 +96,7 @@ export default function Example({ user }) {
                             autoComplete="prenom"
                             value={data.prenom}
                             onChange={handleChange}
-                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                         />
                     </div>
                 </div>
@@ -112,9 +112,25 @@ export default function Example({ user }) {
                             autoComplete="phone"
                             value={data.numero}
                             onChange={handleChange}
-                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                         />
                     </div>
+                </div>
+
+                <div className="col-span-6 sm:col-span-3">
+                    <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+                        Role
+                    </label>
+                    <select
+                        id="role"
+                        name="role"
+                        value={data.role}
+                        onChange={handleChange}
+                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                    >
+                        <option value="default">User</option>
+                        <option>Admin</option>
+                    </select>
                 </div>
 
                 <div>
@@ -127,7 +143,7 @@ export default function Example({ user }) {
                             name="password"
                             type="password"
                             onChange={handleChange}
-                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                         />
                     </div>
                 </div>
@@ -135,7 +151,7 @@ export default function Example({ user }) {
                 <div>
                     <button
                         type="submit"
-                        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                     >
                         Enregistré
                     </button>
